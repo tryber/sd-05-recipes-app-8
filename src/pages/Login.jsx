@@ -1,13 +1,14 @@
 import React from 'react';
 import { InputEmail, InputPassword, BtnLogin } from '../components';
+import Card from '../layouts/Card';
 
 const Login = () => (
-  <div>
+  <Card>
     <h1>«Login»</h1>
     <InputEmail />
     <InputPassword />
     <BtnLogin />
-  </div>
+  </Card>
 );
 
 export default Login;
