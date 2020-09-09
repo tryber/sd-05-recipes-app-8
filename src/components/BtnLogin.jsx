@@ -4,8 +4,8 @@ import { RecipesContext } from '../context/RecipesContext';
 
 const BtnLogin = () => {
   const { email, password } = useContext(RecipesContext);
-  const checkPassword = (password) => (password.length < 6 ? false : true);
-  const checkEmail = (email) => email.match(/\S+@\S+\.\S+/);
+  const checkPassword = (keyword) => !(keyword.length < 6);
+  const checkEmail = (mail) => mail.match(/\S+@\S+\.\S+/);
   return (
     <Link to="/comidas">
       <button
