@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-const image = require('../images/searchIcon.svg');
 
+const image = require('../images/searchIcon.svg');
 const SearchIcon = () => {
   const [showSearchBar, setShowSearchBar] = useState(false);
   return (
