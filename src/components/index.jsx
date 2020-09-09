@@ -6,7 +6,7 @@ import ProfileIcon from './ProfileIcon';
 import SearchIcon from './SearchIcon';
 import Header from './Header';
 
-export { 
+export {
   InputPassword,
   InputEmail,
   BtnLogin,
