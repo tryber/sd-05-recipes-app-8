@@ -8,3 +8,5 @@ const Header = () => (
     <SearchIcon />
   </div>
 );
+
+export default Header;
