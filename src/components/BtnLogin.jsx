@@ -9,7 +9,7 @@ const BtnLogin = () => {
   const setStorage = () => {
     localStorage.setItem('mealsToken', '1');
     localStorage.setItem('cocktailsToken', 1);
-    localStorage.setItem('user', JSON.stringify({ email: email }));
+    localStorage.setItem('user', JSON.stringify({ email }));
   };
   return (
     <Link to="/comidas">
