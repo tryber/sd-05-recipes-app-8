@@ -4,7 +4,7 @@ import { RecipesContext } from '../context/RecipesContext';
 
 const BtnLogin = () => {
   const { email, password } = useContext(RecipesContext);
-  const checkPassword = (keyword) => !(keyword.length < 6);
+  const checkPassword = (keyword) => !(keyword.length < 7);
   const checkEmail = (mail) => mail.match(/\S+@\S+\.\S+/);
   const setStorage = () => {
     localStorage.setItem('mealsToken', '1');
