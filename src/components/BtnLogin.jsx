@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const BtnLogin = () => {
-  const checkLogin = () => {
-    return false;
-  };
+  const checkLogin = () => false;
 
   return (
     <Link to="/comidas">
