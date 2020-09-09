@@ -5,7 +5,7 @@ import { HeaderProfile, BtnProfileDone, BtnProfileFavorite, BtnProfileLogout } f
 const Profile = () => (
   <Card>
     <HeaderProfile />
-    <p>{JSON.parse(localStorage.getItem('user')).email}</p>
+    <p data-testid="profile-email">{JSON.parse(localStorage.getItem('user')).email}</p>
     <BtnProfileDone />
     <BtnProfileFavorite />
     <BtnProfileLogout />
