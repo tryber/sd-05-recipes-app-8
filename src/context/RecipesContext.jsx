@@ -7,6 +7,8 @@ const RecipesProvider = ({ children }) => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [typeRecipe, setTypeRecipe] = useState('comidas');
+  const [showSearchBar, setShowSearchBar] = useState(false);
+  const [searchBarInput, setSearchBarInput] = useState([])
   const context = {
     password,
     setPassword,
@@ -14,6 +16,10 @@ const RecipesProvider = ({ children }) => {
     setEmail,
     typeRecipe,
     setTypeRecipe,
+    showSearchBar,
+    setShowSearchBar,
+    searchBarInput,
+    setSearchBarInput,
   };
   return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;
 };

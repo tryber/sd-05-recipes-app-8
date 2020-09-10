@@ -1,4 +1,4 @@
-.Card {
+/* .Card {
   background-color: white;
   border: 3px solid black;
   border-radius: 10px;
@@ -10,7 +10,7 @@
   min-width: 300px;
   overflow: hidden;
   width: 200px;
-}
+} */
 
 .Card .Conteudo {
   color: black;
@@ -21,15 +21,23 @@
 }
 
 .Header {
-  background-color: gray;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   text-align: center;
 }
 
-.Card .Footer {
+.header-container-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+}
+
+/* .Card .Footer {
   background-color: black;
   color: white;
   padding: 5px 0;
   text-align: center;
-}
+} */
+

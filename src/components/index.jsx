@@ -6,10 +6,7 @@ import SearchIcon from './SearchIcon';
 import BtnCard from './BtnCard';
 import Header from './Header';
 import MenuBottom from './MenuBottom';
-import HeaderProfile from './HeaderProfile';
-import BtnProfileDone from './BtnProfileDone';
-import BtnProfileFavorite from './BtnProfileFavorite';
-import BtnProfileLogout from './BtnProfileLogout';
+import SearchBar from './SearchBar';
 
 export {
   InputPassword,
@@ -20,8 +17,5 @@ export {
   BtnCard,
   Header,
   MenuBottom,
-  HeaderProfile,
-  BtnProfileDone,
-  BtnProfileFavorite,
-  BtnProfileLogout,
+  SearchBar,
 };

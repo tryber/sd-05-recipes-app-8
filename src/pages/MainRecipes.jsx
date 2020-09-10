@@ -1,11 +1,12 @@
 import React from 'react';
-import { BtnCard, Header, ProfileIcon, SearchIcon, MenuBottom } from '../components';
+import { BtnCard, Header, ProfileIcon, SearchIcon, MenuBottom, SearchBar } from '../components';
 import Card from '../layouts/Card';
 
 const headerMainRecipes = {
   left: <ProfileIcon />,
   center: 'Comidas',
   right: <SearchIcon />,
+  searchBar: <SearchBar />,
   id: 'page-title',
 };
 
