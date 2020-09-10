@@ -15,5 +15,5 @@ export {
   SearchIcon,
   BtnCard,
   Header,
-  MenuBottom,  
+  MenuBottom,
 };

@@ -10,8 +10,8 @@ const RecipesProvider = ({ children }) => {
   const [typeRecipe, setTypeRecipe] = useState('comidas');
   const [recipe, setRecipe] = useState('');
 
-  const fetchRecipeDetails = (typeRecipe, idRecipe) => {
-    getRecipeDetails(typeRecipe, idRecipe).then((receipt) => setRecipe(receipt));
+  const fetchRecipeDetails = (type, id) => {
+    getRecipeDetails(type, id).then((receipt) => setRecipe(receipt));
   };
 
   const context = {
