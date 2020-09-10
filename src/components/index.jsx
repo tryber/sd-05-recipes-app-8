@@ -1,10 +1,11 @@
 import InputPassword from './InputPassword';
 import InputEmail from './InputEmail';
 import BtnLogin from './BtnLogin';
-import BackToLogin from './BackToLogin';
 import ProfileIcon from './ProfileIcon';
 import SearchIcon from './SearchIcon';
+import BtnCard from './BtnCard';
 import Header from './Header';
+import MenuBottom from './MenuBottom';
 import HeaderProfile from './HeaderProfile';
 import BtnProfileDone from './BtnProfileDone';
 import BtnProfileFavorite from './BtnProfileFavorite';
@@ -14,10 +15,11 @@ export {
   InputPassword,
   InputEmail,
   BtnLogin,
-  BackToLogin,
   ProfileIcon,
   SearchIcon,
+  BtnCard,
   Header,
+  MenuBottom,
   HeaderProfile,
   BtnProfileDone,
   BtnProfileFavorite,

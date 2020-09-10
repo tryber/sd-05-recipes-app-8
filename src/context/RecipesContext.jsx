@@ -6,11 +6,14 @@ export const RecipesContext = createContext();
 const RecipesProvider = ({ children }) => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [typeRecipe, setTypeRecipe] = useState('comidas');
   const context = {
     password,
     setPassword,
     email,
     setEmail,
+    typeRecipe,
+    setTypeRecipe,
   };
   return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;
 };
