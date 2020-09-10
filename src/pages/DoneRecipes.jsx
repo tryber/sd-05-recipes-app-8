@@ -2,11 +2,12 @@ import React from 'react';
 import { BackToLogin, Header } from '../components';
 import Card from '../layouts/Card';
 
-const MainRecipes = () => (
+const DoneRecipes = () => (
   <Card>
     <Header />
+    <h1>«Receitas Feitas»</h1>
     <BackToLogin />
   </Card>
 );
 
-export default MainRecipes;
+export default DoneRecipes;
