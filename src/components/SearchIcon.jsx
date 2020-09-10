@@ -7,7 +7,7 @@ const SearchIcon = () => {
   return (
     <section>
       <button onClick={() => setShowSearchBar(!showSearchBar)}>
-        <img src={image} alt="searchIcon" />
+        <img data-testid="search-top-btn" src={image} alt="searchIcon" />
       </button>
       {showSearchBar && <input type="text" />}
     </section>

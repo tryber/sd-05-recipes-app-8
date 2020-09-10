@@ -1,13 +1,14 @@
 import React from 'react';
 import { BackToLogin, Header, MenuBottom } from '../components';
+import Card from '../layouts/Card';
 
 const MainRecipes = () => (
-  <div>
-    <h2>«Tela Principal de Comidas»</h2>
+  <Card>
     <Header />
     <BackToLogin />
     <MenuBottom />
-  </div>
+  </Card>
+
 );
 
 export default MainRecipes;

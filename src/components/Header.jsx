@@ -2,9 +2,9 @@ import React from 'react';
 import { ProfileIcon, SearchIcon } from './';
 
 const Header = () => (
-  <div>
-    <h2>«Header»</h2>
+  <div className="Header">
     <ProfileIcon />
+    <h2 data-testid="page-title">«Comidas»</h2>
     <SearchIcon />
   </div>
 );
