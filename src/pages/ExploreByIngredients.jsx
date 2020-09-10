@@ -2,22 +2,20 @@ import React from 'react';
 import { BtnCard, Header, ProfileIcon } from '../components';
 import Card from '../layouts/Card';
 
-const headerDoneRecipes = {
+const headerIngredients = {
   left: <ProfileIcon />,
-  center: 'Receitas Feitas',
-  id: 'page-title',
+  center: 'Explorar Ingredientes',
 };
-
 const logoutProps = {
   direction: '/',
   value: 'Sair',
 };
 
-const DoneRecipes = () => (
+const ExploreByIngredients = () => (
   <Card>
-    <Header {...headerDoneRecipes} />
+    <Header {...headerIngredients} />
     <BtnCard {...logoutProps} />
   </Card>
 );
 
-export default DoneRecipes;
+export default ExploreByIngredients;
