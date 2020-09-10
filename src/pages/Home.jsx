@@ -9,6 +9,7 @@ import {
   FavoritesRecipes,
   DoneRecipes,
   ExploreByIngredients,
+  RecipeDetails,
 } from './';
 
 const Home = () => (
@@ -16,6 +17,8 @@ const Home = () => (
     <Switch>
       <Route exact path="/" component={Login} />
       <Route exact path="/comidas" component={MainRecipes} />
+      <Route exact path="/comidas/:id" component={RecipeDetails} />
+      <Route exact path="/bebidas/:id" component={RecipeDetails} />
       <Route exact path="/explorar" component={Explorer} />
       <Route exact path="/explorar/comidas" component={ExploreRecipes} />
       <Route exact path="/explorar/bebidas" component={ExploreRecipes} />

@@ -14,20 +14,25 @@ const logoutProps = {
   value: 'Sair',
 };
 
-const exploreProps = {
-  direction: '/explorar',
-  value: 'Explorar',
-  id: 'explore-bottom-btn',
+// const exploreProps = {
+//   direction: '/explorar',
+//   value: 'Explorar',
+//   id: 'explore-bottom-btn',
+// };
+
+const detailsProps = {
+  direction: '/comidas/52882',
+  value: 'Detalhes',
 };
 
 const MainRecipes = () => (
   <Card>
     <Header {...headerMainRecipes} />
+    <BtnCard {...detailsProps} />
     <BtnCard {...logoutProps} />
-    <BtnCard {...exploreProps} />
+    {/* <BtnCard {...exploreProps} /> */}
     <MenuBottom />
   </Card>
-
 );
 
 export default MainRecipes;
