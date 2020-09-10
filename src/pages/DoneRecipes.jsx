@@ -1,12 +1,22 @@
 import React from 'react';
-import { BackToLogin, Header } from '../components';
+import { BtnProfileCard, HeaderTst, ProfileIcon } from '../components';
 import Card from '../layouts/Card';
+
+const headerDoneRecipes = {
+  left: <ProfileIcon />,
+  center: 'Receitas Feitas',
+  id: 'page-title',
+};
+
+const logoutProps = {
+  direction: '/',
+  value: 'Sair',
+};
 
 const DoneRecipes = () => (
   <Card>
-    <Header />
-    <h1>«Receitas Feitas»</h1>
-    <BackToLogin />
+    <HeaderTst {...headerDoneRecipes} />
+    <BtnProfileCard {...logoutProps} />
   </Card>
 );
 

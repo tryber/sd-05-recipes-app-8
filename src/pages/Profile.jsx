@@ -1,14 +1,39 @@
 import React from 'react';
 import Card from '../layouts/Card';
-import { HeaderProfile, BtnProfileDone, BtnProfileFavorite, BtnProfileLogout } from '../components';
+import { ProfileIcon, HeaderTst, BtnProfileCard } from '../components';
+
+const doneProps = {
+  id: 'profile-done-btn',
+  direction: '/receitas-feitas',
+  value: 'Receitas Feitas',
+};
+
+const favoriteProps = {
+  id: 'profile-favorite-btn',
+  direction: '/receitas-favoritas',
+  value: 'Receitas Favoritas',
+};
+
+const logoutProps = {
+  id: 'profile-logout-btn',
+  direction: '/',
+  value: 'Sair',
+  action: true,
+};
+
+const headerProfile = {
+  left: <ProfileIcon />,
+  center: 'Perfil',
+  id: 'page-title',
+};
 
 const Profile = () => (
   <Card>
-    <HeaderProfile />
+    <HeaderTst {...headerProfile} />
     <p data-testid="profile-email">{JSON.parse(localStorage.getItem('user')).email}</p>
-    <BtnProfileDone />
-    <BtnProfileFavorite />
-    <BtnProfileLogout />
+    <BtnProfileCard {...doneProps} />
+    <BtnProfileCard {...favoriteProps} />
+    <BtnProfileCard {...logoutProps} />
   </Card>
 );
 
