@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const HeaderTst = (props) => (
+const Header = (props) => (
   <div className="Header">
     {props.left}
     <h2 data-testid={props.id}>{props.center}</h2>
@@ -9,9 +9,9 @@ const HeaderTst = (props) => (
   </div>
 );
 
-export default HeaderTst;
+export default Header;
 
-HeaderTst.propTypes = {
+Header.propTypes = {
   center: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   left: PropTypes.node.isRequired,

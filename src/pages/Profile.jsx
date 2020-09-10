@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '../layouts/Card';
-import { ProfileIcon, HeaderTst, BtnProfileCard } from '../components';
+import { ProfileIcon, Header, BtnCard } from '../components';
 
 const doneProps = {
   id: 'profile-done-btn',
@@ -29,11 +29,11 @@ const headerProfile = {
 
 const Profile = () => (
   <Card>
-    <HeaderTst {...headerProfile} />
+    <Header {...headerProfile} />
     <p data-testid="profile-email">{JSON.parse(localStorage.getItem('user')).email}</p>
-    <BtnProfileCard {...doneProps} />
-    <BtnProfileCard {...favoriteProps} />
-    <BtnProfileCard {...logoutProps} />
+    <BtnCard {...doneProps} />
+    <BtnCard {...favoriteProps} />
+    <BtnCard {...logoutProps} />
   </Card>
 );
 

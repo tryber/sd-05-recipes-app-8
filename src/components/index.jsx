@@ -3,8 +3,8 @@ import InputEmail from './InputEmail';
 import BtnLogin from './BtnLogin';
 import ProfileIcon from './ProfileIcon';
 import SearchIcon from './SearchIcon';
-import BtnProfileCard from './BtnProfileCard';
-import HeaderTst from './HeaderTst';
+import BtnCard from './BtnCard';
+import Header from './Header';
 
 export {
   InputPassword,
@@ -12,6 +12,6 @@ export {
   BtnLogin,
   ProfileIcon,
   SearchIcon,
-  BtnProfileCard,
-  HeaderTst,
+  BtnCard,
+  Header,
 };

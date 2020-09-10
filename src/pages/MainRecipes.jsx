@@ -1,5 +1,5 @@
 import React from 'react';
-import { BtnProfileCard, HeaderTst, ProfileIcon, SearchIcon } from '../components';
+import { BtnCard, Header, ProfileIcon, SearchIcon } from '../components';
 import Card from '../layouts/Card';
 
 const headerMainRecipes = {
@@ -22,9 +22,9 @@ const exploreProps = {
 
 const MainRecipes = () => (
   <Card>
-    <HeaderTst {...headerMainRecipes} />
-    <BtnProfileCard {...logoutProps} />
-    <BtnProfileCard {...exploreProps} />
+    <Header {...headerMainRecipes} />
+    <BtnCard {...logoutProps} />
+    <BtnCard {...exploreProps} />
   </Card>
 );
 

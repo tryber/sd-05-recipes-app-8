@@ -1,16 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Card from '../layouts/Card';
-import { ProfileIcon, HeaderTst, BtnProfileCard } from '../components';
-
-const headerExplorer = {
-  left: <ProfileIcon />,
-  center: 'Explorar',
-};
-
-const searchByIngredient = {
-  id: 'explore-by-ingredient',
-  value: 'Por Ingredientes',
-};
+import { ProfileIcon, Header, BtnCard } from '../components';
+import { RecipesContext } from '../context/RecipesContext';
 
 const searchByArea = {
   id: 'explore-by-area',
@@ -27,14 +18,26 @@ const logoutProps = {
   value: 'Sair',
 };
 
-const ExploreRecipes = () => (
-  <Card>
-    <HeaderTst {...headerExplorer} />
-    <BtnProfileCard {...searchByIngredient} />
-    <BtnProfileCard {...searchByArea} />
-    <BtnProfileCard {...surpriseMe} />
-    <BtnProfileCard {...logoutProps} />
-  </Card>
-);
+const ExploreRecipes = () => {
+  const { typeRecipe } = useContext(RecipesContext);
+  const headerExplorer = {
+    left: <ProfileIcon />,
+    center: `Explorar ${typeRecipe}`,
+  };
+  const searchByIngredient = {
+    id: 'explore-by-ingredient',
+    direction: `/explorar/${typeRecipe}/ingredientes`,
+    value: 'Por Ingredientes',
+  };
+  return (
+    <Card>
+      <Header {...headerExplorer} />
+      <BtnCard {...searchByIngredient} />
+      <BtnCard {...searchByArea} />
+      <BtnCard {...surpriseMe} />
+      <BtnCard {...logoutProps} />
+    </Card>
+  );
+};
 
 export default ExploreRecipes;

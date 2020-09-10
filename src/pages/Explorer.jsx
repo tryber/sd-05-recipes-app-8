@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '../layouts/Card';
-import { ProfileIcon, HeaderTst, BtnProfileCard } from '../components';
+import { ProfileIcon, Header, BtnCard } from '../components';
 
 const headerExplorer = {
   left: <ProfileIcon />,
@@ -11,12 +11,14 @@ const mealsProps = {
   id: 'explore-food',
   direction: '/explorar/comidas',
   value: 'Explorar Comidas',
+  type: 'comidas',
 };
 
 const cocktailsProps = {
   id: 'explore-drinks',
   direction: '/explorar/bebidas',
   value: 'Explorar Bebidas',
+  type: 'bebidas',
 };
 
 const logoutProps = {
@@ -26,10 +28,10 @@ const logoutProps = {
 
 const Explorer = () => (
   <Card>
-    <HeaderTst {...headerExplorer} />
-    <BtnProfileCard {...mealsProps} />
-    <BtnProfileCard {...cocktailsProps} />
-    <BtnProfileCard {...logoutProps} />
+    <Header {...headerExplorer} />
+    <BtnCard {...mealsProps} />
+    <BtnCard {...cocktailsProps} />
+    <BtnCard {...logoutProps} />
   </Card>
 );
 
