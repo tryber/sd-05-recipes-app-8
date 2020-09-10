@@ -1,12 +1,31 @@
 import React from 'react';
-import { BackToLogin, Header, MenuBottom } from '../components';
+import { BtnCard, Header, ProfileIcon, SearchIcon, MenuBotton} from '../components';
 import Card from '../layouts/Card';
+
+const headerMainRecipes = {
+  left: <ProfileIcon />,
+  center: 'Comidas',
+  right: <SearchIcon />,
+  id: 'page-title',
+};
+
+const logoutProps = {
+  direction: '/',
+  value: 'Sair',
+};
+
+const exploreProps = {
+  direction: '/explorar',
+  value: 'Explorar',
+  id: 'explore-bottom-btn',
+};
 
 const MainRecipes = () => (
   <Card>
-    <Header />
-    <BackToLogin />
-    <MenuBottom />
+    <Header {...headerMainRecipes} />
+    <BtnCard {...logoutProps} />
+    <BtnCard {...exploreProps} />
+    <MenuBotton />
   </Card>
 
 );
