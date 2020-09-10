@@ -1,0 +1,9 @@
+.menu-bottom {
+  background-color: rgb(219, 215, 215);
+  bottom: 0;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  position: absolute;
+  width: 100%;
+}
