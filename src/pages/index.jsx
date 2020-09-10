@@ -7,4 +7,13 @@ import Explorer from './Explorer';
 import ExploreRecipes from './ExploreRecipes';
 import ExploreByIngredients from './ExploreByIngredients';
 
-export { Login, MainRecipes, Profile, FavoritesRecipes, DoneRecipes, Explorer, ExploreRecipes, ExploreByIngredients };
+export {
+  Login,
+  MainRecipes,
+  Profile,
+  FavoritesRecipes,
+  DoneRecipes,
+  Explorer,
+  ExploreRecipes,
+  ExploreByIngredients,
+};
