@@ -5,6 +5,7 @@ import BackToLogin from './BackToLogin';
 import ProfileIcon from './ProfileIcon';
 import SearchIcon from './SearchIcon';
 import Header from './Header';
+import MenuBottom from './MenuBottom';
 
 export {
   InputPassword,
@@ -14,4 +15,5 @@ export {
   ProfileIcon,
   SearchIcon,
   Header,
+  MenuBottom,
 };

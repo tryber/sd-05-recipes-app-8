@@ -1,0 +1,14 @@
+footer {
+  /* font-size: 0; */
+}
+
+.menu-bottom {
+  border-top: 1px black solid;
+  border-bottom: 1px black solid;
+  bottom: 0;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  position: absolute;
+  width: 100%;
+}
