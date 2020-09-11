@@ -11,6 +11,7 @@ const BtnCard = (props) => {
     <Link to={props.direction}>
       <button
         data-testid={props.id}
+        position="fixed"
         onClick={() => {
           changeType();
           clearStorage();
