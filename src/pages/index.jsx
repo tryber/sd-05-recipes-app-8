@@ -7,6 +7,7 @@ import Explorer from './Explorer';
 import ExploreRecipes from './ExploreRecipes';
 import ExploreByIngredients from './ExploreByIngredients';
 import RecipeDetails from './RecipeDetails';
+import DoingRecipes from './DoingRecipes';
 
 export {
   Login,
@@ -18,4 +19,5 @@ export {
   ExploreRecipes,
   ExploreByIngredients,
   RecipeDetails,
+  DoingRecipes,
 };

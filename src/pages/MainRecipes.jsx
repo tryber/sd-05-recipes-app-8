@@ -1,13 +1,7 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { RecipesContext } from '../context/RecipesContext';
 import { BtnCard, Header, ProfileIcon, SearchIcon, MenuBottom } from '../components';
 import Card from '../layouts/Card';
-
-const headerMainRecipes = {
-  left: <ProfileIcon />,
-  center: 'Comidas',
-  right: <SearchIcon />,
-  id: 'page-title',
-};
 
 const logoutProps = {
   direction: '/',
@@ -20,19 +14,35 @@ const logoutProps = {
 //   id: 'explore-bottom-btn',
 // };
 
-const detailsProps = {
-  direction: '/comidas/52882',
-  value: 'Detalhes',
-};
+const MainRecipes = () => {
+  const { typeRecipe, recipe, fetchRecipeDetails } = useContext(RecipesContext);
+  const type = typeRecipe === 'comidas' ? 'meal' : 'cocktail';
+  const id = typeRecipe === 'comidas' ? '52771' : '178319';
 
-const MainRecipes = () => (
-  <Card>
-    <Header {...headerMainRecipes} />
-    <BtnCard {...detailsProps} />
-    <BtnCard {...logoutProps} />
-    {/* <BtnCard {...exploreProps} /> */}
-    <MenuBottom />
-  </Card>
-);
+  useEffect(() => {
+    fetchRecipeDetails(type, id);
+  }, [type]);
+
+  const headerMainRecipes = {
+    left: <ProfileIcon />,
+    center: typeRecipe,
+    right: <SearchIcon />,
+    id: 'page-title',
+  };
+  const detailsProps = {
+    direction: type === 'comidas' ? '/comidas/52882' : '/bebidas/178319',
+    value: 'Detalhes',
+  };
+
+  return (
+    <Card>
+      {console.log(recipe)}
+      <Header {...headerMainRecipes} />
+      <BtnCard {...detailsProps} />
+      <BtnCard {...logoutProps} />
+      <MenuBottom />
+    </Card>
+  );
+};
 
 export default MainRecipes;

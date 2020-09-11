@@ -9,20 +9,25 @@ const RecipesProvider = ({ children }) => {
   const [email, setEmail] = useState('');
   const [typeRecipe, setTypeRecipe] = useState('comidas');
   const [recipe, setRecipe] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchRecipeDetails = (type, id) => {
-    getRecipeDetails(type, id).then((receipt) => setRecipe(receipt));
+    getRecipeDetails(type, id).then((receipt) => {
+      setRecipe(receipt);
+      setIsLoading(false);
+    });
   };
 
   const context = {
-    password,
-    setPassword,
     email,
-    setEmail,
-    typeRecipe,
-    setTypeRecipe,
     fetchRecipeDetails,
+    isLoading,
+    password,
     recipe,
+    setEmail,
+    setPassword,
+    setTypeRecipe,
+    typeRecipe,
   };
 
   return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;
