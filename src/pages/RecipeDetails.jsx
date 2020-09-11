@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { RecipesContext } from '../context/RecipesContext';
 import Card from '../layouts/Card';
 import { BtnCard } from '../components';
@@ -10,40 +10,54 @@ const logoutProps = {
   value: 'Sair',
 };
 
+const keys1 = [
+  'meal',
+  'meals',
+  'strMeal',
+  52882,
+  'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
+  'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
+];
+const keys2 = [
+  'cocktail',
+  'drinks',
+  'strDrink',
+  178319,
+  'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
+  'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
+];
+
 const RecipeDetails = () => {
-  const { recipe, typeRecipe, isLoading } = useContext(RecipesContext);
-  // const type = typeRecipe === 'comidas' ? 'meal' : 'cocktail';
-  const category = typeRecipe === 'comidas' ? 'meals' : 'drinks';
-  const name = typeRecipe === 'comidas' ? 'strMeal' : 'strDrink';
-  const idRecipe = typeRecipe === 'comidas' ? '52882' : '178319';
-  const img =
-    typeRecipe === 'comidas'
-      ? 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg'
-      : 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg';
+  const { recipe, typeRecipe, isLoading, fetchRecipeDetails } = useContext(RecipesContext);
+  const keys = typeRecipe === 'comidas' ? keys1 : keys2;
   const progressProps = {
-    direction: `/${typeRecipe}/${idRecipe}/in-progress`,
+    direction: `/${typeRecipe}/${keys[3]}/in-progress`,
     value: 'Iniciar Receita',
     id: 'start-recipe-btn',
   };
+  useEffect(() => {
+    fetchRecipeDetails(keys[0], keys[3]);
+  }, [keys[0]]);
+
   return isLoading ? (
     <p>Loading...</p>
   ) : (
     <Card>
-      <img data-testid="recipe-photo" src={img} alt="$menupic" style={{ maxHeight: '50px' }} />
-      <p data-testid="recipe-title">{recipe[category][0][name]}</p>
+      <img data-testid="recipe-photo" src={keys[4]} alt="$menupic" style={{ maxHeight: '50px' }} />
+      <p data-testid="recipe-title">{recipe[keys[1]][0][keys[2]]}</p>
       <img data-testid="share-btn" src={shareIcon} alt="shareIcon" />
       <img data-testid="favorite-btn" src={whiteHeartIcon} alt="whiteHeartIcon" />
-      <span data-testid="recipe-category">{recipe[category][0].strCategory}</span>
+      <span data-testid="recipe-category">{recipe[keys[1]][0].strCategory}</span>
       <ul data-testid="0-ingredient-name-and-measure">
         Ingredients
-        <li>{recipe[category][0].strIngredient}</li>
+        <li>{recipe[keys[1]][0].strIngredient}</li>
       </ul>
       <p data-testid="instructions">Instructions</p>
-      <span style={{ fontSize: '9px' }}>{recipe[category][0].strInstructions}</span>
-      <video data-testid="video" src={recipe[category][0].strYoutube} alt="video" />
+      <span style={{ fontSize: '9px' }}>{recipe[keys[1]][0].strInstructions}</span>
+      <video data-testid="video" src={recipe[keys[1]][0].strYoutube} alt="video" />
       <img
         data-testid="0-recomendation-card"
-        src={img}
+        src={keys[5]}
         alt="recomendation"
         style={{ maxHeight: '50px' }}
       />
