@@ -7,6 +7,7 @@ import BtnCard from './BtnCard';
 import Header from './Header';
 import MenuBottom from './MenuBottom';
 import SearchBar from './SearchBar';
+import FilterCard from './Filter/FilterCard'
 
 export {
   InputPassword,
@@ -18,4 +19,5 @@ export {
   Header,
   MenuBottom,
   SearchBar,
+  FilterCard,
 };
