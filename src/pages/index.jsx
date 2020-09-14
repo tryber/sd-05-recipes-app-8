@@ -6,6 +6,8 @@ import DoneRecipes from './DoneRecipes';
 import Explorer from './Explorer';
 import ExploreRecipes from './ExploreRecipes';
 import ExploreByIngredients from './ExploreByIngredients';
+import RecipeDetails from './RecipeDetails';
+import DoingRecipes from './DoingRecipes';
 
 export {
   Login,
@@ -16,4 +18,6 @@ export {
   Explorer,
   ExploreRecipes,
   ExploreByIngredients,
+  RecipeDetails,
+  DoingRecipes,
 };
