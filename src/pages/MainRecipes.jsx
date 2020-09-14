@@ -7,6 +7,7 @@ import {
   MenuBottom,
   MainFoodContent,
   FilterList,
+  SearchBar,
 } from '../components';
 
 import { fetchCategories } from '../services/mealAPI';
@@ -15,14 +16,6 @@ import Card from '../layouts/Card';
 const headerMainRecipes = {
   left: <ProfileIcon />,
   center: 'Comidas',
-  right: <SearchIcon />,
-  searchBar: <SearchBar />,
-  id: 'page-title',
-};
-
-const headerMainRecipesDrinks = {
-  left: <ProfileIcon />,
-  center: 'Drinks',
   right: <SearchIcon />,
   searchBar: <SearchBar />,
   id: 'page-title',
