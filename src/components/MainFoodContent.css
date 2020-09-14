@@ -1,0 +1,7 @@
+.recipes-card-container {
+  bottom: 50px;
+  overflow: auto;
+  position: fixed;
+  top: 140px;
+  width: 100%;
+}
