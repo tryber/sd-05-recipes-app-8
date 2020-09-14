@@ -6,6 +6,8 @@ import SearchIcon from './SearchIcon';
 import BtnCard from './BtnCard';
 import Header from './Header';
 import MenuBottom from './MenuBottom';
+import MainFoodContent from './MainFoodContent';
+import FilterList from './FilterList';
 
 export {
   InputPassword,
@@ -16,4 +18,6 @@ export {
   BtnCard,
   Header,
   MenuBottom,
+  MainFoodContent,
+  FilterList,
 };
