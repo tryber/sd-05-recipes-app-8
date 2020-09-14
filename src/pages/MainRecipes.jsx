@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from 'react';
 import { RecipesContext } from '../context/RecipesContext';
-
 import {
   Header,
   ProfileIcon,

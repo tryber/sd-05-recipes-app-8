@@ -5,7 +5,7 @@ import './Header.css';
 const Header = (props) => (
   <div className="Header">
     {props.left}
-    <h2 data-testid={props.id}>{props.center}</h2>
+    <h2 data-testid={props.id}>{(props.center).toUpperCase()}</h2>
     {props.right}
   </div>
 );
