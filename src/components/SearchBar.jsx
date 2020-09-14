@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/RecipesContext';
 import { URL_COCKTAILS, URL_MEALS } from './Filter/getFilterAPI';
 import { getRecipesDrinks, getRecipesMeal } from './Filter/filterAPI';
@@ -22,7 +23,7 @@ const setFilter = (
 const InputRender = (props) => {
   const { datatestid, value, label, setState } = props;
   return (
-    <Fragment>
+    <div>
       <input
         name="search"
         type="radio"
@@ -31,9 +32,9 @@ const InputRender = (props) => {
         onClick={(e) => setState(e.target.value)}
       />
       <label htmlFor="search">{label}</label>
-    </Fragment>
-  )
-}
+    </div>
+  );
+};
 
 const SearchBar = () => {
   const {
@@ -83,6 +84,13 @@ const SearchBar = () => {
       </button>
     </section>
   );
+};
+
+InputRender.propTypes = {
+  datatestid: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  setState: PropTypes.func.isRequired,
 };
 
 export default SearchBar;

@@ -21,23 +21,6 @@ const headerMainRecipes = {
   id: 'page-title',
 };
 
-const logoutProps = {
-  direction: '/',
-  value: 'Sair',
-  id: 'page-title',
-};
-
-// const logoutProps = {
-//   direction: '/',
-//   value: 'Sair',
-// };
-
-// const exploreProps = {
-//   direction: '/explorar',
-//   value: 'Explorar',
-//   id: 'explore-bottom-btn',
-// };
-
 const MainRecipes = () => {
   const { setCategories } = useContext(RecipesContext);
   useEffect(
@@ -62,3 +45,5 @@ const MainRecipes = () => {
     </Card>
   );
 };
+
+export default MainRecipes;
