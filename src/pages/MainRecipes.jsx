@@ -60,11 +60,3 @@ export const MainRecipes = () => {
     </Card>
   );
 };
-
-export const MainRecipesDrinks = () => (
-  <Card>
-    <Header {...headerMainRecipesDrinks} />
-    <FilterCard />
-    <MenuBottom />
-  </Card>
-);
