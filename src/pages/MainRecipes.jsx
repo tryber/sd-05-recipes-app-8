@@ -34,7 +34,7 @@ const MainRecipes = () => {
     <Card>
       <Header {...headerMainRecipes} />
       <FilterList />
-      {/* <MainFoodContent /> */}
+      <MainFoodContent />
       <MenuBottom />
     </Card>
   );

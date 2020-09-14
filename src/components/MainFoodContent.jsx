@@ -8,7 +8,7 @@ const MainFoodContent = () => {
   const [recipesList, setRecipesList] = useState([]);
   const { categories } = useContext(RecipesContext);
   const filterCategory = categories.choose === 'all' ? '' : categories.choose;
-  const testFunction = () => (
+  const testFunction = () =>
     fetchMeals(filterCategory).then(({ meals }) =>
       setRecipesList(() =>
         meals
@@ -17,10 +17,8 @@ const MainFoodContent = () => {
             <RecipeCard cardData={recipe} index={index.toString()} key={index.toString()} />
           )),
       ),
-    ),
-    []
-  );
-  useEffect(() => testFunction());
+    );
+  useEffect(() => testFunction(), []);
 
   return <div className="recipes-card-container">{recipesList}</div>;
 };
