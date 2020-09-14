@@ -45,8 +45,8 @@ const InputText = () => {
       placeholder="Buscar Receita"
       onChange={(e) => setSearchBarInput(e.target.value)}
     />
-  )
-}
+  );
+};
 
 const SearchBar = () => {
   const {
@@ -54,7 +54,7 @@ const SearchBar = () => {
   } = useContext(RecipesContext);
   return (
     <section>
-      <InputRender />
+      <InputText />
       <div>
         <InputRender
           datatestid="ingredient-search-radio"
