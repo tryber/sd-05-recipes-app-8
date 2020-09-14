@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './RecipeCard.css';
 
 export default function RecipeCard(props) {
   const {
@@ -8,14 +9,8 @@ export default function RecipeCard(props) {
   } = props;
   return (
     <div className="recipe-card-container" data-testid={`${index}-recipe-card`}>
-      <img
-        src={strMealThumb}
-        alt={strMeal}
-        data-testid={`${index}-card-img`}
-      />
-    <h2 data-testid={`${index}-card-name`}>
-      {strMeal}
-    </h2>
+      <img className="recipe-img" src={strMealThumb} alt={strMeal} data-testid={`${index}-card-img`} />
+      <h2 data-testid={`${index}-card-name`}>{strMeal}</h2>
     </div>
   );
 }
@@ -26,4 +21,4 @@ RecipeCard.propTypes = {
     strMeal: PropTypes.string.isRequired,
     strMealThumb: PropTypes.string.isRequired,
   }).isRequired,
-}
+};

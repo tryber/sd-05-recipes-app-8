@@ -11,4 +11,4 @@ const fetchData = (api) =>
   );
 
 export const fetchCategories = () => fetchData(mealCategories);
-export const fetchMeals = (category='') => fetchData(`${mealsRecipes}${category}`)
+export const fetchMeals = (category = '') => fetchData(`${mealsRecipes}${category}`);

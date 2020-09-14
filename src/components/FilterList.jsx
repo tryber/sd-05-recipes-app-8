@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { RecipesContext } from '../context/RecipesContext';
+import './FilterList.css';
 
 export default function FilterList() {
   const { categories, setCategories } = useContext(RecipesContext);

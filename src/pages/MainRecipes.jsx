@@ -39,9 +39,10 @@ const MainRecipes = () => {
         setCategories((current) => ({
           ...current,
           catList: [
-          'All',
-          ...meals.slice(0, 5).map((meal) => meal.strCategory),
-        ]})),
+            'All',
+            ...meals.slice(0, 5).map((meal) => meal.strCategory),
+          ],
+        })),
       ),
     [],
   );

@@ -9,7 +9,8 @@ const RecipesProvider = ({ children }) => {
   const [typeRecipe, setTypeRecipe] = useState('comidas');
   const [categories, setCategories] = useState({
     catList: [],
-    choose: 'All'});
+    choose: 'All',
+  });
   const context = {
     password,
     setPassword,
@@ -20,7 +21,11 @@ const RecipesProvider = ({ children }) => {
     categories,
     setCategories,
   };
-  return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;
+  return (
+    <RecipesContext.Provider value={context}>
+      {children}
+    </RecipesContext.Provider>
+  );
 };
 
 export default RecipesProvider;
