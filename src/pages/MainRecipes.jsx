@@ -10,6 +10,14 @@ const headerMainRecipes = {
   id: 'page-title',
 };
 
+const headerMainRecipesDrinks = {
+  left: <ProfileIcon />,
+  center: 'Drinks',
+  right: <SearchIcon />,
+  searchBar: <SearchBar />,
+  id: 'page-title',
+};
+
 const logoutProps = {
   direction: '/',
   value: 'Sair',
@@ -21,7 +29,7 @@ const exploreProps = {
   id: 'explore-bottom-btn',
 };
 
-const MainRecipes = () => (
+export const MainRecipes = () => (
   <Card>
     <Header {...headerMainRecipes} />
     {/* <BtnCard {...logoutProps} />
@@ -29,7 +37,12 @@ const MainRecipes = () => (
     <FilterCard />
     <MenuBottom />
   </Card>
-
 );
 
-export default MainRecipes;
+export const MainRecipesDrinks = () => (
+  <Card>
+    <Header {...headerMainRecipesDrinks} />
+    <FilterCard />
+    <MenuBottom />
+  </Card>
+)

@@ -1,5 +1,5 @@
 import Login from './Login';
-import MainRecipes from './MainRecipes';
+import {MainRecipes, MainRecipesDrinks} from './MainRecipes';
 import Profile from './Profile';
 import FavoritesRecipes from './FavoritesRecipes';
 import DoneRecipes from './DoneRecipes';
@@ -10,6 +10,7 @@ import ExploreByIngredients from './ExploreByIngredients';
 export {
   Login,
   MainRecipes,
+  MainRecipesDrinks,
   Profile,
   FavoritesRecipes,
   DoneRecipes,

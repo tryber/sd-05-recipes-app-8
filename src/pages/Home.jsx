@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import {
   Login,
   MainRecipes,
+  MainRecipesDrinks,
   Explorer,
   ExploreRecipes,
   Profile,
@@ -16,6 +17,7 @@ const Home = () => (
     <Switch>
       <Route exact path="/" component={Login} />
       <Route exact path="/comidas" component={MainRecipes} />
+      <Route exact path="/bebidas" component={MainRecipesDrinks} />
       <Route exact path="/explorar" component={Explorer} />
       <Route exact path="/explorar/comidas" component={ExploreRecipes} />
       <Route exact path="/explorar/bebidas" component={ExploreRecipes} />
