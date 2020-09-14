@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/RecipesContext';
+import './Header.css';
 
 const Header = (props) => {
   const { showSearchBar } = useContext(RecipesContext);

@@ -8,6 +8,8 @@ import Header from './Header';
 import MenuBottom from './MenuBottom';
 import SearchBar from './SearchBar';
 import FilterCard from './Filter/FilterCard';
+import MainFoodContent from './MainFoodContent';
+import FilterList from './FilterList';
 
 export {
   InputPassword,
@@ -20,4 +22,6 @@ export {
   MenuBottom,
   SearchBar,
   FilterCard,
+  MainFoodContent,
+  FilterList,
 };

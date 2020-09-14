@@ -11,10 +11,11 @@ const RecipesProvider = ({ children }) => {
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [searchBarInput, setSearchBarInput] = useState('');
   const [typeBtn, setTypeBtn] = useState('');
-<<<<<<< HEAD
   const [filterRecipes, setFilterRecipes] = useState([]);
-=======
-  const [filterRecipes, setFilterRecipes] = useState([])
+  const [categories, setCategories] = useState({
+    catList: [],
+    choose: 'All',
+  });
   const [recipe, setRecipe] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -25,7 +26,6 @@ const RecipesProvider = ({ children }) => {
     });
   };
 
->>>>>>> fc94cf065488c9e24746207137fa7632142e887f
   const context = {
     email,
     fetchRecipeDetails,
@@ -43,10 +43,15 @@ const RecipesProvider = ({ children }) => {
     setTypeBtn,
     filterRecipes,
     setFilterRecipes,
+    categories,
+    setCategories,
     typeRecipe,
   };
-
-  return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;
+  return (
+    <RecipesContext.Provider value={context}>
+      {children}
+    </RecipesContext.Provider>
+  );
 };
 
 export default RecipesProvider;

@@ -1,6 +1,15 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { RecipesContext } from '../context/RecipesContext';
-import { BtnCard, Header, ProfileIcon, SearchIcon, MenuBottom, SearchBar, FilterCard } from '../components';
+import {
+  Header,
+  ProfileIcon,
+  SearchIcon,
+  MenuBottom,
+  MainFoodContent,
+  FilterList,
+} from '../components';
+
+import { fetchCategories } from '../services/mealAPI';
 import Card from '../layouts/Card';
 
 const headerMainRecipes = {
@@ -22,7 +31,13 @@ const headerMainRecipesDrinks = {
 const logoutProps = {
   direction: '/',
   value: 'Sair',
+  id: 'page-title',
 };
+
+// const logoutProps = {
+//   direction: '/',
+//   value: 'Sair',
+// };
 
 // const exploreProps = {
 //   direction: '/explorar',
@@ -30,32 +45,26 @@ const logoutProps = {
 //   id: 'explore-bottom-btn',
 // };
 
-export const MainRecipes = () => {
-  const { typeRecipe, recipe, fetchRecipeDetails } = useContext(RecipesContext);
-  const type = typeRecipe === 'comidas' ? 'meal' : 'cocktail';
-  const id = typeRecipe === 'comidas' ? '52771' : '178319';
-
-  useEffect(() => {
-    fetchRecipeDetails(type, id);
-  }, [type]);
-
-  const headerMainRecipes = {
-    left: <ProfileIcon />,
-    center: typeRecipe,
-    right: <SearchIcon />,
-    id: 'page-title',
-  };
-  const detailsProps = {
-    direction: type === 'comidas' ? '/comidas/52882' : '/bebidas/178319',
-    value: 'Detalhes',
-  };
-
+const MainRecipes = () => {
+  const { setCategories } = useContext(RecipesContext);
+  useEffect(
+    () =>
+      fetchCategories().then(({ meals }) =>
+        setCategories((current) => ({
+          ...current,
+          catList: [
+            'All',
+            ...meals.slice(0, 5).map((meal) => meal.strCategory),
+          ],
+        })),
+      ),
+    [],
+  );
   return (
     <Card>
       <Header {...headerMainRecipes} />
-      <BtnCard {...detailsProps} />
-      <BtnCard {...logoutProps} />
-      <FilterCard />
+      <FilterList />
+      <MainFoodContent />
       <MenuBottom />
     </Card>
   );
