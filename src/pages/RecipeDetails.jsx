@@ -31,13 +31,24 @@ const RecipeDetails = () => {
   const { recipe, typeRecipe, isLoading, fetchRecipeDetails } = useContext(RecipesContext);
   const keys = typeRecipe === 'comidas' ? keys1 : keys2;
   const progressProps = {
+    details: true,
     direction: `/${typeRecipe}/${keys[3]}/in-progress`,
-    value: 'Iniciar Receita',
     id: 'start-recipe-btn',
+    value: 'Iniciar Receita',
   };
   useEffect(() => {
     fetchRecipeDetails(keys[0], keys[3]);
   }, [keys[0]]);
+  // }, []);
+
+  const findIngredients = () => (
+    <div>
+      <h4 data-testid="0-ingredient-name-and-measure">Ingredients</h4>
+      <ul>
+        <li>{recipe[keys[1]][0].strIngredient1}</li>
+      </ul>
+    </div>
+  );
 
   return isLoading ? (
     <p>Loading...</p>
@@ -48,10 +59,8 @@ const RecipeDetails = () => {
       <img data-testid="share-btn" src={shareIcon} alt="shareIcon" />
       <img data-testid="favorite-btn" src={whiteHeartIcon} alt="whiteHeartIcon" />
       <span data-testid="recipe-category">{recipe[keys[1]][0].strCategory}</span>
-      <ul data-testid="0-ingredient-name-and-measure">
-        Ingredients
-        <li>{recipe[keys[1]][0].strIngredient}</li>
-      </ul>
+      {/* <li>{recipe[keys[1]][0].strIngredient}</li> */}
+      {findIngredients()}
       <p data-testid="instructions">Instructions</p>
       <span style={{ fontSize: '9px' }}>{recipe[keys[1]][0].strInstructions}</span>
       <video data-testid="video" src={recipe[keys[1]][0].strYoutube} alt="video" />

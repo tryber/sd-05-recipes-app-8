@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/RecipesContext';
+import './MenuBottom.css';
 
 const BtnCard = (props) => {
   const { setTypeRecipe } = useContext(RecipesContext);
@@ -11,7 +12,7 @@ const BtnCard = (props) => {
     <Link to={props.direction}>
       <button
         data-testid={props.id}
-        position="fixed"
+        className={props.details && 'btnBottom'}
         onClick={() => {
           changeType();
           clearStorage();
@@ -30,5 +31,5 @@ BtnCard.propTypes = {
   id: PropTypes.string.isRequired,
   action: PropTypes.bool.isRequired,
   value: PropTypes.string.isRequired,
-  // type: PropTypes.string.isRequired,
+  details: PropTypes.bool.isRequired,
 };
