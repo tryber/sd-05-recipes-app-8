@@ -3,11 +3,11 @@ import { RecipesContext } from '../../context/RecipesContext';
 
 const FilterCard = () => {
   const { filterRecipes, typeRecipe } = useContext(RecipesContext);
-  console.log(filterRecipes)
+  console.log(filterRecipes);
   if (filterRecipes === null) {
     // alert('nenhum termo encontrado')
-    return null
-  };
+    return null;
+  }
   if (filterRecipes.length !== 0) {
     return (
       <section className="filter-recipes-container">
@@ -28,9 +28,9 @@ const FilterCard = () => {
             </section>
           ))}
       </section>
-    )
+    );
   }
   return null;
-}
+};
 
 export default FilterCard;

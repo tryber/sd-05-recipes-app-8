@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { RecipesContext } from '../context/RecipesContext';
+
 const image = require('../images/searchIcon.svg');
 
 const SearchIcon = () => {

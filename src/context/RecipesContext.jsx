@@ -10,7 +10,7 @@ const RecipesProvider = ({ children }) => {
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [searchBarInput, setSearchBarInput] = useState('');
   const [typeBtn, setTypeBtn] = useState('');
-  const [filterRecipes, setFilterRecipes] = useState([])
+  const [filterRecipes, setFilterRecipes] = useState([]);
   const context = {
     password,
     setPassword,

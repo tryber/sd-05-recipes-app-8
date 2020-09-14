@@ -1,5 +1,5 @@
 import Login from './Login';
-import {MainRecipes, MainRecipesDrinks} from './MainRecipes';
+import { MainRecipes, MainRecipesDrinks } from './MainRecipes';
 import Profile from './Profile';
 import FavoritesRecipes from './FavoritesRecipes';
 import DoneRecipes from './DoneRecipes';

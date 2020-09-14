@@ -32,8 +32,8 @@ const exploreProps = {
 export const MainRecipes = () => (
   <Card>
     <Header {...headerMainRecipes} />
-    {/* <BtnCard {...logoutProps} />
-    <BtnCard {...exploreProps} /> */}
+    <BtnCard {...logoutProps} />
+    <BtnCard {...exploreProps} />
     <FilterCard />
     <MenuBottom />
   </Card>
@@ -45,4 +45,4 @@ export const MainRecipesDrinks = () => (
     <FilterCard />
     <MenuBottom />
   </Card>
-)
+);

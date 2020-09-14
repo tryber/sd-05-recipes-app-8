@@ -36,6 +36,6 @@ const MenuBottom = () => {
       </Link>
     </footer>
   );
-}
+};
 
 export default MenuBottom;

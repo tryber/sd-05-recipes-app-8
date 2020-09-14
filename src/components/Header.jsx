@@ -14,7 +14,7 @@ const Header = (props) => {
       {showSearchBar && props.searchBar}
     </div>
   );
-}
+};
 
 export default Header;
 
@@ -23,4 +23,5 @@ Header.propTypes = {
   id: PropTypes.string.isRequired,
   left: PropTypes.node.isRequired,
   right: PropTypes.node.isRequired,
+  searchBar: PropTypes.func.isRequired,
 };
