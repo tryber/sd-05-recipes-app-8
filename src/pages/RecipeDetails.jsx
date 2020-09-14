@@ -36,10 +36,9 @@ const RecipeDetails = () => {
     id: 'start-recipe-btn',
     value: 'Iniciar Receita',
   };
-  useEffect(() => {
-    fetchRecipeDetails(keys[0], keys[3]);
-  }, [keys[0]]);
-  // }, []);
+  // useEffect(() => {
+  //   fetchRecipeDetails(keys[0], keys[3]);
+  // }, [keys[0]]);
 
   const findIngredients = () => (
     <div>
@@ -50,16 +49,18 @@ const RecipeDetails = () => {
     </div>
   );
 
-  return isLoading ? (
-    <p>Loading...</p>
-  ) : (
+  // return isLoading ? (
+  //   <p>Loading...</p>
+  // ) : (
+  return (
     <Card>
-      <img data-testid="recipe-photo" src={keys[4]} alt="$menupic" style={{ maxHeight: '50px' }} />
+      Details
+      {/* <img data-testid="recipe-photo" src={keys[4]} alt="$menupic" style={{ maxHeight: '50px' }} />
       <p data-testid="recipe-title">{recipe[keys[1]][0][keys[2]]}</p>
       <img data-testid="share-btn" src={shareIcon} alt="shareIcon" />
       <img data-testid="favorite-btn" src={whiteHeartIcon} alt="whiteHeartIcon" />
       <span data-testid="recipe-category">{recipe[keys[1]][0].strCategory}</span>
-      {/* <li>{recipe[keys[1]][0].strIngredient}</li> */}
+      {/* <li>{recipe[keys[1]][0].strIngredient}</li> 
       {findIngredients()}
       <p data-testid="instructions">Instructions</p>
       <span style={{ fontSize: '9px' }}>{recipe[keys[1]][0].strInstructions}</span>
@@ -72,7 +73,7 @@ const RecipeDetails = () => {
       />
       <span data-testid="0-recomendation-title" />
       <BtnCard {...progressProps} />
-      <BtnCard {...logoutProps} />
+      <BtnCard {...logoutProps} /> */}
     </Card>
   );
 };

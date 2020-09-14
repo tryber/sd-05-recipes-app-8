@@ -14,6 +14,7 @@ const RecipesProvider = ({ children }) => {
   });
   const [recipe, setRecipe] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [idMeal, setIdMeal] = useState('');
 
   const fetchRecipeDetails = (type, id) => {
     getRecipeDetails(type, id).then((receipt) => {
@@ -23,23 +24,20 @@ const RecipesProvider = ({ children }) => {
   };
 
   const context = {
+    categories,
     email,
     fetchRecipeDetails,
     isLoading,
     password,
     recipe,
+    setCategories,
     setEmail,
+    setIdMeal,
     setPassword,
     setTypeRecipe,
-    categories,
-    setCategories,
     typeRecipe,
   };
-  return (
-    <RecipesContext.Provider value={context}>
-      {children}
-    </RecipesContext.Provider>
-  );
+  return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;
 };
 
 export default RecipesProvider;

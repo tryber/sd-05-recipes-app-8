@@ -19,32 +19,17 @@ const headerMainRecipes = {
   id: 'page-title',
 };
 
-// const logoutProps = {
-//   direction: '/',
-//   value: 'Sair',
-// };
-
-// const exploreProps = {
-//   direction: '/explorar',
-//   value: 'Explorar',
-//   id: 'explore-bottom-btn',
-// };
-
 const MainRecipes = () => {
   const { setCategories } = useContext(RecipesContext);
-  useEffect(
-    () =>
-      fetchCategories().then(({ meals }) =>
-        setCategories((current) => ({
-          ...current,
-          catList: [
-            'All',
-            ...meals.slice(0, 5).map((meal) => meal.strCategory),
-          ],
-        })),
-      ),
-    [],
-  );
+  const testFunction = () => {
+    fetchCategories().then(({ meals }) =>
+      setCategories((current) => ({
+        ...current,
+        catList: ['All', ...meals.slice(0, 5).map((meal) => meal.strCategory)],
+      })),
+    );
+  };
+  useEffect(() => testFunction(), []);
   return (
     <Card>
       <Header {...headerMainRecipes} />
