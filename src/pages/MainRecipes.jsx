@@ -1,5 +1,16 @@
-import React from 'react';
-import { BtnCard, Header, ProfileIcon, SearchIcon, MenuBottom } from '../components';
+import React, { useEffect, useContext } from 'react';
+import { RecipesContext } from '../context/RecipesContext';
+
+import {
+  Header,
+  ProfileIcon,
+  SearchIcon,
+  MenuBottom,
+  MainFoodContent,
+  FilterList,
+} from '../components';
+
+import { fetchCategories } from '../services/mealAPI';
 import Card from '../layouts/Card';
 
 const headerMainRecipes = {
@@ -9,25 +20,39 @@ const headerMainRecipes = {
   id: 'page-title',
 };
 
-const logoutProps = {
-  direction: '/',
-  value: 'Sair',
+// const logoutProps = {
+//   direction: '/',
+//   value: 'Sair',
+// };
+
+// const exploreProps = {
+//   direction: '/explorar',
+//   value: 'Explorar',
+//   id: 'explore-bottom-btn',
+// };
+
+const MainRecipes = () => {
+  const { setCategories } = useContext(RecipesContext);
+  useEffect(
+    () =>
+      fetchCategories().then(({ meals }) =>
+        setCategories((current) => ({
+          ...current,
+          catList: [
+          'All',
+          ...meals.slice(0, 5).map((meal) => meal.strCategory),
+        ]})),
+      ),
+    [],
+  );
+  return (
+    <Card>
+      <Header {...headerMainRecipes} />
+      <FilterList />
+      <MainFoodContent />
+      <MenuBottom />
+    </Card>
+  );
 };
-
-const exploreProps = {
-  direction: '/explorar',
-  value: 'Explorar',
-  id: 'explore-bottom-btn',
-};
-
-const MainRecipes = () => (
-  <Card>
-    <Header {...headerMainRecipes} />
-    <BtnCard {...logoutProps} />
-    <BtnCard {...exploreProps} />
-    <MenuBottom />
-  </Card>
-
-);
 
 export default MainRecipes;
