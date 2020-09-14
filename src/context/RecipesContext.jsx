@@ -8,6 +8,10 @@ const RecipesProvider = ({ children }) => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [typeRecipe, setTypeRecipe] = useState('comidas');
+  const [categories, setCategories] = useState({
+    catList: [],
+    choose: 'All',
+  });
   const [recipe, setRecipe] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -27,10 +31,15 @@ const RecipesProvider = ({ children }) => {
     setEmail,
     setPassword,
     setTypeRecipe,
+    categories,
+    setCategories,
     typeRecipe,
   };
-
-  return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;
+  return (
+    <RecipesContext.Provider value={context}>
+      {children}
+    </RecipesContext.Provider>
+  );
 };
 
 export default RecipesProvider;
