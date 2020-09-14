@@ -36,18 +36,25 @@ const InputRender = (props) => {
   );
 };
 
+const InputText = () => {
+  const { setSearchBarInput } = useContext(RecipesContext);
+  return (
+    <input
+      data-testid="search-input"
+      type="text"
+      placeholder="Buscar Receita"
+      onChange={(e) => setSearchBarInput(e.target.value)}
+    />
+  )
+}
+
 const SearchBar = () => {
   const {
-    setSearchBarInput, setTypeBtn, typeBtn, searchBarInput, setFilterRecipes, typeRecipe,
+    setTypeBtn, typeBtn, searchBarInput, setFilterRecipes, typeRecipe,
   } = useContext(RecipesContext);
   return (
     <section>
-      <input
-        data-testid="search-input"
-        type="text"
-        placeholder="Buscar Receita"
-        onChange={(e) => setSearchBarInput(e.target.value)}
-      />
+      <InputRender />
       <div>
         <InputRender
           datatestid="ingredient-search-radio"
