@@ -4,7 +4,7 @@ import Card from '../layouts/Card';
 
 const Login = () => (
   <Card>
-    <h1>«Login»</h1>
+    <span>foo@bar.com</span>
     <InputEmail />
     <InputPassword />
     <BtnLogin />
