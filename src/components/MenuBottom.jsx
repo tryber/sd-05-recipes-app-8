@@ -7,7 +7,7 @@ import exploreIcon from '../images/exploreIcon.svg';
 import { RecipesContext } from '../context/RecipesContext';
 
 const MenuBottom = () => {
-  const { setTypeRecipe } = useContext(RecipesContext)
+  const { setTypeRecipe } = useContext(RecipesContext);
   return (
     <footer className="menu-bottom" data-testid="footer">
       <Link to="/bebidas" onClick={() => setTypeRecipe('bebidas')}>
@@ -36,6 +36,6 @@ const MenuBottom = () => {
       </Link>
     </footer>
   );
-}
+};
 
 export default MenuBottom;

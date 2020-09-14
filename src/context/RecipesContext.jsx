@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import getRecipeDetails from '../services/getRecipeDetails';
 
 export const RecipesContext = createContext();
 
@@ -11,12 +12,24 @@ const RecipesProvider = ({ children }) => {
   const [searchBarInput, setSearchBarInput] = useState('');
   const [typeBtn, setTypeBtn] = useState('');
   const [filterRecipes, setFilterRecipes] = useState([])
+  const [recipe, setRecipe] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchRecipeDetails = (type, id) => {
+    getRecipeDetails(type, id).then((receipt) => {
+      setRecipe(receipt);
+      setIsLoading(false);
+    });
+  };
+
   const context = {
-    password,
-    setPassword,
     email,
+    fetchRecipeDetails,
+    isLoading,
+    password,
+    recipe,
     setEmail,
-    typeRecipe,
+    setPassword,
     setTypeRecipe,
     showSearchBar,
     setShowSearchBar,
@@ -26,7 +39,9 @@ const RecipesProvider = ({ children }) => {
     setTypeBtn,
     filterRecipes,
     setFilterRecipes,
+    typeRecipe,
   };
+
   return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;
 };
 
