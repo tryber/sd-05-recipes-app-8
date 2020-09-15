@@ -15,7 +15,7 @@ export default function FilterList() {
           onClick={({ target: { name } }) => {
             setCategories((current) => ({
               ...current,
-              choose: name,
+              choose: name.replace(' ', '_'),
             }));
           }}
         >
