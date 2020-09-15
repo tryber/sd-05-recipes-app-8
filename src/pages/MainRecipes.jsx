@@ -9,7 +9,7 @@ import {
   FilterList,
 } from '../components';
 
-import { fetchCategories, fetchMeals } from '../services/mealAPI';
+import { fetchCategories } from '../services/mealAPI';
 import Card from '../layouts/Card';
 
 const headerMainRecipes = {
@@ -19,26 +19,32 @@ const headerMainRecipes = {
   id: 'page-title',
 };
 
+// const logoutProps = {
+//   direction: '/',
+//   value: 'Sair',
+// };
+
+// const exploreProps = {
+//   direction: '/explorar',
+//   value: 'Explorar',
+//   id: 'explore-bottom-btn',
+// };
+
 const MainRecipes = () => {
-  const { setCategories, setRecipesList, categories } = useContext(RecipesContext);
-
-  const getCategories = () => {
-    fetchCategories().then(({ meals }) =>
-      setCategories((current) => ({
-        ...current,
-        catList: ['All', ...meals.slice(0, 5).map((meal) => meal.strCategory)],
-      })),
-    );
-  };
-
-  const getRecipes = () =>
-    fetchMeals(categories.choose).then(({ meals }) => setRecipesList([...meals.slice(0, 12)]));
-
-  useEffect(() => {
-    getCategories();
-    getRecipes();
-  }, [categories]);
-
+  const { setCategories } = useContext(RecipesContext);
+  useEffect(
+    () =>
+      fetchCategories().then(({ meals }) =>
+        setCategories((current) => ({
+          ...current,
+          catList: [
+            'All',
+            ...meals.slice(0, 5).map((meal) => meal.strCategory),
+          ],
+        })),
+      ),
+    [],
+  );
   return (
     <Card>
       <Header {...headerMainRecipes} />
