@@ -31,10 +31,8 @@ const DrinksRecipes = () => {
     );
   };
 
-  const getRecipes = () => {
-    const filterCategory = categories.choose === 'all' ? '' : categories.choose;
-    fetchDrinks(filterCategory).then(({ drinks }) => setRecipesList([...drinks.slice(0, 12)]));
-  };
+  const getRecipes = () =>
+    fetchDrinks(categories.choose).then(({ drinks }) => setRecipesList([...drinks.slice(0, 12)]));
 
   useEffect(() => {
     getCategories();
