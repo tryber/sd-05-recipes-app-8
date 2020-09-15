@@ -28,15 +28,11 @@ const MainRecipes = () => {
         ...current,
         catList: ['All', ...meals.slice(0, 5).map((meal) => meal.strCategory)],
       })),
-
     );
   };
 
-  const getRecipes = () => {
-    const filterCategory = categories.choose === 'all' ? 'all' : categories.choose;
-    fetchMeals(categories.choose).then(({ meals }) =>
-      setRecipesList([...meals.slice(0, 12)]));
-  };
+  const getRecipes = () =>
+    fetchMeals(categories.choose).then(({ meals }) => setRecipesList([...meals.slice(0, 12)]));
 
   useEffect(() => {
     getCategories();
