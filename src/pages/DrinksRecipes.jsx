@@ -5,34 +5,36 @@ import {
   ProfileIcon,
   SearchIcon,
   MenuBottom,
-  MainFoodContent,
+  MainDrinkContent,
   FilterList,
 } from '../components';
 
-import { fetchCategories, fetchMeals } from '../services/mealAPI';
+import { fetchCategories, fetchDrinks } from '../services/drinkAPI';
 import Card from '../layouts/Card';
 
-const headerMainRecipes = {
+const headerMealsRecipes = {
   left: <ProfileIcon />,
-  center: 'Comidas',
+  center: 'Bebidas',
   right: <SearchIcon />,
   id: 'page-title',
 };
 
-const MainRecipes = () => {
+const DrinksRecipes = () => {
   const { setCategories, setRecipesList, categories } = useContext(RecipesContext);
 
   const getCategories = () => {
-    fetchCategories().then(({ meals }) =>
+    fetchCategories().then(({ drinks }) =>
       setCategories((current) => ({
         ...current,
-        catList: ['All', ...meals.slice(0, 5).map((meal) => meal.strCategory)],
+        catList: ['All', ...drinks.slice(0, 5).map((drink) => drink.strCategory)],
       })),
     );
   };
 
-  const getRecipes = () =>
-    fetchMeals(categories.choose).then(({ meals }) => setRecipesList([...meals.slice(0, 12)]));
+  const getRecipes = () => {
+    const filterCategory = categories.choose === 'all' ? '' : categories.choose;
+    fetchDrinks(filterCategory).then(({ drinks }) => setRecipesList([...drinks.slice(0, 12)]));
+  };
 
   useEffect(() => {
     getCategories();
@@ -41,12 +43,12 @@ const MainRecipes = () => {
 
   return (
     <Card>
-      <Header {...headerMainRecipes} />
+      <Header {...headerMealsRecipes} />
       <FilterList />
-      <MainFoodContent />
+      <MainDrinkContent />
       <MenuBottom />
     </Card>
   );
 };
 
-export default MainRecipes;
+export default DrinksRecipes;
