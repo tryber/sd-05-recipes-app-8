@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
-import { RecipesContext } from '../context/RecipesContext';
 import YouTube from 'react-youtube';
+import { RecipesContext } from '../context/RecipesContext';
 import Card from '../layouts/Card';
 import { BtnCard } from '../components';
 import shareIcon from '../images/shareIcon.svg';
@@ -44,26 +44,34 @@ const RecipeDetails = () => {
     </div>
   );
 
+  const findLogo = () => (
+    <figure>
+      <img
+        data-testid="recipe-photo"
+        src={recipe[keys[1]][0][keys[3]]}
+        alt="$menupic"
+        style={{ maxHeight: '50px' }}
+      />
+      <figcaption>
+        <p data-testid="recipe-title">{recipe[keys[1]][0][keys[2]]}</p>
+      </figcaption>
+    </figure>
+  );
+
+  const findIcons = () => (
+    <figure>
+      <img data-testid="share-btn" src={shareIcon} alt="shareIcon" />
+      <img data-testid="favorite-btn" src={whiteHeartIcon} alt="whiteHeartIcon" />
+    </figure>
+  );
+
   return isLoading ? (
     <p>Loading...</p>
   ) : (
     // return (
     <Card>
-      <figure>
-        <img
-          data-testid="recipe-photo"
-          src={recipe[keys[1]][0][keys[3]]}
-          alt="$menupic"
-          style={{ maxHeight: '50px' }}
-        />
-        <figcaption>
-          <p data-testid="recipe-title">{recipe[keys[1]][0][keys[2]]}</p>
-        </figcaption>
-      </figure>
-      <figure>
-        <img data-testid="share-btn" src={shareIcon} alt="shareIcon" />
-        <img data-testid="favorite-btn" src={whiteHeartIcon} alt="whiteHeartIcon" />
-      </figure>
+      {findLogo()}
+      {findIcons()}
       <span data-testid="recipe-category">{recipe[keys[1]][0].strCategory}</span>
       {findIngredients()}
       <p data-testid="instructions">Instructions</p>
