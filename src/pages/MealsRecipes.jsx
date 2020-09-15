@@ -7,21 +7,19 @@ import {
   MenuBottom,
   MainFoodContent,
   FilterList,
-  SearchBar,
 } from '../components';
 
 import { fetchCategories, fetchMeals } from '../services/mealAPI';
 import Card from '../layouts/Card';
 
-const headerMainRecipes = {
+const headerMealsRecipes = {
   left: <ProfileIcon />,
   center: 'Comidas',
   right: <SearchIcon />,
-  searchBar: <SearchBar />,
   id: 'page-title',
 };
 
-const MainRecipes = () => {
+const MealsRecipes = () => {
   const { setCategories, setRecipesList, categories } = useContext(RecipesContext);
 
   const getCategories = () => {
@@ -43,7 +41,7 @@ const MainRecipes = () => {
 
   return (
     <Card>
-      <Header {...headerMainRecipes} />
+      <Header {...headerMealsRecipes} />
       <FilterList />
       <MainFoodContent />
       <MenuBottom />
@@ -51,4 +49,4 @@ const MainRecipes = () => {
   );
 };
 
-export default MainRecipes;
+export default MealsRecipes;

@@ -9,19 +9,21 @@ import MenuBottom from './MenuBottom';
 import SearchBar from './SearchBar';
 import FilterCard from './Filter/FilterCard';
 import MainFoodContent from './MainFoodContent';
+import MainDrinkContent from './MainDrinkContent';
 import FilterList from './FilterList';
 
 export {
-  InputPassword,
-  InputEmail,
+  BtnCard,
   BtnLogin,
+  FilterList,
+  Header,
+  InputEmail,
+  InputPassword,
+  MainDrinkContent,
+  MainFoodContent,
+  MenuBottom,
   ProfileIcon,
   SearchIcon,
-  BtnCard,
-  Header,
-  MenuBottom,
   SearchBar,
   FilterCard,
-  MainFoodContent,
-  FilterList,
 };
