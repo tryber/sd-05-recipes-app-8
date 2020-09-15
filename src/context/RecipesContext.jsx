@@ -9,6 +9,10 @@ const RecipesProvider = ({ children }) => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [typeRecipe, setTypeRecipe] = useState('comidas');
+  const [showSearchBar, setShowSearchBar] = useState(false);
+  const [searchBarInput, setSearchBarInput] = useState('');
+  const [typeBtn, setTypeBtn] = useState('');
+  const [filterRecipes, setFilterRecipes] = useState([]);
   const [categories, setCategories] = useState({
     catList: [],
     choose: 'All',
@@ -37,6 +41,16 @@ const RecipesProvider = ({ children }) => {
     setIdRecipe,
     setPassword,
     setTypeRecipe,
+    showSearchBar,
+    setShowSearchBar,
+    searchBarInput,
+    setSearchBarInput,
+    typeBtn,
+    setTypeBtn,
+    filterRecipes,
+    setFilterRecipes,
+    categories,
+    setCategories,
     typeRecipe,
     recipesList,
     setRecipesList,

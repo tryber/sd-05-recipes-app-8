@@ -6,6 +6,8 @@ import SearchIcon from './SearchIcon';
 import BtnCard from './BtnCard';
 import Header from './Header';
 import MenuBottom from './MenuBottom';
+import SearchBar from './SearchBar';
+import FilterCard from './Filter/FilterCard';
 import MainFoodContent from './MainFoodContent';
 import MainDrinkContent from './MainDrinkContent';
 import FilterList from './FilterList';
@@ -13,6 +15,7 @@ import FilterList from './FilterList';
 export {
   BtnCard,
   BtnLogin,
+  FilterCard,
   FilterList,
   Header,
   InputEmail,
@@ -21,5 +24,6 @@ export {
   MainFoodContent,
   MenuBottom,
   ProfileIcon,
+  SearchBar,
   SearchIcon,
 };

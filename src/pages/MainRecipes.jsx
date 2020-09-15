@@ -7,6 +7,7 @@ import {
   MenuBottom,
   MainFoodContent,
   FilterList,
+  SearchBar,
 } from '../components';
 
 import { fetchCategories, fetchMeals } from '../services/mealAPI';
@@ -16,6 +17,7 @@ const headerMainRecipes = {
   left: <ProfileIcon />,
   center: 'Comidas',
   right: <SearchIcon />,
+  searchBar: <SearchBar />,
   id: 'page-title',
 };
 
@@ -39,6 +41,20 @@ const MainRecipes = () => {
     getRecipes();
   }, [categories]);
 
+  const { setCategories } = useContext(RecipesContext);
+  useEffect(
+    () =>
+      fetchCategories().then(({ meals }) =>
+        setCategories((current) => ({
+          ...current,
+          catList: [
+            'All',
+            ...meals.slice(0, 5).map((meal) => meal.strCategory),
+          ],
+        })),
+      ),
+    [],
+  );
   return (
     <Card>
       <Header {...headerMainRecipes} />
