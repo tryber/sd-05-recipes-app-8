@@ -5,7 +5,7 @@ import { RecipesContext } from '../context/RecipesContext';
 import './RecipeCard.css';
 
 export default function DrinkCard(props) {
-  const { typeRecipe, setIdRecipe } = useContext(RecipesContext);
+  const { setIdRecipe } = useContext(RecipesContext);
   const {
     cardData: { strDrinkThumb, strDrink, idDrink },
     index,
