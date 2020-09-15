@@ -9,9 +9,9 @@ const fetchData = (api) =>
   );
 
 export const fetchCategories = () => fetchData(drinkCategories);
-export const fetchDrinks = (category = '') => {
-  if (category === '') {
-    return fetchData(`${drinksRecipes}${category}`);
+export const fetchDrinks = (category = 'All') => {
+  if (category === 'All') {
+    return fetchData(`${drinksRecipes}`);
   }
   return fetchData(`${drinksByCategory}${category}`);
 };
