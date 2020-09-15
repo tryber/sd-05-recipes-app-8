@@ -15,7 +15,7 @@ const RecipesProvider = ({ children }) => {
   });
   const [recipe, setRecipe] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const [idMeal, setIdMeal] = useState('');
+  const [idRecipe, setIdRecipe] = useState('');
 
   const fetchRecipeDetails = (type, id) => {
     getRecipeDetails(type, id).then((receipt) => {
@@ -28,13 +28,13 @@ const RecipesProvider = ({ children }) => {
     categories,
     email,
     fetchRecipeDetails,
-    idMeal,
+    idRecipe,
     isLoading,
     password,
     recipe,
     setCategories,
     setEmail,
-    setIdMeal,
+    setIdRecipe,
     setPassword,
     setTypeRecipe,
     typeRecipe,

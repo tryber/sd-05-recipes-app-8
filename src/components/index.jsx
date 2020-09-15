@@ -7,17 +7,19 @@ import BtnCard from './BtnCard';
 import Header from './Header';
 import MenuBottom from './MenuBottom';
 import MainFoodContent from './MainFoodContent';
+import MainDrinkContent from './MainDrinkContent';
 import FilterList from './FilterList';
 
 export {
-  InputPassword,
-  InputEmail,
+  BtnCard,
   BtnLogin,
+  FilterList,
+  Header,
+  InputEmail,
+  InputPassword,
+  MainDrinkContent,
+  MainFoodContent,
+  MenuBottom,
   ProfileIcon,
   SearchIcon,
-  BtnCard,
-  Header,
-  MenuBottom,
-  MainFoodContent,
-  FilterList,
 };
