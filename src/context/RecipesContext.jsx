@@ -5,6 +5,7 @@ import getRecipeDetails from '../services/getRecipeDetails';
 export const RecipesContext = createContext();
 
 const RecipesProvider = ({ children }) => {
+  const [recipesList, setRecipesList] = useState([]);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [typeRecipe, setTypeRecipe] = useState('comidas');
@@ -37,6 +38,8 @@ const RecipesProvider = ({ children }) => {
     setPassword,
     setTypeRecipe,
     typeRecipe,
+    recipesList,
+    setRecipesList,
   };
   return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;
 };
