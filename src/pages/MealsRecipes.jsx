@@ -31,10 +31,8 @@ const MealsRecipes = () => {
     );
   };
 
-  const getRecipes = () => {
-    const filterCategory = categories.choose === 'all' ? '' : categories.choose;
-    fetchMeals(filterCategory).then(({ meals }) => setRecipesList([...meals.slice(0, 12)]));
-  };
+  const getRecipes = () =>
+    fetchMeals(categories.choose).then(({ meals }) => setRecipesList([...meals.slice(0, 12)]));
 
   useEffect(() => {
     getCategories();
