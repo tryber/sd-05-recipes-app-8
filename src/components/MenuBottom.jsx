@@ -6,11 +6,24 @@ import mealIcon from '../images/mealIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 import { RecipesContext } from '../context/RecipesContext';
 
+const clearFilter = (setCategories) => {
+  setCategories((current) => ({
+    ...current,
+    choose: 'All',
+  }));
+};
+
 const MenuBottom = () => {
-  const { setTypeRecipe } = useContext(RecipesContext);
+  const { setTypeRecipe, setCategories } = useContext(RecipesContext);
   return (
     <footer className="menu-bottom" data-testid="footer">
-      <Link onClick={() => setTypeRecipe('bebidas')} to="/bebidas">
+      <Link
+        onClick={() => {
+          clearFilter(setCategories);
+          setTypeRecipe('bebidas');
+        }}
+        to="/bebidas"
+      >
         <img
           src={drinkIcon}
           alt="Drinks"
@@ -18,7 +31,7 @@ const MenuBottom = () => {
           data-testid="drinks-bottom-btn"
         />
       </Link>
-      <Link to="/explorar">
+      <Link to="/explorar" onClick={() => clearFilter(setCategories)}>
         <img
           src={exploreIcon}
           alt="Explore"
@@ -26,7 +39,13 @@ const MenuBottom = () => {
           data-testid="explore-bottom-btn"
         />
       </Link>
-      <Link to="/comidas" onClick={() => setTypeRecipe('comidas')}>
+      <Link
+        to="/comidas"
+        onClick={() => {
+          clearFilter(setCategories);
+          setTypeRecipe('comidas');
+        }}
+      >
         <img
           src={mealIcon}
           alt="Meals"
