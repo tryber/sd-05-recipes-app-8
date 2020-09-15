@@ -50,5 +50,5 @@ const DrinksRecipes = () => {
     </Card>
   );
 };
-// test push
+// test pushing
 export default DrinksRecipes;
