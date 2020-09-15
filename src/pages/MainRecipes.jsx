@@ -5,7 +5,7 @@ import {
   ProfileIcon,
   SearchIcon,
   MenuBottom,
-  MainFoodContent,
+  // MainFoodContent,
   FilterList,
 } from '../components';
 
@@ -34,7 +34,7 @@ const MainRecipes = () => {
     <Card>
       <Header {...headerMainRecipes} />
       <FilterList />
-      <MainFoodContent />
+      {/* <MainFoodContent /> */}
       <MenuBottom />
     </Card>
   );

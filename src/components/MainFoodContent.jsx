@@ -8,8 +8,8 @@ const MainFoodContent = () => {
   const [recipesList, setRecipesList] = useState([]);
   const { categories } = useContext(RecipesContext);
   const filterCategory = categories.choose === 'all' ? '' : categories.choose;
-  const testFunction = () =>
-    fetchMeals(filterCategory).then(({ meals }) =>
+  const testFunction = (filtered) =>
+    fetchMeals(filtered).then(({ meals }) =>
       setRecipesList(() =>
         meals
           .slice(0, 12)
@@ -18,7 +18,19 @@ const MainFoodContent = () => {
           )),
       ),
     );
-  useEffect(() => testFunction(), []);
+
+  // async function testFunction(filtered) {
+  //   const response = await fetchMeals(filtered);
+  //   setRecipesList(() =>
+  //     response.meals
+  //       .slice(0, 12)
+  //       .map((recipe, index) => (
+  //         <RecipeCard cardData={recipe} index={index.toString()} key={index.toString()} />
+  //       )),
+  //   );
+  // }
+
+  useEffect(() => testFunction(filterCategory), [filterCategory]);
 
   return <div className="recipes-card-container">{recipesList}</div>;
 };

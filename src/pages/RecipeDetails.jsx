@@ -9,6 +9,9 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 const logoutProps = {
   direction: '/',
   value: 'Sair',
+  action: null,
+  id: null,
+  details: null,
 };
 
 const keys1 = [
@@ -37,6 +40,7 @@ const RecipeDetails = () => {
     direction: `/${typeRecipe}/${keys[3]}/in-progress`,
     id: 'start-recipe-btn',
     value: 'Iniciar Receita',
+    action: null,
   };
   // useEffect(() => {
   //   fetchRecipeDetails(keys[0], keys[3]);

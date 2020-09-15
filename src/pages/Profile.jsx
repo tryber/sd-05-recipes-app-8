@@ -6,12 +6,16 @@ const doneProps = {
   id: 'profile-done-btn',
   direction: '/receitas-feitas',
   value: 'Receitas Feitas',
+  action: null,
+  details: null,
 };
 
 const favoriteProps = {
   id: 'profile-favorite-btn',
   direction: '/receitas-favoritas',
   value: 'Receitas Favoritas',
+  action: null,
+  details: null,
 };
 
 const logoutProps = {
@@ -19,12 +23,15 @@ const logoutProps = {
   direction: '/',
   value: 'Sair',
   action: true,
+  details: null,
 };
 
 const headerProfile = {
   left: <ProfileIcon />,
   center: 'Perfil',
   id: 'page-title',
+  action: null,
+  details: null,
 };
 
 const Profile = () => (
