@@ -3,8 +3,8 @@ import YouTube from 'react-youtube';
 import { RecipesContext } from '../context/RecipesContext';
 import Card from '../layouts/Card';
 import { BtnCard } from '../components';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+// import shareIcon from '../images/shareIcon.svg';
+// import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 const logoutProps = {
   direction: '/',
@@ -16,6 +16,37 @@ const logoutProps = {
 
 const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb'];
 const keys2 = ['cocktail', 'drinks', 'strDrink', 'strDrinkThumb'];
+
+// const findIngredients = (receipt, types) => (
+//   <div>
+//     <h4 data-testid="0-ingredient-name-and-measure">Ingredients</h4>
+//     <ul>
+//       tst
+//       {/* <li>{receipt.types[0].strIngredient1}</li> */}
+//     </ul>
+//   </div>
+// );
+
+// const findLogo = () => (
+//   <figure>
+//     <img
+//       data-testid="recipe-photo"
+//       src={recipe[keys[1]][0][keys[3]]}
+//       alt="$menupic"
+//       style={{ maxHeight: '50px' }}
+//     />
+//     <figcaption>
+//       <p data-testid="recipe-title">{recipe[keys[1]][0][keys[2]]}</p>
+//     </figcaption>
+//   </figure>
+// );
+
+// const findIcons = () => (
+//   <figure>
+//     <img data-testid="share-btn" src={shareIcon} alt="shareIcon" />
+//     <img data-testid="favorite-btn" src={whiteHeartIcon} alt="whiteHeartIcon" />
+//   </figure>
+// );
 
 const RecipeDetails = () => {
   const { recipe, typeRecipe, isLoading, idRecipe, fetchRecipeDetails } = useContext(
@@ -35,45 +66,14 @@ const RecipeDetails = () => {
     fetchRecipeDetails(keys[0], idRecipe);
   }, [keys[0]]);
 
-  const findIngredients = () => (
-    <div>
-      <h4 data-testid="0-ingredient-name-and-measure">Ingredients</h4>
-      <ul>
-        <li>{recipe[keys[1]][0].strIngredient1}</li>
-      </ul>
-    </div>
-  );
-
-  const findLogo = () => (
-    <figure>
-      <img
-        data-testid="recipe-photo"
-        src={recipe[keys[1]][0][keys[3]]}
-        alt="$menupic"
-        style={{ maxHeight: '50px' }}
-      />
-      <figcaption>
-        <p data-testid="recipe-title">{recipe[keys[1]][0][keys[2]]}</p>
-      </figcaption>
-    </figure>
-  );
-
-  const findIcons = () => (
-    <figure>
-      <img data-testid="share-btn" src={shareIcon} alt="shareIcon" />
-      <img data-testid="favorite-btn" src={whiteHeartIcon} alt="whiteHeartIcon" />
-    </figure>
-  );
-
   return isLoading ? (
     <p>Loading...</p>
   ) : (
-    // return (
     <Card>
-      {findLogo()}
-      {findIcons()}
+      {/* {findLogo()} */}
+      {/* {findIcons()} */}
       <span data-testid="recipe-category">{recipe[keys[1]][0].strCategory}</span>
-      {findIngredients()}
+      {/* {findIngredients(recipe, keys[1])} */}
       <p data-testid="instructions">Instructions</p>
       <span style={{ fontSize: '9px' }}>{recipe[keys[1]][0].strInstructions}</span>
       <YouTube data-testid="video" src={recipe[keys[1]][0].strYoutube} alt="video" />
