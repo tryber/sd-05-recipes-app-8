@@ -10,7 +10,7 @@ const MenuBottom = () => {
   const { setTypeRecipe } = useContext(RecipesContext);
   return (
     <footer className="menu-bottom" data-testid="footer">
-      <Link to="/bebidas" onClick={() => setTypeRecipe('bebidas')}>
+      <Link onClick={() => setTypeRecipe('bebidas')} to="/bebidas">
         <img
           src={drinkIcon}
           alt="Drinks"

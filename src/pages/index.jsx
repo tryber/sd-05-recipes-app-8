@@ -1,5 +1,6 @@
 import Login from './Login';
-import { MainRecipes, MainRecipesDrinks } from './MainRecipes';
+import MealsRecipes from './MealsRecipes';
+import DrinksRecipes from './DrinksRecipes';
 import Profile from './Profile';
 import FavoritesRecipes from './FavoritesRecipes';
 import DoneRecipes from './DoneRecipes';
@@ -10,15 +11,15 @@ import RecipeDetails from './RecipeDetails';
 import DoingRecipes from './DoingRecipes';
 
 export {
-  Login,
-  MainRecipes,
-  MainRecipesDrinks,
-  Profile,
-  FavoritesRecipes,
+  DoingRecipes,
   DoneRecipes,
+  DrinksRecipes,
+  ExploreByIngredients,
   Explorer,
   ExploreRecipes,
-  ExploreByIngredients,
+  FavoritesRecipes,
+  Login,
+  MealsRecipes,
+  Profile,
   RecipeDetails,
-  DoingRecipes,
 };
