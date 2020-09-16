@@ -1,38 +1,36 @@
 import React from 'react';
 import Card from '../layouts/Card';
-import { ProfileIcon, Header, BtnCard } from '../components';
+import { ProfileIcon, Header, BtnCard, MenuBottom } from '../components';
+import ExplorerButton from '../components/ExplorerButton';
+import MainContent from '../components/MainContents';
+import './Explorer.css';
 
 const headerExplorer = {
   left: <ProfileIcon />,
   center: 'Explorar',
 };
 
-const mealsProps = {
-  id: 'explore-food',
-  direction: '/explorar/comidas',
-  value: 'Explorar Comidas',
-  type: 'comidas',
+const exploreFood = {
+  label: 'Explorar Comidas',
+  pathTo: 'comidas',
+  testId: 'explore-food',
 };
 
-const cocktailsProps = {
-  id: 'explore-drinks',
-  direction: '/explorar/bebidas',
-  value: 'Explorar Bebidas',
-  type: 'bebidas',
-};
-
-const logoutProps = {
-  direction: '/',
-  value: 'Sair',
+const exploreDrinks = {
+  label: 'Explorar Bebidas',
+  pathTo: 'bebidas',
+  testId: 'explore-drinks',
 };
 
 const Explorer = () => (
-  <Card>
+  <div>
     <Header {...headerExplorer} />
-    <BtnCard {...mealsProps} />
-    <BtnCard {...cocktailsProps} />
-    <BtnCard {...logoutProps} />
-  </Card>
+    <MainContent>
+      <ExplorerButton {...exploreFood} key={exploreFood.testId} />
+      <ExplorerButton {...exploreDrinks} key={exploreDrinks.testId} />
+    </MainContent>
+    <MenuBottom />
+  </div>
 );
 
 export default Explorer;
