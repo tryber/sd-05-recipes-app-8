@@ -3,10 +3,10 @@ import YouTube from 'react-youtube';
 import { RecipesContext } from '../context/RecipesContext';
 import Card from '../layouts/Card';
 import { BtnCard } from '../components';
-import { isTypedArray } from 'lodash';
+// import { isTypedArray } from 'lodash';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import getRecipeDetails from '../services/getRecipeDetails';
+// import getRecipeDetails from '../services/getRecipeDetails';
 
 const logoutProps = {
   direction: '/',
@@ -41,12 +41,11 @@ const findIngredients = (receipt, types) => {
     const measureRecipes = Object.values(receipt[types[1]][0]).slice(29, 49);
     const merged = ingredientsMenu.map((x, i) => [x, measureRecipes[i]]);
     return ingredientsList(merged);
-  } else {
-    const ingredientsMenu = Object.values(receipt[types[1]][0]).slice(21, 36);
-    const measureRecipes = Object.values(receipt[types[1]][0]).slice(36, 51);
-    const merged = ingredientsMenu.map((x, i) => [x, measureRecipes[i]]);
-    return ingredientsList(merged);
   }
+  const ingredientsMenu = Object.values(receipt[types[1]][0]).slice(21, 36);
+  const measureRecipes = Object.values(receipt[types[1]][0]).slice(36, 51);
+  const merged = ingredientsMenu.map((x, i) => [x, measureRecipes[i]]);
+  return ingredientsList(merged);
 };
 
 const findLogo = (receipt, types) => (
@@ -94,13 +93,12 @@ const findMethod = (receipt, types) => (
 );
 
 const RecipeDetails = () => {
-  const [recommendation, setRecommendation] = useState('');
   const {
     recipe,
     typeRecipe,
     setTypeRecipe,
     isLoading,
-    idRecipe,
+    // idRecipe,
     setIdRecipe,
     fetchRecipeDetails,
   } = useContext(RecipesContext);
