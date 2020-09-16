@@ -1,0 +1,10 @@
+.main-container {
+  border: 1px black solid;
+  display: flex;
+  flex-flow: column;
+  flex-grow: 2;
+  position: relative;
+  top: 80px;
+  height: 610px;
+  width: 99%%;
+}
