@@ -19,35 +19,6 @@ const logoutProps = {
 const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb'];
 const keys2 = ['cocktail', 'drinks', 'strDrink', 'strDrinkThumb'];
 
-const findIngredients = (receipt, types) => {
-  const ingredientsList = (ingredientsRecipes) => (
-    <div>
-      <h4>Ingredients</h4>
-      {console.log(ingredientsRecipes)}
-      <ul>
-        {ingredientsRecipes.map(
-          (ingredient) =>
-            ingredient[0] !== ('' || null) && (
-              <li data-testid="0-ingredient-name-and-measure" style={{ listStyleType: 'none' }}>
-                {`${ingredient[1]}   ${ingredient[0]}`}
-              </li>
-            ),
-        )}
-      </ul>
-    </div>
-  );
-  if (types[1] === 'meals') {
-    const ingredientsMenu = Object.values(receipt[types[1]][0]).slice(9, 29);
-    const measureRecipes = Object.values(receipt[types[1]][0]).slice(29, 49);
-    const merged = ingredientsMenu.map((x, i) => [x, measureRecipes[i]]);
-    return ingredientsList(merged);
-  }
-  const ingredientsMenu = Object.values(receipt[types[1]][0]).slice(21, 36);
-  const measureRecipes = Object.values(receipt[types[1]][0]).slice(36, 51);
-  const merged = ingredientsMenu.map((x, i) => [x, measureRecipes[i]]);
-  return ingredientsList(merged);
-};
-
 const findLogo = (receipt, types) => (
   <figure>
     <img
@@ -70,6 +41,58 @@ const findIcons = () => (
   </figure>
 );
 
+const findIngredients = (receipt, types) => {
+  const ingredientsList = (ingredientsRecipes) => (
+    <div>
+      <h4>Ingredients</h4>
+      {console.log(ingredientsRecipes)}
+      <ul>
+        {ingredientsRecipes.map(
+          (ingredient, index) =>
+            ingredient[0] !== ('' || null) && (
+              <li
+                data-testid={`${index}-ingredient-name-and-measure`}
+                style={{ listStyleType: 'none' }}
+              >
+                {`${ingredient[1]}   ${ingredient[0]}`}
+              </li>
+            ),
+        )}
+      </ul>
+    </div>
+  );
+  if (types[1] === 'meals') {
+    const ingredientsMenu = Object.values(receipt[types[1]][0]).slice(9, 29);
+    const measureRecipes = Object.values(receipt[types[1]][0]).slice(29, 49);
+    const merged = ingredientsMenu.map((x, i) => [x, measureRecipes[i]]);
+    return ingredientsList(merged);
+  }
+  const ingredientsMenu = Object.values(receipt[types[1]][0]).slice(21, 36);
+  const measureRecipes = Object.values(receipt[types[1]][0]).slice(36, 51);
+  const merged = ingredientsMenu.map((x, i) => [x, measureRecipes[i]]);
+  return ingredientsList(merged);
+};
+
+const findMethod = (receipt, types) => (
+  <div>
+    <p>Instructions</p>
+    <p data-testid="instructions" style={{ fontSize: '13px' }}>
+      {receipt[types[1]][0].strInstructions}
+    </p>
+  </div>
+);
+
+const findYoutube = (receipt, types) =>
+  types[1] === 'meals' && (
+    <video data-testid="video">
+      <YouTube
+        videoId={receipt[types[1]][0].strYoutube.split('=')[1]}
+        alt="video"
+        opts={{ height: '200', width: '320' }}
+      />
+    </video>
+  );
+
 const findSuggestions = () => (
   <figure>
     <img
@@ -84,21 +107,12 @@ const findSuggestions = () => (
   </figure>
 );
 
-const findMethod = (receipt, types) => (
-  <div>
-    <p data-testid="instructions">Instructions</p>
-    {console.log(receipt[types[1]])}
-    <span style={{ fontSize: '13px' }}>{receipt[types[1]][0].strInstructions}</span>
-  </div>
-);
-
 const RecipeDetails = () => {
   const {
     recipe,
     typeRecipe,
     setTypeRecipe,
     isLoading,
-    // idRecipe,
     setIdRecipe,
     fetchRecipeDetails,
   } = useContext(RecipesContext);
@@ -130,12 +144,7 @@ const RecipeDetails = () => {
       {findIcons(keys)}
       {findIngredients(recipe, keys)}
       {findMethod(recipe, keys)}
-      <YouTube
-        data-testid="video"
-        videoId={recipe[keys[1]][0].strYoutube.split('=')[1]}
-        alt="video"
-        opts={{ height: '200', width: '320' }}
-      />
+      {findYoutube(recipe, keys)}
       {findSuggestions()}
       <BtnCard {...progressProps} />
       <BtnCard {...logoutProps} />
