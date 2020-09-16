@@ -29,7 +29,11 @@ const findLogo = (receipt, types) => (
     />
     <figcaption>
       <p data-testid="recipe-title">{receipt[types[1]][0][types[2]]}</p>
-      <span data-testid="recipe-category">{receipt[types[1]][0].strCategory}</span>
+      {types[1] === 'drinks' ? (
+        <span data-testid="recipe-category">{receipt[types[1]][0].strAlcoholic}</span>
+      ) : (
+        <span data-testid="recipe-category">{receipt[types[1]][0].strCategory}</span>
+      )}
     </figcaption>
   </figure>
 );
@@ -109,21 +113,15 @@ const findSuggestions = () => (
 
 const RecipeDetails = () => {
   const {
-    recipe,
-    typeRecipe,
-    setTypeRecipe,
-    isLoading,
-    setIdRecipe,
     fetchRecipeDetails,
+    idRecipe,
+    isLoading,
+    recipe,
+    setIdRecipe,
+    setTypeRecipe,
+    typeRecipe,
   } = useContext(RecipesContext);
   const keys = typeRecipe === 'comidas' ? keys1 : keys2;
-  const progressProps = {
-    details: true,
-    direction: `/${typeRecipe}/${keys[3]}/in-progress`,
-    id: 'start-recipe-btn',
-    value: 'Iniciar Receita',
-    action: null,
-  };
 
   useEffect(() => {
     const url = window.location.href.split('/');
@@ -135,6 +133,14 @@ const RecipeDetails = () => {
     );
     // fetchRecipeDetails(keys[0], idRecipe);
   }, [typeRecipe]);
+
+  const progressProps = {
+    details: true,
+    direction: `/${typeRecipe}/${idRecipe}/in-progress`,
+    id: 'start-recipe-btn',
+    value: 'Iniciar Receita',
+    action: null,
+  };
 
   return isLoading ? (
     <p>Loading...</p>
