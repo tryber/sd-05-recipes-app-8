@@ -1,10 +1,12 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import { RecipesContext } from '../context/RecipesContext';
 import Card from '../layouts/Card';
 import { BtnCard } from '../components';
-// import shareIcon from '../images/shareIcon.svg';
-// import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import { isTypedArray } from 'lodash';
+import shareIcon from '../images/shareIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import getRecipeDetails from '../services/getRecipeDetails';
 
 const logoutProps = {
   direction: '/',
@@ -17,42 +19,91 @@ const logoutProps = {
 const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb'];
 const keys2 = ['cocktail', 'drinks', 'strDrink', 'strDrinkThumb'];
 
-// const findIngredients = (receipt, types) => (
-//   <div>
-//     <h4 data-testid="0-ingredient-name-and-measure">Ingredients</h4>
-//     <ul>
-//       tst
-//       {/* <li>{receipt.types[0].strIngredient1}</li> */}
-//     </ul>
-//   </div>
-// );
+const findIngredients = (receipt, types) => {
+  const ingredientsList = (ingredientsRecipes) => (
+    <div>
+      <h4>Ingredients</h4>
+      {console.log(ingredientsRecipes)}
+      <ul>
+        {ingredientsRecipes.map(
+          (ingredient) =>
+            ingredient[0] !== ('' || null) && (
+              <li data-testid="0-ingredient-name-and-measure" style={{ listStyleType: 'none' }}>
+                {`${ingredient[1]}   ${ingredient[0]}`}
+              </li>
+            ),
+        )}
+      </ul>
+    </div>
+  );
+  if (types[1] === 'meals') {
+    const ingredientsMenu = Object.values(receipt[types[1]][0]).slice(9, 29);
+    const measureRecipes = Object.values(receipt[types[1]][0]).slice(29, 49);
+    const merged = ingredientsMenu.map((x, i) => [x, measureRecipes[i]]);
+    return ingredientsList(merged);
+  } else {
+    const ingredientsMenu = Object.values(receipt[types[1]][0]).slice(21, 36);
+    const measureRecipes = Object.values(receipt[types[1]][0]).slice(36, 51);
+    const merged = ingredientsMenu.map((x, i) => [x, measureRecipes[i]]);
+    return ingredientsList(merged);
+  }
+};
 
-// const findLogo = () => (
-//   <figure>
-//     <img
-//       data-testid="recipe-photo"
-//       src={recipe[keys[1]][0][keys[3]]}
-//       alt="$menupic"
-//       style={{ maxHeight: '50px' }}
-//     />
-//     <figcaption>
-//       <p data-testid="recipe-title">{recipe[keys[1]][0][keys[2]]}</p>
-//     </figcaption>
-//   </figure>
-// );
+const findLogo = (receipt, types) => (
+  <figure>
+    <img
+      data-testid="recipe-photo"
+      src={receipt[types[1]][0][types[3]]}
+      alt="$menupic"
+      style={{ maxHeight: '50px' }}
+    />
+    <figcaption>
+      <p data-testid="recipe-title">{receipt[types[1]][0][types[2]]}</p>
+      <span data-testid="recipe-category">{receipt[types[1]][0].strCategory}</span>
+    </figcaption>
+  </figure>
+);
 
-// const findIcons = () => (
-//   <figure>
-//     <img data-testid="share-btn" src={shareIcon} alt="shareIcon" />
-//     <img data-testid="favorite-btn" src={whiteHeartIcon} alt="whiteHeartIcon" />
-//   </figure>
-// );
+const findIcons = () => (
+  <figure>
+    <img data-testid="share-btn" src={shareIcon} alt="shareIcon" />
+    <img data-testid="favorite-btn" src={whiteHeartIcon} alt="whiteHeartIcon" />
+  </figure>
+);
+
+const findSuggestions = () => (
+  <figure>
+    <img
+      data-testid="0-recomendation-card"
+      src={whiteHeartIcon}
+      alt="recommendation"
+      style={{ maxHeight: '50px' }}
+    />
+    <figcaption>
+      <span data-testid="0-recomendation-title" />
+    </figcaption>
+  </figure>
+);
+
+const findMethod = (receipt, types) => (
+  <div>
+    <p data-testid="instructions">Instructions</p>
+    {console.log(receipt[types[1]])}
+    <span style={{ fontSize: '13px' }}>{receipt[types[1]][0].strInstructions}</span>
+  </div>
+);
 
 const RecipeDetails = () => {
-  const { recipe, typeRecipe, isLoading, idRecipe, fetchRecipeDetails } = useContext(
-    RecipesContext,
-  );
-  // const { typeRecipe } = useContext(RecipesContext);
+  const [recommendation, setRecommendation] = useState('');
+  const {
+    recipe,
+    typeRecipe,
+    setTypeRecipe,
+    isLoading,
+    idRecipe,
+    setIdRecipe,
+    fetchRecipeDetails,
+  } = useContext(RecipesContext);
   const keys = typeRecipe === 'comidas' ? keys1 : keys2;
   const progressProps = {
     details: true,
@@ -63,27 +114,31 @@ const RecipeDetails = () => {
   };
 
   useEffect(() => {
-    fetchRecipeDetails(keys[0], idRecipe);
-  }, [keys[0]]);
+    const url = window.location.href.split('/');
+    setTypeRecipe(`${url[url.length - 2]}`);
+    setIdRecipe(`${url[url.length - 1]}`);
+    fetchRecipeDetails(
+      url[url.length - 2] === 'comidas' ? 'meal' : 'cocktail',
+      url[url.length - 1],
+    );
+    // fetchRecipeDetails(keys[0], idRecipe);
+  }, [typeRecipe]);
 
   return isLoading ? (
     <p>Loading...</p>
   ) : (
     <Card>
-      {/* {findLogo()} */}
-      {/* {findIcons()} */}
-      <span data-testid="recipe-category">{recipe[keys[1]][0].strCategory}</span>
-      {/* {findIngredients(recipe, keys[1])} */}
-      <p data-testid="instructions">Instructions</p>
-      <span style={{ fontSize: '9px' }}>{recipe[keys[1]][0].strInstructions}</span>
-      <YouTube data-testid="video" src={recipe[keys[1]][0].strYoutube} alt="video" />
-      {/* <img
-        data-testid="0-recomendation-card"
-        src={keys[5]}
-        alt="recomendation"
-        style={{ maxHeight: '50px' }}
-      /> */}
-      <span data-testid="0-recomendation-title" />
+      {findLogo(recipe, keys)}
+      {findIcons(keys)}
+      {findIngredients(recipe, keys)}
+      {findMethod(recipe, keys)}
+      <YouTube
+        data-testid="video"
+        videoId={recipe[keys[1]][0].strYoutube.split('=')[1]}
+        alt="video"
+        opts={{ height: '200', width: '320' }}
+      />
+      {findSuggestions()}
       <BtnCard {...progressProps} />
       <BtnCard {...logoutProps} />
     </Card>
