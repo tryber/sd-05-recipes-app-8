@@ -4,9 +4,11 @@ import './Header.css';
 
 const Header = (props) => (
   <div className="Header">
-    {props.left}
-    <h2 data-testid={props.id}>{(props.center).toUpperCase()}</h2>
-    {props.right}
+    <div className="header-left">{props.left}</div>
+    <div className="header-center">
+      <h2 data-testid={props.id}>{props.center.toUpperCase()}</h2>
+    </div>
+    <div className="header-right">{props.right}</div>
   </div>
 );
 
