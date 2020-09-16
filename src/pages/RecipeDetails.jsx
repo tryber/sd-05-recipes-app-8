@@ -88,14 +88,16 @@ const findMethod = (receipt, types) => (
 
 const findYoutube = (receipt, types) =>
   types[1] === 'meals' && (
-    <video data-testid="video">
+    <div data-testid="video">
+      {console.log(receipt, types)}
       <YouTube
         videoId={receipt[types[1]][0].strYoutube.split('=')[1]}
         alt="video"
         opts={{ height: '200', width: '320' }}
       />
-    </video>
+    </div>
   );
+// );
 
 const findSuggestions = () => (
   <figure>
@@ -150,6 +152,7 @@ const RecipeDetails = () => {
       {findIcons(keys)}
       {findIngredients(recipe, keys)}
       {findMethod(recipe, keys)}
+      {/* <YouTube videoId="9GUTC2Qwrf0" /> */}
       {findYoutube(recipe, keys)}
       {findSuggestions()}
       <BtnCard {...progressProps} />
@@ -158,4 +161,6 @@ const RecipeDetails = () => {
   );
 };
 
+// http://localhost:3000/comidas/52771
+// http://localhost:3000/bebidas/178319
 export default RecipeDetails;
