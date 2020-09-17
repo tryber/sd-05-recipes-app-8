@@ -1,5 +1,4 @@
 import React from 'react';
-import Card from '../layouts/Card';
 import { ProfileIcon, Header, BtnCard, MenuBottom } from '../components';
 import ExplorerButton from '../components/ExplorerButton';
 import MainContent from '../components/MainContents';

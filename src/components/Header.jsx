@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Header.css';
+import '../layouts/Header.css';
 
 const Header = (props) => (
   <div className="Header">
-    <div className="header-left">{props.left}</div>
-    <div className="header-center">
-      <h2 data-testid={props.id}>{props.center.toUpperCase()}</h2>
-    </div>
-    <div className="header-right">{props.right}</div>
+    {props.left}
+    <h2 data-testid={props.id}>{props.center.toUpperCase()}</h2>
+    {props.right}
   </div>
 );
 

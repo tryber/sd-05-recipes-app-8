@@ -1,24 +1,28 @@
-import InputPassword from './InputPassword';
-import InputEmail from './InputEmail';
+// import MainDrinkContent from './MainDrinkContent';
+// import MainFoodContent from './MainFoodContent';
+import BtnCard from './BtnCard';
 import BtnLogin from './BtnLogin';
+import BtnStart from './BtnStart';
+import FilterList from './FilterList';
+import Header from './Header';
+import InputEmail from './InputEmail';
+import InputPassword from './InputPassword';
+import MainContent from './MainContent';
+import MenuBottom from './MenuBottom';
 import ProfileIcon from './ProfileIcon';
 import SearchIcon from './SearchIcon';
-import BtnCard from './BtnCard';
-import Header from './Header';
-import MenuBottom from './MenuBottom';
-import MainFoodContent from './MainFoodContent';
-import MainDrinkContent from './MainDrinkContent';
-import FilterList from './FilterList';
 
 export {
+  // MainDrinkContent,
+  // MainFoodContent,
   BtnCard,
   BtnLogin,
+  BtnStart,
   FilterList,
   Header,
   InputEmail,
   InputPassword,
-  MainDrinkContent,
-  MainFoodContent,
+  MainContent,
   MenuBottom,
   ProfileIcon,
   SearchIcon,
