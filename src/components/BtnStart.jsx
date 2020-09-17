@@ -46,4 +46,5 @@ BtnCard.propTypes = {
   idTag: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   recipe: PropTypes.node.isRequired,
+  keywords: PropTypes.node.isRequired,
 };
