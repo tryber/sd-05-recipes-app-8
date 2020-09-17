@@ -2,19 +2,11 @@ import React, { useContext, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import { RecipesContext } from '../context/RecipesContext';
 import Card from '../components/Card';
-import { BtnCard } from '../components';
+import { BtnStart } from '../components';
 // import { isTypedArray } from 'lodash';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 // import getRecipeDetails from '../services/getRecipeDetails';
-
-const logoutProps = {
-  direction: '/',
-  value: 'Sair',
-  action: null,
-  id: null,
-  details: null,
-};
 
 const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb'];
 const keys2 = ['cocktail', 'drinks', 'strDrink', 'strDrinkThumb'];
@@ -49,7 +41,6 @@ const findIngredients = (receipt, types) => {
   const ingredientsList = (ingredientsRecipes) => (
     <div>
       <h4>Ingredients</h4>
-      {console.log(ingredientsRecipes)}
       <ul>
         {ingredientsRecipes.map(
           (ingredient, index) =>
@@ -57,6 +48,7 @@ const findIngredients = (receipt, types) => {
               <li
                 data-testid={`${index}-ingredient-name-and-measure`}
                 style={{ listStyleType: 'none' }}
+                key={ingredient[index]}
               >
                 {`${ingredient[1]}   ${ingredient[0]}`}
               </li>
@@ -79,7 +71,7 @@ const findIngredients = (receipt, types) => {
 
 const findMethod = (receipt, types) => (
   <div>
-    <p>Instructions</p>
+    <h4>Instructions</h4>
     <p data-testid="instructions" style={{ fontSize: '13px' }}>
       {receipt[types[1]][0].strInstructions}
     </p>
@@ -89,7 +81,6 @@ const findMethod = (receipt, types) => (
 const findYoutube = (receipt, types) =>
   types[1] === 'meals' && (
     <div data-testid="video">
-      {console.log(receipt, types)}
       <YouTube
         videoId={receipt[types[1]][0].strYoutube.split('=')[1]}
         alt="video"
@@ -112,6 +103,18 @@ const findSuggestions = () => (
   </figure>
 );
 
+const startRecipe = (typeMenu, idMenu, receipt, type) => {
+  const progressProps = {
+    typeRecipe: typeMenu,
+    idRecipe: idMenu,
+    idTag: 'start-recipe-btn',
+    value: ['Iniciar Receita', 'Continuar Receita'],
+    recipe: receipt,
+    keyword: type[1],
+  };
+  return progressProps;
+};
+
 const RecipeDetails = () => {
   const {
     fetchRecipeDetails,
@@ -126,21 +129,12 @@ const RecipeDetails = () => {
 
   useEffect(() => {
     const url = window.location.href.split('/');
-    setTypeRecipe(`${url[url.length - 2]}`);
-    setIdRecipe(`${url[url.length - 1]}`);
-    fetchRecipeDetails(
-      url[url.length - 2] === 'comidas' ? 'meal' : 'cocktail',
-      url[url.length - 1],
-    );
+    const urlType = url.reverse()[1];
+    const urlId = url[0];
+    setTypeRecipe(urlType);
+    setIdRecipe(urlId);
+    fetchRecipeDetails(urlType === 'comidas' ? 'meal' : 'cocktail', urlId);
   }, [typeRecipe]);
-
-  const progressProps = {
-    details: true,
-    direction: `/${typeRecipe}/${idRecipe}/in-progress`,
-    id: 'start-recipe-btn',
-    value: 'Iniciar Receita',
-    action: null,
-  };
 
   return isLoading ? (
     <p>Loading...</p>
@@ -150,11 +144,10 @@ const RecipeDetails = () => {
       {findIcons(keys)}
       {findIngredients(recipe, keys)}
       {findMethod(recipe, keys)}
-      {/* <YouTube videoId="9GUTC2Qwrf0" /> */}
       {findYoutube(recipe, keys)}
       {findSuggestions()}
-      <BtnCard {...progressProps} />
-      <BtnCard {...logoutProps} />
+      <BtnStart {...startRecipe(typeRecipe, idRecipe, recipe, keys)} />
+      {/* <BtnStart {...progressProps} /> */}
     </Card>
   );
 };

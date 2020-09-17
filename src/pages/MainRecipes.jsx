@@ -24,7 +24,6 @@ const MealsRecipes = () => {
     const url = window.location.href.split('/');
     const urlType = url.reverse()[0];
     setTypeRecipe(urlType);
-    console.log(urlType);
     const searchTail = 'search.php?s=';
     fetchMenu(urlType, searchTail);
   }, [typeRecipe]);

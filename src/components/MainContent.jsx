@@ -8,7 +8,6 @@ const MainContent = () => {
 
   return (
     <div className="recipes-card-container">
-      {console.log(recipesRoster)}
       {recipesRoster.map((recipe, index) => (
         <MainCard cardData={recipe} index={index.toString()} key={index.toString()} />
       ))}

@@ -30,7 +30,6 @@ const RecipesProvider = ({ children }) => {
 
   const fetchMenu = (type, suffix) => {
     const option = type === 'comidas' ? ['meal', 'meals'] : ['cocktail', 'drinks'];
-    console.log(option);
     fetchRecipes(option[0], suffix).then((menu) => getButcher(menu[option[1]]));
   };
 
