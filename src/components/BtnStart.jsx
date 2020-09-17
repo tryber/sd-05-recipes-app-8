@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { RecipesContext } from '../context/RecipesContext';
+// import { RecipesContext } from '../context/RecipesContext';
 import '../layouts/MenuBottom.css';
 
 const findIngredients = (receipt, types) => {
@@ -42,9 +42,9 @@ const BtnCard = (props) => {
 export default BtnCard;
 
 BtnCard.propTypes = {
-  direction: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  action: PropTypes.bool.isRequired,
+  typeRecipe: PropTypes.string.isRequired,
+  idRecipe: PropTypes.string.isRequired
+  idTag: PropTypes.string.isRequired,  
   value: PropTypes.string.isRequired,
-  details: PropTypes.bool.isRequired,
+  recipe: PropTypes.node.isRequired,
 };
