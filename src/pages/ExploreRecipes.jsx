@@ -1,43 +1,54 @@
-import React, { useContext } from 'react';
+import React, { Component, useContext } from 'react';
 import Card from '../components/Card';
-import { ProfileIcon, Header, BtnCard } from '../components';
+import {
+  ProfileIcon,
+  Header,
+  BtnCard,
+  MainContents,
+  ExplorerButton,
+  MenuBottom,
+} from '../components';
 import { RecipesContext } from '../context/RecipesContext';
-
-const searchByArea = {
-  id: 'explore-by-area',
-  value: 'Por Local de Origem',
-};
+import './Explorer.css';
 
 const surpriseMe = {
-  id: 'explore-surprise',
-  value: 'Me surpreenda',
+  testId: 'explore-surprise',
+  label: 'Me surpreenda',
 };
 
-const logoutProps = {
-  direction: '/',
-  value: 'Sair',
-};
-
-const ExploreRecipes = () => {
-  const { typeRecipe } = useContext(RecipesContext);
-  const headerExplorer = {
-    left: <ProfileIcon />,
-    center: `Explorar ${typeRecipe}`,
+class ExploreRecipes extends Component {
+  // const { typeRecipe } = useContext(RecipesContext);
+  render() {
+    const { location: { pathname } } = this.props;
+    const recipeType = (pathname === '/explorar/comidas'? 'comidas' : 'bebidas');
+    const headerExplorer = {
+      left: <ProfileIcon />,
+    center: `Explorar ${recipeType}`,
   };
   const searchByIngredient = {
-    id: 'explore-by-ingredient',
-    direction: `/explorar/${typeRecipe}/ingredientes`,
-    value: 'Por Ingredientes',
+    testId: 'explore-by-ingredient',
+    pathTo: `${recipeType}/ingredientes`,
+    label: 'Por Ingredientes',
+  };
+  const searchByArea = {
+    testId: 'explore-by-area',
+    label: 'Por Local de Origem',
+    pathTo: `${recipeType}/area`,
   };
   return (
-    <Card>
+    // <Card>
+    <div>
       <Header {...headerExplorer} />
-      <BtnCard {...searchByIngredient} />
-      <BtnCard {...searchByArea} />
-      <BtnCard {...surpriseMe} />
-      <BtnCard {...logoutProps} />
-    </Card>
-  );
+      <MainContents>
+        <ExplorerButton {...searchByIngredient} />
+        {pathname === '/explorar/comidas' && <ExplorerButton {...searchByArea} />}
+        <ExplorerButton {...surpriseMe} />
+      </MainContents>
+      <MenuBottom />
+    </div>
+    // </Card>
+    );
+  }
 };
 
 export default ExploreRecipes;
