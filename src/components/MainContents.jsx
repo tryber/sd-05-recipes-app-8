@@ -1,8 +1,11 @@
 import React from 'react';
-import './MainContents.css';
+import PropTypes from 'prop-types';
+import '../layouts/MainContents.css';
 
-const MainContent = (props) => (
+const MainContents = (props) => (
   <div className="main-container">{props.children}</div>
 );
 
-export default MainContent;
+export default MainContents;
+
+MainContents.propTypes = { children: PropTypes.node.isRequired };

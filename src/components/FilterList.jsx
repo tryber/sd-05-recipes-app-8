@@ -16,7 +16,7 @@ export default function FilterList() {
             const filter = name.replace(' ', '_');
             setCategories((current) => ({
               ...current,
-              choose: (current.choose === filter ) ? 'All' : filter,
+              choose: current.choose === filter ? 'All' : filter,
             }));
           }}
         >

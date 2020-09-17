@@ -1,8 +1,8 @@
 import React from 'react';
-import { ProfileIcon, Header, BtnCard, MenuBottom } from '../components';
+import { ProfileIcon, Header, MenuBottom } from '../components';
 import ExplorerButton from '../components/ExplorerButton';
 import MainContent from '../components/MainContents';
-import './Explorer.css';
+import '../layouts/Explorer.css';
 
 const headerExplorer = {
   left: <ProfileIcon />,
