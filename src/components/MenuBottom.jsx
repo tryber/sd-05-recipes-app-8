@@ -14,12 +14,13 @@ const clearFilter = (setCategories) => {
 };
 
 const MenuBottom = () => {
-  const { setTypeRecipe, setCategories } = useContext(RecipesContext);
+  const { setTypeRecipe, setCategories, setKeys } = useContext(RecipesContext);
   return (
     <footer className="menu-bottom" data-testid="footer">
       <Link
         onClick={() => {
           clearFilter(setCategories);
+          setKeys(['cocktail', 'drinks', 'strDrink', 'strDrinkThumb']);
           setTypeRecipe('bebidas');
         }}
         to="/bebidas"
@@ -43,6 +44,7 @@ const MenuBottom = () => {
         to="/comidas"
         onClick={() => {
           clearFilter(setCategories);
+          setKeys(['meal', 'meals', 'strMeal', 'strMealThumb']);
           setTypeRecipe('comidas');
         }}
       >

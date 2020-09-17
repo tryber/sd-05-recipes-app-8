@@ -97,7 +97,6 @@ const findYoutube = (receipt, types) =>
       />
     </div>
   );
-// );
 
 const findSuggestions = () => (
   <figure>
@@ -133,7 +132,6 @@ const RecipeDetails = () => {
       url[url.length - 2] === 'comidas' ? 'meal' : 'cocktail',
       url[url.length - 1],
     );
-    // fetchRecipeDetails(keys[0], idRecipe);
   }, [typeRecipe]);
 
   const progressProps = {
