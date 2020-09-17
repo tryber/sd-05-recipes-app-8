@@ -5,54 +5,37 @@ import {
   ProfileIcon,
   SearchIcon,
   MenuBottom,
-  MainFoodContent,
+  MainContent,
   FilterList,
 } from '../components';
+import Card from '../components/Card';
 
-import { fetchCategories } from '../services/mealAPI';
-import Card from '../layouts/Card';
-
-const headerMainRecipes = {
+const headerMealsRecipes = {
   left: <ProfileIcon />,
   center: 'Comidas',
   right: <SearchIcon />,
   id: 'page-title',
 };
 
-// const logoutProps = {
-//   direction: '/',
-//   value: 'Sair',
-// };
+const MealsRecipes = () => {
+  const { fetchMenu, typeRecipe, setTypeRecipe } = useContext(RecipesContext);
 
-// const exploreProps = {
-//   direction: '/explorar',
-//   value: 'Explorar',
-//   id: 'explore-bottom-btn',
-// };
+  useEffect(() => {
+    const url = window.location.href.split('/');
+    const urlType = url.reverse()[0];
+    setTypeRecipe(urlType);
+    const searchTail = 'search.php?s=';
+    fetchMenu(urlType, searchTail);
+  }, [typeRecipe]);
 
-const MainRecipes = () => {
-  const { setCategories } = useContext(RecipesContext);
-  useEffect(
-    () =>
-      fetchCategories().then(({ meals }) =>
-        setCategories((current) => ({
-          ...current,
-          catList: [
-            'All',
-            ...meals.slice(0, 5).map((meal) => meal.strCategory),
-          ],
-        })),
-      ),
-    [],
-  );
   return (
     <Card>
-      <Header {...headerMainRecipes} />
+      <Header {...headerMealsRecipes} />
       <FilterList />
-      <MainFoodContent />
+      <MainContent />
       <MenuBottom />
     </Card>
   );
 };
 
-export default MainRecipes;
+export default MealsRecipes;

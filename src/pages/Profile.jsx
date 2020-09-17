@@ -1,17 +1,19 @@
 import React from 'react';
-import Card from '../layouts/Card';
+import Card from '../components/Card';
 import { ProfileIcon, Header, BtnCard } from '../components';
 
 const doneProps = {
   id: 'profile-done-btn',
   direction: '/receitas-feitas',
   value: 'Receitas Feitas',
+  action: false,
 };
 
 const favoriteProps = {
   id: 'profile-favorite-btn',
   direction: '/receitas-favoritas',
   value: 'Receitas Favoritas',
+  action: false,
 };
 
 const logoutProps = {
@@ -25,6 +27,7 @@ const headerProfile = {
   left: <ProfileIcon />,
   center: 'Perfil',
   id: 'page-title',
+  action: false,
 };
 
 const Profile = () => (

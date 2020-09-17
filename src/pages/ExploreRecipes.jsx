@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Card from '../layouts/Card';
+import Card from '../components/Card';
 import { ProfileIcon, Header, BtnCard } from '../components';
 import { RecipesContext } from '../context/RecipesContext';
 

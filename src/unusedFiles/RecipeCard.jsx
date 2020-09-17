@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { RecipesContext } from '../context/RecipesContext';
 import './RecipeCard.css';
 
 export default function RecipeCard(props) {
+  const { typeRecipe, setIdRecipe } = useContext(RecipesContext);
   const {
-    cardData: { strMealThumb, strMeal },
+    cardData: { strMealThumb, strMeal, idMeal },
     index,
   } = props;
   return (
     <div className="recipe-card-container" data-testid={`${index}-recipe-card`}>
-      <img className="recipe-img" src={strMealThumb} alt={strMeal} data-testid={`${index}-card-img`} />
+      <Link to={`/${typeRecipe}/${idMeal}`} onClick={() => setIdRecipe(idMeal)}>
+        <img
+          className="recipe-img"
+          src={strMealThumb}
+          alt={strMeal}
+          data-testid={`${index}-card-img`}
+        />
+      </Link>
       <h2 data-testid={`${index}-card-name`}>{strMeal}</h2>
     </div>
   );
