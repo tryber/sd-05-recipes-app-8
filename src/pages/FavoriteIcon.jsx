@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { RecipesContext } from '../context/RecipesContext';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
@@ -20,11 +20,12 @@ const FavoriteIcon = ({ recipe, keys }) => {
     if (!localStorage.getItem('favoriteRecipes')) {
       localStorage.setItem('favoriteRecipes', JSON.stringify([]));
       setFavIcon(whiteHeartIcon);
-    } else
+    } else {
       Object.values(recipe[keys[1]][0])[0] ===
       Object.values(JSON.parse(localStorage.getItem('favoriteRecipes')))[0]
         ? setFavIcon(blackHeartIcon)
         : setFavIcon(whiteHeartIcon);
+    }
   }, [recipe]);
 
   return (
@@ -38,3 +39,8 @@ const FavoriteIcon = ({ recipe, keys }) => {
 };
 
 export default FavoriteIcon;
+
+FavoriteIcon.propTypes = {
+  recipe: PropTypes.node.isRequired,
+  keys: PropTypes.node.isRequired,
+};
