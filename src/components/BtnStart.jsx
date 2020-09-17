@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// import { RecipesContext } from '../context/RecipesContext';
 import '../layouts/MenuBottom.css';
 
 const findIngredients = (receipt, types) => {
@@ -43,8 +42,8 @@ export default BtnCard;
 
 BtnCard.propTypes = {
   typeRecipe: PropTypes.string.isRequired,
-  idRecipe: PropTypes.string.isRequired
-  idTag: PropTypes.string.isRequired,  
+  idRecipe: PropTypes.string.isRequired,
+  idTag: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   recipe: PropTypes.node.isRequired,
 };
