@@ -8,7 +8,7 @@ import {
   MainContent,
   FilterList,
 } from '../components';
-import Card from '../layouts/Card';
+import Card from '../components/Card';
 
 const headerMealsRecipes = {
   left: <ProfileIcon />,

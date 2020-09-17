@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import MainCard from './MainCard';
 import { RecipesContext } from '../context/RecipesContext';
-import './MainFoodContent.css';
+import '../layouts/MainFoodContent.css';
 
 const MainContent = () => {
   const { recipesRoster } = useContext(RecipesContext);

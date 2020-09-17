@@ -10,7 +10,7 @@ import {
 } from '../components';
 
 import { fetchCategories, fetchDrinks } from '../services/drinkAPI';
-import Card from '../layouts/Card';
+import Card from '../components/Card';
 
 const headerMealsRecipes = {
   left: <ProfileIcon />,

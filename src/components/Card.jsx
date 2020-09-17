@@ -1,5 +1,5 @@
 import React from 'react';
-import './Card.css';
+import '../layouts/Card.css';
 
 export default (Card) => (
   <div className="Card" style={{ borderColor: Card.color || '#000' }}>

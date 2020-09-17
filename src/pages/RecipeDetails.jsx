@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import { RecipesContext } from '../context/RecipesContext';
-import Card from '../layouts/Card';
+import Card from '../components/Card';
 import { BtnCard } from '../components';
 // import { isTypedArray } from 'lodash';
 import shareIcon from '../images/shareIcon.svg';

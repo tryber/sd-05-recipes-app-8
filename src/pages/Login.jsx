@@ -1,6 +1,6 @@
 import React from 'react';
 import { InputEmail, InputPassword, BtnLogin } from '../components';
-import Card from '../layouts/Card';
+import Card from '../components/Card';
 
 const Login = () => (
   <Card>

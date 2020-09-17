@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/RecipesContext';
-import './RecipeCard.css';
+import '../layouts/RecipeCard.css';
 
 export default function RecipeCard(props) {
   const { typeRecipe, setIdRecipe } = useContext(RecipesContext);

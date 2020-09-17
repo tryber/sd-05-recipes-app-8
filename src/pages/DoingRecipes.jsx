@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../layouts/Card';
+import Card from '../components/Card';
 import { BtnCard } from '../components';
 
 const logoutProps = {

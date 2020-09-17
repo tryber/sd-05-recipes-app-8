@@ -1,6 +1,6 @@
 import React from 'react';
 import { BtnCard, Header, ProfileIcon } from '../components';
-import Card from '../layouts/Card';
+import Card from '../components/Card';
 
 const headerDoneRecipes = {
   left: <ProfileIcon />,

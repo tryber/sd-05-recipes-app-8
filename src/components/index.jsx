@@ -7,8 +7,8 @@ import BtnCard from './BtnCard';
 import Header from './Header';
 import MenuBottom from './MenuBottom';
 import MainContent from './MainContent';
-import MainFoodContent from './MainFoodContent';
-import MainDrinkContent from './MainDrinkContent';
+// import MainFoodContent from './MainFoodContent';
+// import MainDrinkContent from './MainDrinkContent';
 import FilterList from './FilterList';
 
 export {
@@ -19,8 +19,8 @@ export {
   InputEmail,
   InputPassword,
   MainContent,
-  MainDrinkContent,
-  MainFoodContent,
+  // MainDrinkContent,
+  // MainFoodContent,
   MenuBottom,
   ProfileIcon,
   SearchIcon,

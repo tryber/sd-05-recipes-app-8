@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import './MenuBottom.css';
+import '../layouts/MenuBottom.css';
 import drinkIcon from '../images/drinkIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';

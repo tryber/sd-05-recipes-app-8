@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/RecipesContext';
-import './MenuBottom.css';
+import '../layouts/MenuBottom.css';
 
 const BtnCard = (props) => {
   const { setTypeRecipe } = useContext(RecipesContext);
