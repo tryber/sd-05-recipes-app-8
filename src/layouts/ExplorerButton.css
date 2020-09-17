@@ -1,0 +1,10 @@
+.explorer-button {
+  align-items: center;
+  background-color: rgb(230, 228, 228);
+  border-radius: 10px;
+  display: flex;
+  height: 10%;
+  justify-content: center;
+  margin: 2px 4px;
+  text-decoration: none;
+}
