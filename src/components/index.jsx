@@ -1,5 +1,5 @@
 // import MainDrinkContent from './MainDrinkContent';
-// import MainFoodContent from './MainFoodContent';
+import Card from './Card';
 import BtnCard from './BtnCard';
 import BtnLogin from './BtnLogin';
 import BtnStart from './BtnStart';
@@ -14,7 +14,7 @@ import SearchIcon from './SearchIcon';
 
 export {
   // MainDrinkContent,
-  // MainFoodContent,
+  Card,
   BtnCard,
   BtnLogin,
   BtnStart,

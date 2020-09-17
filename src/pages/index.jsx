@@ -1,7 +1,6 @@
 import Login from './Login';
 import MainRecipes from './MainRecipes';
 // import MealsRecipes from './MealsRecipes';
-// import DrinksRecipes from './DrinksRecipes';
 import Profile from './Profile';
 import FavoritesRecipes from './FavoritesRecipes';
 import DoneRecipes from './DoneRecipes';
@@ -10,11 +9,11 @@ import ExploreRecipes from './ExploreRecipes';
 import ExploreByIngredients from './ExploreByIngredients';
 import RecipeDetails from './RecipeDetails';
 import DoingRecipes from './DoingRecipes';
+import FavoriteIcon from './FavoriteIcon';
 
 export {
   DoingRecipes,
   DoneRecipes,
-  // DrinksRecipes,
   ExploreByIngredients,
   ExploreRecipes,
   Explorer,
@@ -24,4 +23,5 @@ export {
   // MealsRecipes,
   Profile,
   RecipeDetails,
+  FavoriteIcon,
 };
