@@ -6,7 +6,7 @@
   width: 100%;
 }
 
-.header-left, .header-center, .header-right {
+.header-left , .header-center , .header-right {
   align-items: center;
   display: flex;
   justify-content: center;
