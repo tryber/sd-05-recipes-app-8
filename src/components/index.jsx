@@ -11,6 +11,7 @@ import MainContent from './MainContent';
 import MenuBottom from './MenuBottom';
 import ProfileIcon from './ProfileIcon';
 import SearchIcon from './SearchIcon';
+import Progress from './Progress';
 
 export {
   FavoriteIcon,
@@ -26,4 +27,5 @@ export {
   MenuBottom,
   ProfileIcon,
   SearchIcon,
+  Progress,
 };
