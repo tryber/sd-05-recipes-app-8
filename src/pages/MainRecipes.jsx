@@ -12,7 +12,7 @@ import {
 } from '../components';
 
 const MainRecipes = () => {
-  const { fetchMenu, typeRecipe, setTypeRecipe } = useContext(RecipesContext);
+  const { fetchMenu, typeRecipe, setTypeRecipe, showSearchBar } = useContext(RecipesContext);
   const headerMainRecipes = {
     left: <ProfileIcon />,
     center: typeRecipe,

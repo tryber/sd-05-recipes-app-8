@@ -12,32 +12,38 @@ export function fetchFilter(api, filter) {
         .json()
         .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)));
     });
-};
+}
 
-export const setFilterHeader = (recipe, btn, setState, inputText) => {
+// export const setFilterHeader = (recipe, btn, setState, inputText) => {
   // const type = ['comidas', 'bebidas'];
   // const filter = ['ingredient', 'name', 'first-letter'];
   // console.log(recipe, btn, setState, inputText)
   // if (recipe === type[0]) {
   //   switch (btn) {
   //     case btn === filter[0]:
-  //       return Promise.resolve(fetchFilter(mealFilterIngredient, inputText).then((data) => setState([data])));
+  //       return Promise.resolve(fetchFilter(mealFilterIngredient, inputText)
+  //                .then((data) => setState([data])));
   //     case btn === filter[1]:
-  //       return Promise.resolve(fetchFilter(mealFilterName, inputText).then((data) => setState([data])));
+  //       return Promise.resolve(fetchFilter(mealFilterName, inputText)
+  //                 .then((data) => setState([data])));
   //     case btn === filter[2]:
   //       inputText.length !== 1 ? alert('Sua busca deve conter somente 1 (um) caracter') :
-  //         Promise.resolve(fetchFilter(mealFilterFL, inputText).then((data) => setState([data])));
+  //         Promise.resolve(fetchFilter(mealFilterFL, inputText)
+  //                .then((data) => setState([data])));
   //   }
   // }
   // if (recipe === type[1]) {
   //   switch (btn) {
   //     case btn === filter[0]:
-  //       return Promise.resolve(fetchFilter(drinkFilterIngredient, inputText).then((data) => setState([data])));
+  //       return Promise.resolve(fetchFilter(drinkFilterIngredient, inputText)
+  // .then((data) => setState([data])));
   //     case btn === filter[1]:
-  //       return Promise.resolve(fetchFilter(drinkFilterName, inputText).then((data) => setState([data])));
+  //       return Promise.resolve(fetchFilter(drinkFilterName, inputText)
+  // .then((data) => setState([data])));
   //     case btn === filter[2]:
   //       inputText.length !== 1 ? alert('Sua busca deve conter somente 1 (um) caracter') :
-  //         Promise.resolve(fetchFilter(drinkFilterFL, inputText).then((data) => setState([data])));
+  //         Promise.resolve(fetchFilter(drinkFilterFL, inputText)
+  // .then((data) => setState([data])));
   //   }
   // };
-}
+// };
