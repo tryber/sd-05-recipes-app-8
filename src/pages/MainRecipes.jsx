@@ -7,11 +7,12 @@ import {
   MenuBottom,
   MainContent,
   FilterList,
+  SearchBar,
   Card,
 } from '../components';
 
 const MainRecipes = () => {
-  const { fetchMenu, typeRecipe, setTypeRecipe } = useContext(RecipesContext);
+  const { fetchMenu, typeRecipe, setTypeRecipe, showSearchBar } = useContext(RecipesContext);
   const headerMainRecipes = {
     left: <ProfileIcon />,
     center: typeRecipe,
@@ -29,6 +30,7 @@ const MainRecipes = () => {
   return (
     <Card>
       <Header {...headerMainRecipes} />
+      {showSearchBar && <SearchBar />}
       <FilterList />
       <MainContent />
       <MenuBottom />
