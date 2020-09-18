@@ -11,6 +11,8 @@ import MainContent from './MainContent';
 import MenuBottom from './MenuBottom';
 import ProfileIcon from './ProfileIcon';
 import SearchIcon from './SearchIcon';
+import ExplorerButton from './ExplorerButton';
+import MainContents from './MainContents';
 
 export {
   // MainDrinkContent,
@@ -26,4 +28,6 @@ export {
   MenuBottom,
   ProfileIcon,
   SearchIcon,
+  ExplorerButton,
+  MainContents,
 };

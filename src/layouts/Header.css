@@ -1,5 +1,25 @@
 .Header {
+  display: flex;
+  justify-content: center;
   position: fixed;
   top: 0;
   width: 100%;
+}
+
+.header-left , .header-center , .header-right {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.header-left {
+  width: 15%;
+}
+
+.header-center {
+  width: 60%;
+}
+
+.header-right {
+  width: 20%;
 }
