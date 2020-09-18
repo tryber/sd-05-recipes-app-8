@@ -7,6 +7,7 @@ import {
   MenuBottom,
   MainContent,
   FilterList,
+  SearchBar,
   Card,
   SearchBar,
 } from '../components';
