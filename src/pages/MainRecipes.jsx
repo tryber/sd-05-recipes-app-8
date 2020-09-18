@@ -7,6 +7,7 @@ import {
   MenuBottom,
   MainContent,
   FilterList,
+  SearchBar,
 } from '../components';
 import Card from '../components/Card';
 
@@ -18,7 +19,7 @@ const headerMealsRecipes = {
 };
 
 const MealsRecipes = () => {
-  const { fetchMenu, typeRecipe, setTypeRecipe } = useContext(RecipesContext);
+  const { fetchMenu, typeRecipe, setTypeRecipe, showSearchBar } = useContext(RecipesContext);
 
   useEffect(() => {
     const url = window.location.href.split('/');
@@ -31,6 +32,7 @@ const MealsRecipes = () => {
   return (
     <Card>
       <Header {...headerMealsRecipes} />
+      {showSearchBar && <SearchBar />}
       <FilterList />
       <MainContent />
       <MenuBottom />

@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { RecipesContext } from '../context/RecipesContext';
 
 const image = require('../images/searchIcon.svg');
 
 const SearchIcon = () => {
-  const [showSearchBar, setShowSearchBar] = useState(false);
+  const { setShowSearchBar, showSearchBar } = useContext(RecipesContext)
   return (
     <section>
       <button onClick={() => setShowSearchBar(!showSearchBar)}>
         <img data-testid="search-top-btn" src={image} alt="searchIcon" />
       </button>
-      {showSearchBar && <input data-testid="search-input" type="text" />}
     </section>
   );
 };
