@@ -1,4 +1,4 @@
-// import MainDrinkContent from './MainDrinkContent';
+import FavoriteIcon from './FavoriteIcon';
 import Card from './Card';
 import BtnCard from './BtnCard';
 import BtnLogin from './BtnLogin';
@@ -13,7 +13,7 @@ import ProfileIcon from './ProfileIcon';
 import SearchIcon from './SearchIcon';
 
 export {
-  // MainDrinkContent,
+  FavoriteIcon,
   Card,
   BtnCard,
   BtnLogin,

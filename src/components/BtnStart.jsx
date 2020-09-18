@@ -27,7 +27,7 @@ const labelButton = (typeRecipe, idRecipe, value) => {
 const setStorage = (attribute, idMenu, receipt) =>
   localStorage.setItem('inProgressRecipes', JSON.stringify({ [attribute]: { [idMenu]: receipt } }));
 
-const BtnCard = (props) => {
+const BtnStart = (props) => {
   const { typeRecipe, idRecipe, idTag, value, recipe, keyword } = props;
 
   return (
@@ -39,16 +39,16 @@ const BtnCard = (props) => {
           setStorage(typeRecipe, idRecipe, findIngredients(recipe, keyword));
         }}
       >
-        {value[0]}
-        {/* {labelButton(typeRecipe, idRecipe, value)} */}
+        {/* {value[0]} */}
+        {labelButton(typeRecipe, idRecipe, value)}
       </button>
     </Link>
   );
 };
 
-export default BtnCard;
+export default BtnStart;
 
-BtnCard.propTypes = {
+BtnStart.propTypes = {
   typeRecipe: PropTypes.string.isRequired,
   idRecipe: PropTypes.string.isRequired,
   idTag: PropTypes.string.isRequired,

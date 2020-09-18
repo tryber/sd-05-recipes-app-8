@@ -9,7 +9,6 @@ import ExploreRecipes from './ExploreRecipes';
 import ExploreByIngredients from './ExploreByIngredients';
 import RecipeDetails from './RecipeDetails';
 import DoingRecipes from './DoingRecipes';
-import FavoriteIcon from './FavoriteIcon';
 
 export {
   DoingRecipes,
@@ -23,5 +22,4 @@ export {
   // MealsRecipes,
   Profile,
   RecipeDetails,
-  FavoriteIcon,
 };

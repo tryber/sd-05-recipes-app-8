@@ -8,7 +8,7 @@ const saveFavorite = (receipt, types, heartIcon, setFavIcon) => {
   const favRecipe = [
     {
       id: receipt[types[1]][0][types[4]],
-      type: types[0],
+      type: types[5],
       area: receipt[types[1]][0].strArea || '',
       category: receipt[types[1]][0].strCategory || '',
       alcoholicOrNot: receipt[types[1]][0].strAlcoholic || '',
@@ -16,7 +16,6 @@ const saveFavorite = (receipt, types, heartIcon, setFavIcon) => {
       image: receipt[types[1]][0][types[3]],
     },
   ];
-  console.log(favRecipe);
   return Object.values(receipt[types[1]][0])[0] ===
     Object.values(JSON.parse(localStorage.getItem('favoriteRecipes')))[0]
     ? (setFavIcon(whiteHeartIcon), localStorage.setItem('favoriteRecipes', JSON.stringify([])))
@@ -26,13 +25,13 @@ const saveFavorite = (receipt, types, heartIcon, setFavIcon) => {
 
 const FavoriteIcon = ({ recipe, keys }) => {
   const [favIcon, setFavIcon] = useState(whiteHeartIcon);
+
   useEffect(() => {
-    if (!localStorage.getItem('favoriteRecipes')) {
+    if (!localStorage.getItem('favoriteRecipes'))
       localStorage.setItem('favoriteRecipes', JSON.stringify([]));
-      setFavIcon(whiteHeartIcon);
-    } else {
+    else {
       Object.values(recipe[keys[1]][0])[0] ===
-      Object.values(JSON.parse(localStorage.getItem('favoriteRecipes')))[0]
+      Object.values(JSON.parse(localStorage.getItem('favoriteRecipes'))[0])[0]
         ? setFavIcon(blackHeartIcon)
         : setFavIcon(whiteHeartIcon);
     }
@@ -52,5 +51,5 @@ export default FavoriteIcon;
 
 FavoriteIcon.propTypes = {
   recipe: PropTypes.node.isRequired,
-  keys: PropTypes.node.isRequired,
+  keys: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

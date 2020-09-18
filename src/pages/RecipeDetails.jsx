@@ -1,11 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import { RecipesContext } from '../context/RecipesContext';
-import { BtnStart, Card } from '../components';
-import { FavoriteIcon } from '.';
+import { BtnStart, Card, FavoriteIcon } from '../components';
 
-const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb', 'idMeal'];
-const keys2 = ['cocktail', 'drinks', 'strDrink', 'strDrinkThumb', 'idDrink'];
+const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb', 'idMeal', 'comida'];
+const keys2 = ['cocktail', 'drinks', 'strDrink', 'strDrinkThumb', 'idDrink', 'bebida'];
 
 const findLogo = (receipt, types) => (
   <figure>
@@ -37,7 +36,7 @@ const findIngredients = (receipt, types) => {
               <li
                 data-testid={`${index}-ingredient-name-and-measure`}
                 style={{ listStyleType: 'none' }}
-                key={ingredient[index]}
+                key={index}
               >
                 <label htmlFor={`${ingredient[1]} ${ingredient[0]}`}>
                   <input type="checkbox" id={`${ingredient[1]} ${index}`} />
@@ -55,7 +54,6 @@ const findIngredients = (receipt, types) => {
     const merged = ingredientsMenu.map((value, i) => [value, measureRecipes[i]]);
     return ingredientsList(merged);
   }
-  console.log(receipt);
   const ingredientsMenu = Object.values(receipt[types[1]][0]).slice(21, 36);
   const measureRecipes = Object.values(receipt[types[1]][0]).slice(36, 51);
   const merged = ingredientsMenu.map((value, i) => [value, measureRecipes[i]]);
