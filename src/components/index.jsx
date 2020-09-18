@@ -11,6 +11,7 @@ import MainContent from './MainContent';
 import MenuBottom from './MenuBottom';
 import ProfileIcon from './ProfileIcon';
 import SearchIcon from './SearchIcon';
+import SearchBar from './SearchBar';
 import Progress from './Progress';
 import ExplorerButton from './ExplorerButton';
 import MainContents from './MainContents';
@@ -29,6 +30,7 @@ export {
   MenuBottom,
   ProfileIcon,
   SearchIcon,
+  SearchBar,
   Progress,
   ExplorerButton,
   MainContents,

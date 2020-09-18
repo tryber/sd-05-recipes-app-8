@@ -1,6 +1,10 @@
 .Header {
+  align-items: center;
+  background-color: rgb(219, 215, 215);
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  height: 50px;
+  justify-content: space-between;
   position: fixed;
   top: 0;
   width: 100%;
