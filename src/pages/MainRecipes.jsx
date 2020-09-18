@@ -10,9 +10,11 @@ import {
   SearchBar,
   Card,
 } from '../components';
+import { fetchMeals } from '../services/mealAPI.js'
+import { fetchDrinks } from '../services/drinkAPI.js'
 
 const MainRecipes = () => {
-  const { fetchMenu, typeRecipe, setTypeRecipe, showSearchBar } = useContext(RecipesContext);
+  const { categorySelected, fetchKyleMenu, typeRecipe, setTypeRecipe, showSearchBar, setRecipesList } = useContext(RecipesContext);
   const headerMainRecipes = {
     left: <ProfileIcon />,
     center: typeRecipe,
@@ -23,15 +25,22 @@ const MainRecipes = () => {
     const url = window.location.href.split('/');
     const urlType = url.reverse()[0];
     setTypeRecipe(urlType);
-    const searchTail = 'search.php?s=';
-    fetchMenu(urlType, searchTail);
-  }, [typeRecipe]);
+    let apiCall = fetchMeals;
+    if (urlType === 'bebidas') {
+      apiCall = fetchDrinks;
+    }
+    fetchKyleMenu(apiCall, urlType, categorySelected); 
+
+    // const searchTail = 'search.php?s=';
+    // fetchMenu(urlType, searchTail);
+
+  }, [typeRecipe, categorySelected]);
 
   return (
     <Card>
       <Header {...headerMainRecipes} />
       {showSearchBar && <SearchBar />}
-      <FilterList />
+      {!showSearchBar && <FilterList />}
       <MainContent />
       <MenuBottom />
     </Card>

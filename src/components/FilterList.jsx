@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
-import { fetchRecipes } from '../services/getRecipeDetails';
+import { fetchMealCategories } from '../services/mealAPI';
+import { fetchDrinksCategories } from '../services/drinkAPI';
 import { RecipesContext } from '../context/RecipesContext';
 
 import '../layouts/FilterList.css';
@@ -15,7 +16,7 @@ function ButtonList() {
     <button
       key={category}
       name={category}
-      className={`${category}-category-filter`}
+      className={`button-category-filter`}
       data-testid={`${category}-category-filter`}
       onClick={({ target: { name } }) => {
         let filter = name.replace(' ', '_');
@@ -30,22 +31,24 @@ function ButtonList() {
   ))
 }
 
-export default function FilterList(props) {
+export default function FilterList() {
   const {
-  //   categories,
     setCategories,
-  //   setCategorySelected,
     typeRecipe,
   } = useContext(RecipesContext);
 
   useEffect(() => {
-    console.log(typeRecipe);
-    
-  } )
+    const apiCall = typeRecipe === 'comidas' ? fetchMealCategories : fetchDrinksCategories;
+    apiCall()
+      .then((response) => setCategories(
+        ['All', ...response[foodType[typeRecipe].response].slice(0, 5)
+        .map(({ strCategory }) => strCategory)]
+      ));
+  }, [typeRecipe])
 
   return (
     <div className="category-list">
-      {/* <ButtonList /> */}
+      <ButtonList />
     </div>
   );
 }
