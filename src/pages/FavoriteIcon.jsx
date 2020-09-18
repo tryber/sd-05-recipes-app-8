@@ -4,15 +4,25 @@ import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
-const saveFavorite = (receipt, types, heartIcon, setFavIcon) =>
-  Object.values(receipt[types[1]][0])[0] ===
-  Object.values(JSON.parse(localStorage.getItem('favoriteRecipes')))[0]
+const saveFavorite = (receipt, types, heartIcon, setFavIcon) => {
+  const favRecipe = [
+    {
+      id: receipt[types[1]][0][types[4]],
+      type: types[0],
+      area: receipt[types[1]][0].strArea || '',
+      category: receipt[types[1]][0].strCategory || '',
+      alcoholicOrNot: receipt[types[1]][0].strAlcoholic || '',
+      name: receipt[types[1]][0][types[2]],
+      image: receipt[types[1]][0][types[3]],
+    },
+  ];
+  console.log(favRecipe);
+  return Object.values(receipt[types[1]][0])[0] ===
+    Object.values(JSON.parse(localStorage.getItem('favoriteRecipes')))[0]
     ? (setFavIcon(whiteHeartIcon), localStorage.setItem('favoriteRecipes', JSON.stringify([])))
     : (setFavIcon(blackHeartIcon),
-      localStorage.setItem(
-        'favoriteRecipes',
-        JSON.stringify(Object.values(receipt[types[1]][0]).slice(0, 4)),
-      ));
+      localStorage.setItem('favoriteRecipes', JSON.stringify(favRecipe)));
+};
 
 const FavoriteIcon = ({ recipe, keys }) => {
   const [favIcon, setFavIcon] = useState(whiteHeartIcon);

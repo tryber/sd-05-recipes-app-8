@@ -39,8 +39,8 @@ const BtnCard = (props) => {
           setStorage(typeRecipe, idRecipe, findIngredients(recipe, keyword));
         }}
       >
-        {/* {value[0]} */}
-        {labelButton(typeRecipe, idRecipe, value)}
+        {value[0]}
+        {/* {labelButton(typeRecipe, idRecipe, value)} */}
       </button>
     </Link>
   );

@@ -4,8 +4,8 @@ import { RecipesContext } from '../context/RecipesContext';
 import { BtnStart, Card } from '../components';
 import { FavoriteIcon } from '.';
 
-const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb'];
-const keys2 = ['cocktail', 'drinks', 'strDrink', 'strDrinkThumb'];
+const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb', 'idMeal'];
+const keys2 = ['cocktail', 'drinks', 'strDrink', 'strDrinkThumb', 'idDrink'];
 
 const findLogo = (receipt, types) => (
   <figure>
@@ -33,16 +33,16 @@ const findIngredients = (receipt, types) => {
       <ul>
         {ingredientsRecipes.map(
           (ingredient, index) =>
-            ingredient[0] !== ('' && null) && (
+            ingredient[0] && (
               <li
                 data-testid={`${index}-ingredient-name-and-measure`}
                 style={{ listStyleType: 'none' }}
                 key={ingredient[index]}
               >
-                <label htmlFor={`${ingredient[1]}  ${ingredient[0]}`}>
+                <label htmlFor={`${ingredient[1]} ${ingredient[0]}`}>
                   <input type="checkbox" id={`${ingredient[1]} ${index}`} />
                 </label>
-                {`${ingredient[1]}  ${ingredient[0]}`}
+                {`${ingredient[1]} ${ingredient[0]}`}
               </li>
             ),
         )}
@@ -52,12 +52,13 @@ const findIngredients = (receipt, types) => {
   if (types[1] === 'meals') {
     const ingredientsMenu = Object.values(receipt[types[1]][0]).slice(9, 29);
     const measureRecipes = Object.values(receipt[types[1]][0]).slice(29, 49);
-    const merged = ingredientsMenu.map((x, i) => [x, measureRecipes[i]]);
+    const merged = ingredientsMenu.map((value, i) => [value, measureRecipes[i]]);
     return ingredientsList(merged);
   }
+  console.log(receipt);
   const ingredientsMenu = Object.values(receipt[types[1]][0]).slice(21, 36);
   const measureRecipes = Object.values(receipt[types[1]][0]).slice(36, 51);
-  const merged = ingredientsMenu.map((x, i) => [x, measureRecipes[i]]);
+  const merged = ingredientsMenu.map((value, i) => [value, measureRecipes[i]]);
   return ingredientsList(merged);
 };
 
@@ -134,7 +135,6 @@ const RecipeDetails = () => {
     <Card>
       {findLogo(recipe, keys)}
       <FavoriteIcon recipe={recipe} keys={keys} />
-      {/* {findIcons(recipe, keys)} */}
       {findIngredients(recipe, keys)}
       {findMethod(recipe, keys)}
       {findYoutube(recipe, keys)}
