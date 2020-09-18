@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 import { RecipesContext } from '../context/RecipesContext';
 import {
   Header,
@@ -20,6 +21,7 @@ const MainRecipes = () => {
     typeRecipe,
     setTypeRecipe,
     showSearchBar,
+    recipesRoster,
   } = useContext(RecipesContext);
   const headerMainRecipes = {
     left: <ProfileIcon />,
@@ -27,9 +29,9 @@ const MainRecipes = () => {
     right: <SearchIcon />,
     id: 'page-title',
   };
+  const url = window.location.href.split('/');
+  const urlType = url.reverse()[0];
   useEffect(() => {
-    const url = window.location.href.split('/');
-    const urlType = url.reverse()[0];
     setTypeRecipe(urlType);
     let apiCall = fetchMeals;
     if (urlType === 'bebidas') {
@@ -39,6 +41,12 @@ const MainRecipes = () => {
     // const searchTail = 'search.php?s=';
     // fetchMenu(urlType, searchTail);
   }, [typeRecipe, categorySelected]);
+
+  if (recipesRoster.length === 1) {
+    const getId = `id${urlType === 'comidas' ? 'Meal' : 'Drink'}`;
+    console.log(getId, recipesRoster);
+    return (<Redirect to={`/${urlType}/${recipesRoster[0][getId]}`} />);
+  }
 
   return (
     <Card>
