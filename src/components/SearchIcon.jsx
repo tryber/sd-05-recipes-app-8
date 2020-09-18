@@ -4,7 +4,7 @@ import { RecipesContext } from '../context/RecipesContext';
 const image = require('../images/searchIcon.svg');
 
 const SearchIcon = () => {
-  const { setShowSearchBar, showSearchBar } = useContext(RecipesContext)
+  const { setShowSearchBar, showSearchBar } = useContext(RecipesContext);
   return (
     <section>
       <button onClick={() => setShowSearchBar(!showSearchBar)}>

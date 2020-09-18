@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types'
 import { RecipesContext } from '../context/RecipesContext';
 import { setFilterHeader } from '../services/filterAPI';
 
-import '../layouts/SearchBar.css'
+import '../layouts/SearchBar.css';
 
 const InputRender = (props) => {
   const { datatestid, value, label, setState } = props;
@@ -20,17 +21,15 @@ const InputRender = (props) => {
   );
 };
 
-const InputText = (props) => {
-  return (
-    <input
-      className="search-input"
-      data-testid="search-input"
-      type="text"
-      placeholder="Buscar Receita"
-      onChange={(e) => props.setState(e.target.value)}
-    />
-  );
-};
+const InputText = (props) => (
+  <input
+    className="search-input"
+    data-testid="search-input"
+    type="text"
+    placeholder="Buscar Receita"
+    onChange={(e) => props.setState(e.target.value)}
+  />
+);
 
 const SearchBar = () => {
   const {
@@ -68,6 +67,13 @@ const SearchBar = () => {
       </button>
     </section>
   );
+};
+
+InputRender.propTypes = {
+  datatestid: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  setState: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
