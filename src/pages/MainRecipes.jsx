@@ -8,19 +8,17 @@ import {
   MainContent,
   FilterList,
   SearchBar,
+  Card,
 } from '../components';
-import Card from '../components/Card';
 
-const headerMealsRecipes = {
-  left: <ProfileIcon />,
-  center: 'Comidas',
-  right: <SearchIcon />,
-  id: 'page-title',
-};
-
-const MealsRecipes = () => {
-  const { fetchMenu, typeRecipe, setTypeRecipe, showSearchBar } = useContext(RecipesContext);
-
+const MainRecipes = () => {
+  const { fetchMenu, typeRecipe, setTypeRecipe } = useContext(RecipesContext);
+  const headerMainRecipes = {
+    left: <ProfileIcon />,
+    center: typeRecipe,
+    right: <SearchIcon />,
+    id: 'page-title',
+  };
   useEffect(() => {
     const url = window.location.href.split('/');
     const urlType = url.reverse()[0];
@@ -31,7 +29,7 @@ const MealsRecipes = () => {
 
   return (
     <Card>
-      <Header {...headerMealsRecipes} />
+      <Header {...headerMainRecipes} />
       {showSearchBar && <SearchBar />}
       <FilterList />
       <MainContent />
@@ -40,4 +38,4 @@ const MealsRecipes = () => {
   );
 };
 
-export default MealsRecipes;
+export default MainRecipes;
