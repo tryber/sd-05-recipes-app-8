@@ -11,7 +11,7 @@ const fetchData = (api) =>
 export const fetchMealCategories = () => fetchData(mealCategories);
 export const fetchMeals = (category = '') => {
   if (category === '') {
-  return fetchData(`${mealsRecipes}${category}`)
+    return fetchData(`${mealsRecipes}${category}`);
   }
-  return fetchData(`${mealsByCategory}${category}`)
+  return fetchData(`${mealsByCategory}${category}`);
 };

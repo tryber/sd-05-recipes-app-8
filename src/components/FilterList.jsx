@@ -16,35 +16,34 @@ function ButtonList() {
     <button
       key={category}
       name={category}
-      className={`button-category-filter`}
+      className={'button-category-filter'}
       data-testid={`${category}-category-filter`}
       onClick={({ target: { name } }) => {
         let filter = name.replace(' ', '_');
         if (name.toLowerCase() === 'all') filter = '';
-        setCategorySelected((current) =>
-          current === filter ? '' : filter,
-        );
+        setCategorySelected((current) => (current === filter ? '' : filter));
       }}
     >
       {category}
     </button>
-  ))
+  ));
 }
 
 export default function FilterList() {
-  const {
-    setCategories,
-    typeRecipe,
-  } = useContext(RecipesContext);
+  const { setCategories, typeRecipe } = useContext(RecipesContext);
 
   useEffect(() => {
-    const apiCall = typeRecipe === 'comidas' ? fetchMealCategories : fetchDrinksCategories;
-    apiCall()
-      .then((response) => setCategories(
-        ['All', ...response[foodType[typeRecipe].response].slice(0, 5)
-        .map(({ strCategory }) => strCategory)]
-      ));
-  }, [typeRecipe])
+    const apiCall =
+      typeRecipe === 'comidas' ? fetchMealCategories : fetchDrinksCategories;
+    apiCall().then((response) =>
+      setCategories([
+        'All',
+        ...response[foodType[typeRecipe].response]
+          .slice(0, 5)
+          .map(({ strCategory }) => strCategory),
+      ]),
+    );
+  }, [typeRecipe]);
 
   return (
     <div className="category-list">

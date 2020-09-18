@@ -14,7 +14,12 @@ const RecipesProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [idRecipe, setIdRecipe] = useState('');
   const [recipesRoster, setRecipesRoster] = useState([]);
-  const [keys, setKeys] = useState(['meal', 'meals', 'strMeal', 'strMealThumb']);
+  const [keys, setKeys] = useState([
+    'meal',
+    'meals',
+    'strMeal',
+    'strMealThumb',
+  ]);
   const [categorySelected, setCategorySelected] = useState('');
   const [typeBtn, setTypeBtn] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
@@ -32,16 +37,19 @@ const RecipesProvider = ({ children }) => {
   const getButcher = (listMenu) => setRecipesRoster(listMenu.slice(0, 12));
 
   const fetchMenu = (type, suffix) => {
-    const option = type === 'comidas' ? ['meal', 'meals'] : ['cocktail', 'drinks'];
+    const option =
+      type === 'comidas' ? ['meal', 'meals'] : ['cocktail', 'drinks'];
     fetchRecipes(option[0], suffix).then((menu) => getButcher(menu[option[1]]));
   };
 
   const fetchKyleMenu = (apiCall, type, category) => {
     const option = type === 'comidas' ? 'meals' : 'drinks';
-    apiCall(category).then((menu) => {getButcher(menu[option])});
+    apiCall(category).then((menu) => {
+      getButcher(menu[option]);
+    });
   };
 
-  const setMenuList = (menuList) => setRecipesRoster(menuList.slice(0, 12))
+  const setMenuList = (menuList) => setRecipesRoster(menuList.slice(0, 12));
 
   const context = {
     categories,
@@ -78,7 +86,11 @@ const RecipesProvider = ({ children }) => {
     setMenuList,
     fetchKyleMenu,
   };
-  return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;
+  return (
+    <RecipesContext.Provider value={context}>
+      {children}
+    </RecipesContext.Provider>
+  );
 };
 
 export default RecipesProvider;

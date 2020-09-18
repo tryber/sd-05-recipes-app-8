@@ -7,12 +7,13 @@ import exploreIcon from '../images/exploreIcon.svg';
 import { RecipesContext } from '../context/RecipesContext';
 
 function clearFilter(setCategorySelected) {
-  // const { setCategorySelected } = useContext(RecipesContext);
   setCategorySelected(() => '');
-};
+}
 
 const MenuBottom = () => {
-  const { setTypeRecipe, setCategorySelected, setKeys } = useContext(RecipesContext);
+  const { setTypeRecipe, setCategorySelected, setKeys } = useContext(
+    RecipesContext,
+  );
   return (
     <footer className="menu-bottom" data-testid="footer">
       <Link
