@@ -1,15 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import { RecipesContext } from '../context/RecipesContext';
-import Card from '../components/Card';
-import { BtnStart } from '../components';
-// import { isTypedArray } from 'lodash';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-// import getRecipeDetails from '../services/getRecipeDetails';
+import { BtnStart, Card, FavoriteIcon } from '../components';
 
-const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb'];
-const keys2 = ['cocktail', 'drinks', 'strDrink', 'strDrinkThumb'];
+const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb', 'idMeal', 'comida'];
+const keys2 = ['cocktail', 'drinks', 'strDrink', 'strDrinkThumb', 'idDrink', 'bebida'];
 
 const findLogo = (receipt, types) => (
   <figure>
@@ -30,13 +25,6 @@ const findLogo = (receipt, types) => (
   </figure>
 );
 
-const findIcons = () => (
-  <figure>
-    <img data-testid="share-btn" src={shareIcon} alt="shareIcon" />
-    <img data-testid="favorite-btn" src={whiteHeartIcon} alt="whiteHeartIcon" />
-  </figure>
-);
-
 const findIngredients = (receipt, types) => {
   const ingredientsList = (ingredientsRecipes) => (
     <div>
@@ -44,13 +32,16 @@ const findIngredients = (receipt, types) => {
       <ul>
         {ingredientsRecipes.map(
           (ingredient, index) =>
-            ingredient[0] !== ('' || null) && (
+            ingredient[0] && (
               <li
                 data-testid={`${index}-ingredient-name-and-measure`}
                 style={{ listStyleType: 'none' }}
                 key={ingredient[index]}
               >
-                {`${ingredient[1]}   ${ingredient[0]}`}
+                <label htmlFor={`${ingredient[1]} ${ingredient[0]}`}>
+                  <input type="checkbox" id={`${ingredient[1]} ${index}`} />
+                </label>
+                {`${ingredient[1]} ${ingredient[0]}`}
               </li>
             ),
         )}
@@ -60,12 +51,12 @@ const findIngredients = (receipt, types) => {
   if (types[1] === 'meals') {
     const ingredientsMenu = Object.values(receipt[types[1]][0]).slice(9, 29);
     const measureRecipes = Object.values(receipt[types[1]][0]).slice(29, 49);
-    const merged = ingredientsMenu.map((x, i) => [x, measureRecipes[i]]);
+    const merged = ingredientsMenu.map((value, i) => [value, measureRecipes[i]]);
     return ingredientsList(merged);
   }
   const ingredientsMenu = Object.values(receipt[types[1]][0]).slice(21, 36);
   const measureRecipes = Object.values(receipt[types[1]][0]).slice(36, 51);
-  const merged = ingredientsMenu.map((x, i) => [x, measureRecipes[i]]);
+  const merged = ingredientsMenu.map((value, i) => [value, measureRecipes[i]]);
   return ingredientsList(merged);
 };
 
@@ -93,7 +84,7 @@ const findSuggestions = () => (
   <figure>
     <img
       data-testid="0-recomendation-card"
-      src={whiteHeartIcon}
+      src="https://www.themealdb.com/images/media/meals/58oia61564916529.jpg"
       alt="recommendation"
       style={{ maxHeight: '50px' }}
     />
@@ -141,13 +132,12 @@ const RecipeDetails = () => {
   ) : (
     <Card>
       {findLogo(recipe, keys)}
-      {findIcons(keys)}
+      <FavoriteIcon recipe={recipe} keys={keys} />
       {findIngredients(recipe, keys)}
       {findMethod(recipe, keys)}
       {findYoutube(recipe, keys)}
       {findSuggestions()}
       <BtnStart {...startRecipe(typeRecipe, idRecipe, recipe, keys)} />
-      {/* <BtnStart {...progressProps} /> */}
     </Card>
   );
 };

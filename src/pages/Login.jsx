@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputEmail, InputPassword, BtnLogin } from '../components';
+import { InputEmail, InputPassword, BtnLogin, Progress } from '../components';
 import Card from '../components/Card';
 
 const Login = () => (
@@ -8,6 +8,7 @@ const Login = () => (
     <InputEmail />
     <InputPassword />
     <BtnLogin />
+    <Progress />
   </Card>
 );
 
