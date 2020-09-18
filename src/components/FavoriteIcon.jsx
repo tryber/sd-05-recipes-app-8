@@ -27,14 +27,13 @@ const FavoriteIcon = ({ recipe, keys }) => {
   const [favIcon, setFavIcon] = useState(whiteHeartIcon);
 
   useEffect(() => {
-    if (!localStorage.getItem('favoriteRecipes'))
-      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
-    else {
-      Object.values(recipe[keys[1]][0])[0] ===
-      Object.values(JSON.parse(localStorage.getItem('favoriteRecipes'))[0])[0]
-        ? setFavIcon(blackHeartIcon)
-        : setFavIcon(whiteHeartIcon);
+    if (!localStorage.getItem('favoriteRecipes')) {
+      return localStorage.setItem('favoriteRecipes', JSON.stringify([]));
     }
+    return Object.values(recipe[keys[1]][0])[0] ===
+      Object.values(JSON.parse(localStorage.getItem('favoriteRecipes'))[0])[0]
+      ? setFavIcon(blackHeartIcon)
+      : setFavIcon(whiteHeartIcon);
   }, [recipe]);
 
   return (

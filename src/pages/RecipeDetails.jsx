@@ -36,7 +36,7 @@ const findIngredients = (receipt, types) => {
               <li
                 data-testid={`${index}-ingredient-name-and-measure`}
                 style={{ listStyleType: 'none' }}
-                key={index}
+                key={ingredient[index]}
               >
                 <label htmlFor={`${ingredient[1]} ${ingredient[0]}`}>
                   <input type="checkbox" id={`${ingredient[1]} ${index}`} />
