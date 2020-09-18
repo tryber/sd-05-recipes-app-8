@@ -14,12 +14,22 @@ const findIngredients = (receipt, types) => {
     .filter((value) => value !== null && value !== '');
 };
 
+const labelButton = (typeRecipe, idRecipe, value) => {
+  if (localStorage.getItem('inProgressRecipes')) {
+    return Object.keys(JSON.parse(localStorage.getItem('inProgressRecipes'))[typeRecipe])[0] !==
+      idRecipe
+      ? value[0]
+      : value[1];
+  }
+  return value[0];
+};
+
 const setStorage = (attribute, idMenu, receipt) =>
   localStorage.setItem('inProgressRecipes', JSON.stringify({ [attribute]: { [idMenu]: receipt } }));
 
-const BtnCard = (props) => {
+const BtnStart = (props) => {
   const { typeRecipe, idRecipe, idTag, value, recipe, keyword } = props;
-  //   console.log(JSON.parse(localStorage.getItem('inProgressRecipes'))[typeRecipe][idRecipe]);
+
   return (
     <Link to={`/${typeRecipe}/${idRecipe}/in-progress`}>
       <button
@@ -29,18 +39,16 @@ const BtnCard = (props) => {
           setStorage(typeRecipe, idRecipe, findIngredients(recipe, keyword));
         }}
       >
-        {value}
-        {/* {JSON.parse(localStorage.getItem('inProgressRecipes'))[typeRecipe] !== idRecipe
-          ? value[0]
-          : value[1]} */}
+        {/* {value[0]} */}
+        {labelButton(typeRecipe, idRecipe, value)}
       </button>
     </Link>
   );
 };
 
-export default BtnCard;
+export default BtnStart;
 
-BtnCard.propTypes = {
+BtnStart.propTypes = {
   typeRecipe: PropTypes.string.isRequired,
   idRecipe: PropTypes.string.isRequired,
   idTag: PropTypes.string.isRequired,
