@@ -32,9 +32,7 @@ const InputText = (props) => (
 );
 
 const SearchBar = () => {
-  const {
-    setFilterType, setSearchBarInput, searchBarInput,
-    typeRecipe, filterType, setRecipesFiltered } = useContext(RecipesContext);
+  const { setFilterType, setSearchBarInput } = useContext(RecipesContext);
   return (
     <section className="search-bar-container">
       <InputText setState={setSearchBarInput} />
@@ -61,7 +59,6 @@ const SearchBar = () => {
       <button
         type="button"
         data-testid="exec-search-btn"
-        // onClick={() => setFilterHeader(typeRecipe, filterType, setRecipesFiltered, searchBarInput)}
       >
         Buscar
       </button>
@@ -73,6 +70,10 @@ InputRender.propTypes = {
   datatestid: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  setState: PropTypes.func.isRequired,
+};
+
+InputText.propTypes = {
   setState: PropTypes.func.isRequired,
 };
 
