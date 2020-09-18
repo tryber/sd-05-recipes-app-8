@@ -5,27 +5,14 @@ export const drinkFilterIngredient = 'https://www.thecocktaildb.com/api/json/v1/
 export const drinkFilterName = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=';
 export const drinkFilterFL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 
-const getRecipeDetails = (type, id) => {
-  const RECIPE_API = `https://www.the${type}db.com/api/json/v1/1/lookup.php?i=${id}`;
-  return fetch(RECIPE_API).then((response) =>
-    response.json().then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
-  );
+export const fetchFilter = async (api, filter) => {
+  const response = await fetch(`${api}${filter}`);
+  const json = await response.json();
+  console.log(response.json());
+  return await (response.ok ? Promise.resolve(json) : Promise.reject(json));
 };
 
-const fetchRecipes = (type, suffix) => {
-  const RECIPE_PATH = `https://www.the${type}db.com/api/json/v1/1/${suffix}`;
-  return fetch(RECIPE_PATH).then((response) =>
-    response.json().then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
-  );
-};
-
-const fetchFilter = (api, filter) => {
-  return fetch(`${api}${filter}`).then((response) =>
-    response.json().then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
-  );
-};
-
-const setFilterHeader = (recipe, btn, setState, inputText) => {
+export const setFilterHeader = (recipe, btn, setState, inputText) => {
   const type = ['comidas', 'bebidas'];
   const filter = ['ingredient', 'name', 'first-letter'];
   console.log(recipe, btn, setState, inputText);
@@ -62,5 +49,3 @@ const setFilterHeader = (recipe, btn, setState, inputText) => {
     }
   }
 };
-
-export { getRecipeDetails, fetchRecipes, fetchFilter, setFilterHeader };
