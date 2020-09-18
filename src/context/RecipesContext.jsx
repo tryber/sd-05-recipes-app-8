@@ -9,15 +9,13 @@ const RecipesProvider = ({ children }) => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [typeRecipe, setTypeRecipe] = useState('comidas');
-  const [categories, setCategories] = useState({
-    catList: [],
-    choose: 'All',
-  });
+  const [categories, setCategories] = useState(['All']);
   const [recipe, setRecipe] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [idRecipe, setIdRecipe] = useState('');
   const [recipesRoster, setRecipesRoster] = useState([]);
   const [keys, setKeys] = useState(['meal', 'meals', 'strMeal', 'strMealThumb']);
+  const [categorySelected, setCategorySelected] = useState('');
 
   const fetchRecipeDetails = (type, id) => {
     getRecipeDetails(type, id).then((receipt) => {
@@ -53,6 +51,8 @@ const RecipesProvider = ({ children }) => {
     setRecipesList,
     setTypeRecipe,
     typeRecipe,
+    categorySelected,
+    setCategorySelected,
   };
   return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;
 };

@@ -19,7 +19,6 @@ const headerMealsRecipes = {
 
 const MealsRecipes = () => {
   const { fetchMenu, typeRecipe, setTypeRecipe } = useContext(RecipesContext);
-
   useEffect(() => {
     const url = window.location.href.split('/');
     const urlType = url.reverse()[0];
