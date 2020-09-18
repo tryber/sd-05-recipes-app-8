@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/RecipesContext';
 import { setFilterHeader } from '../services/getRecipeDetails';
 
@@ -31,7 +32,14 @@ const InputText = (props) => (
 );
 
 const SearchBar = () => {
-  const { setFilterType, setSearchBarInput } = useContext(RecipesContext);
+  const {
+    typeRecipe,
+    filterType,
+    setRecipesFiltered,
+    searchBarInput,
+    setFilterType,
+    setSearchBarInput,
+  } = useContext(RecipesContext);
   return (
     <section className="search-bar-container">
       <InputText setState={setSearchBarInput} />

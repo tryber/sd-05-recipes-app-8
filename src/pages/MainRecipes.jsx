@@ -9,7 +9,6 @@ import {
   FilterList,
   SearchBar,
   Card,
-  SearchBar,
 } from '../components';
 
 const MainRecipes = () => {
