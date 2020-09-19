@@ -31,7 +31,6 @@ const InputText = (props) => (
 );
 
 const SearchBar = () => {
-  const { setFilterType, setSearchBarInput } = useContext(RecipesContext);
   const {
     typeRecipe,
     filterType,
