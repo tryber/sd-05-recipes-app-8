@@ -49,9 +49,7 @@ const FavoriteIcon = ({ recipe, keys }) => {
 
   return (
     <figure>
-      <img data-testid="share-btn" src={shareIcon} alt="shareIcon" />
       <button onClick={() => saveFavorite(recipe, keys, favIcon, setFavIcon, favRecipe)}>
-        {console.log(favIcon)}
         <img data-testid="favorite-btn" src={favIcon} alt="favoriteIcon" />
       </button>
     </figure>

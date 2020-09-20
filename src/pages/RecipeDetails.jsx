@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import { RecipesContext } from '../context/RecipesContext';
-import { BtnStart, Card, FavoriteIcon } from '../components';
+import { BtnStart, Card, FavoriteIcon, Suggestions, ShareIcon } from '../components';
 
 const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb', 'idMeal', 'comida'];
 const keys2 = ['cocktail', 'drinks', 'strDrink', 'strDrinkThumb', 'idDrink', 'bebida'];
@@ -132,11 +132,13 @@ const RecipeDetails = () => {
   ) : (
     <Card>
       {findLogo(recipe, keys)}
+      <ShareIcon recipe={recipe} keys={keys} />
       <FavoriteIcon recipe={recipe} keys={keys} />
       {findIngredients(recipe, keys)}
       {findMethod(recipe, keys)}
       {findYoutube(recipe, keys)}
       {findSuggestions()}
+      {/* <Suggestions recipe={recipe} keys={keys} /> */}
       <BtnStart {...startRecipe(typeRecipe, idRecipe, recipe, keys)} />
     </Card>
   );

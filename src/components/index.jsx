@@ -15,6 +15,8 @@ import SearchBar from './SearchBar';
 import Progress from './Progress';
 import ExplorerButton from './ExplorerButton';
 import MainContents from './MainContents';
+import Suggestions from './Suggestions';
+import ShareIcon from './ShareIcon';
 
 export {
   FavoriteIcon,
@@ -34,4 +36,6 @@ export {
   Progress,
   ExplorerButton,
   MainContents,
+  Suggestions,
+  ShareIcon,
 };
