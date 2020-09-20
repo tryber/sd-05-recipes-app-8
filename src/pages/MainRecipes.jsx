@@ -44,7 +44,6 @@ const MainRecipes = () => {
 
   if (recipesRoster.length === 1) {
     const getId = `id${urlType === 'comidas' ? 'Meal' : 'Drink'}`;
-    console.log(getId, recipesRoster);
     return (<Redirect to={`/${urlType}/${recipesRoster[0][getId]}`} />);
   }
 

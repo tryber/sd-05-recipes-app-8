@@ -115,6 +115,9 @@ const RecipeDetails = () => {
     setIdRecipe,
     setTypeRecipe,
     typeRecipe,
+    // surpriseMe,
+    // setSurpriseMe,
+    // fetchKyleMenu,
   } = useContext(RecipesContext);
   const keys = typeRecipe === 'comidas' ? keys1 : keys2;
 

@@ -11,6 +11,7 @@ import {
   MainRecipes,
   Profile,
   RecipeDetails,
+  ExploreByArea,
 } from './';
 
 const Home = () => (
@@ -24,9 +25,17 @@ const Home = () => (
       <Route exact path="/explorar" component={Explorer} />
       <Route exact path="/explorar/comidas" component={ExploreRecipes} />
       <Route exact path="/explorar/bebidas" component={ExploreRecipes} />
-      <Route exact path="/explorar/comidas/ingredientes" component={ExploreByIngredients} />
-      <Route exact path="/explorar/bebidas/ingredientes" component={ExploreByIngredients} />
-      <Route exact path="/explorar/comidas/area" component={ExploreByIngredients} />
+      <Route
+        exact
+        path="/explorar/comidas/ingredientes"
+        component={ExploreByIngredients}
+      />
+      <Route
+        exact
+        path="/explorar/bebidas/ingredientes"
+        component={ExploreByIngredients}
+      />
+      <Route exact path="/explorar/comidas/area" component={ExploreByArea} />
       <Route exact path="/comidas/:id/in-progress" component={DoingRecipes} />
       <Route exact path="/bebidas/:id/in-progress" component={DoingRecipes} />
       <Route exact path="/receitas-favoritas" component={FavoritesRecipes} />

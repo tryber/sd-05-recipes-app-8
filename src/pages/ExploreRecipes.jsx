@@ -7,12 +7,8 @@ import {
   ExplorerButton,
   MenuBottom,
 } from '../components';
+import SurpriseButton from '../components/SurpriseButton';
 import '../layouts/Explorer.css';
-
-const surpriseMe = {
-  testId: 'explore-surprise',
-  label: 'Me surpreenda',
-};
 
 class ExploreRecipes extends Component {
   render() {
@@ -23,6 +19,11 @@ class ExploreRecipes extends Component {
     const headerExplorer = {
       left: <ProfileIcon />,
       center: `Explorar ${recipeType}`,
+    };
+    const surpriseMe = {
+      testId: 'explore-surprise',
+      label: 'Me surpreenda',
+      pathTo: `${recipeType}`,
     };
     const searchByIngredient = {
       testId: 'explore-by-ingredient',
@@ -42,7 +43,7 @@ class ExploreRecipes extends Component {
           {pathname === '/explorar/comidas' && (
             <ExplorerButton {...searchByArea} />
           )}
-          <ExplorerButton {...surpriseMe} />
+          <SurpriseButton {...surpriseMe} />
         </MainContents>
         <MenuBottom />
       </div>
