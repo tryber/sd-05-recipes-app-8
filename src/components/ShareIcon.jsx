@@ -10,7 +10,6 @@ const ShareIcon = ({ id, type, dataId }) => {
       <button
         onClick={() => {
           // navigator.clipboard.writeText(window.location.href);
-          // console.log(window.location.origin, keys[5], recipe[keys[1]][0][keys[4]], dataId);
           copy(`${window.location.origin}/${type}s/${id}`);
           setShare('Link copiado!');
         }}

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import { RecipesContext } from '../context/RecipesContext';
-import { BtnStart, Card, FavoriteIcon, ShareIcon } from '../components';
+import { BtnStart, Card, FavoriteIcon, ShareIcon, FavoriteClone } from '../components';
 
 const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb', 'idMeal', 'comida'];
 const keys2 = ['cocktail', 'drinks', 'strDrink', 'strDrinkThumb', 'idDrink', 'bebida'];
@@ -117,6 +117,7 @@ const RecipeDetails = () => {
     typeRecipe,
   } = useContext(RecipesContext);
   const keys = typeRecipe === 'comidas' ? keys1 : keys2;
+  const dataId = 'share-btn';
 
   useEffect(() => {
     const url = window.location.href.split('/');
@@ -127,14 +128,25 @@ const RecipeDetails = () => {
     fetchRecipeDetails(urlType === 'comidas' ? 'meal' : 'cocktail', urlId);
   }, [typeRecipe]);
 
-  const dataId = 'share-btn';
   return isLoading ? (
     <p>Loading...</p>
   ) : (
     <Card>
+      {/* {console.log(recipe[keys[1]][0])} */}
       {findLogo(recipe, keys)}
       <ShareIcon id={recipe[keys[1]][0][keys[4]]} type={keys[5]} dataId={dataId} />
-      <FavoriteIcon recipe={recipe} keys={keys} />
+      {/* <FavoriteIcon recipe={recipe} keys={keys} /> */}
+      <FavoriteClone
+        {...{
+          id: recipe[keys[1]][0][keys[4]],
+          type: keys[5],
+          area: recipe[keys[1]][0].strArea || '',
+          category: recipe[keys[1]][0].strCategory || '',
+          alcoholicOrNot: recipe[keys[1]][0].strAlcoholic || '',
+          name: recipe[keys[1]][0][keys[2]],
+          image: recipe[keys[1]][0][keys[3]],
+        }}
+      />
       {findIngredients(recipe, keys)}
       {findMethod(recipe, keys)}
       {findYoutube(recipe, keys)}

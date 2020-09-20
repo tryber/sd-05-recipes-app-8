@@ -17,6 +17,7 @@ import ExplorerButton from './ExplorerButton';
 import MainContents from './MainContents';
 import Suggestions from './Suggestions';
 import ShareIcon from './ShareIcon';
+import FavoriteClone from './FavoriteClone';
 
 export {
   FavoriteIcon,
@@ -38,4 +39,5 @@ export {
   MainContents,
   Suggestions,
   ShareIcon,
+  FavoriteClone,
 };
