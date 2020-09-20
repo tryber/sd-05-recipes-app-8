@@ -1,5 +1,5 @@
 import React from 'react';
-import { BtnCard, Header, ProfileIcon } from '../components';
+import { BtnCard, Header, ProfileIcon, MenuBottom } from '../components';
 import Card from '../components/Card';
 
 const headerIngredients = {
@@ -15,6 +15,7 @@ const ExploreByIngredients = () => (
   <Card>
     <Header {...headerIngredients} />
     <BtnCard {...logoutProps} />
+    <MenuBottom />
   </Card>
 );
 

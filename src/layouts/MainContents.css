@@ -4,6 +4,7 @@
   flex-flow: column;
   flex-grow: 2;
   height: 610px;
+  overflow: scroll;
   position: relative;
   top: 80px;
   width: 99%;
