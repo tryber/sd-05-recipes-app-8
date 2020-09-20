@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/RecipesContext';
 import { setFilterHeader } from '../services/getRecipeDetails';
-
 import '../layouts/SearchBar.css';
 
 const InputRender = (props) => {
