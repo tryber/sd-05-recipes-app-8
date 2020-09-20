@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import { RecipesContext } from '../context/RecipesContext';
-import { BtnStart, Card, FavoriteIcon, ShareIcon, FavoriteClone } from '../components';
+import { BtnStart, Card, ShareIcon, FavoriteClone } from '../components';
 
 const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb', 'idMeal', 'comida'];
 const keys2 = ['cocktail', 'drinks', 'strDrink', 'strDrinkThumb', 'idDrink', 'bebida'];

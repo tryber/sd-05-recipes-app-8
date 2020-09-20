@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import {
   BtnCard,
   Header,
   ProfileIcon,
   Card,
-  ShareIcon,
-  FavoriteIcon,
-  FavoriteClone,
+  // ShareIcon,
+  Finished,
+  // FavoriteIcon,
+  // FavoriteClone,
 } from '../components';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+// import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 const headerFavoriteRecipes = {
   left: <ProfileIcon />,
@@ -29,31 +30,6 @@ const FilterButtons = () => (
     <button data-testid="filter-by-drink-btn">Drinks</button>
   </div>
 );
-
-const Finished = (favRecipe) =>
-  JSON.parse(localStorage.getItem('favoriteRecipes')).map((x, index) => (
-    <div>
-      <Link to={`/${x.type}s/${x.id}`}>
-        <img
-          data-testid={`${index}-horizontal-image`}
-          src={x.image}
-          style={{ width: '50px' }}
-          alt="horizontal-recipe"
-        />
-      </Link>
-      <small data-testid={`${index}-horizontal-top-text`}>
-        {x.type === 'comida' ? `${x.area} - ${x.category}` : x.alcoholicOrNot}
-      </small>
-      <Link to={`/${x.type}s/${x.id}`}>
-        <b data-testid={`${index}-horizontal-name`}>{x.name}</b>
-      </Link>
-      <time data-testid={`${index}-horizontal-done-date`}>{x.doneDate}</time>
-      <ShareIcon id={x.id} type={x.type} dataId={`${index}-horizontal-share-btn`} />
-      <img src={blackHeartIcon} data-testid={`${index}-horizontal-favorite-btn`} />
-      {/* <mark data-testid={`${index}-${x.tags[0]}-horizontal-tag`}>{x.tags[0]}</mark> */}
-      {/* <mark data-testid={`${index}-${x.tags[1]}-horizontal-tag`}>{x.tags[1]}</mark> */}
-    </div>
-  ));
 
 const FavoritesRecipes = () => {
   const mockRecipes = [
@@ -89,7 +65,7 @@ const FavoritesRecipes = () => {
     <Card>
       <Header {...headerFavoriteRecipes} />
       <FilterButtons />
-      <Finished favRecipe={mockRecipes} />
+      <Finished keyStorage={'favoriteRecipes'} />
       <BtnCard {...logoutProps} />
     </Card>
   );

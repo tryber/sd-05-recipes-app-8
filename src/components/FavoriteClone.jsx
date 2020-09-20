@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
@@ -46,7 +46,7 @@ const FavoriteClone = (favRecipe) => {
 
 export default FavoriteClone;
 
-FavoriteClone.propTypes = {
-  favRecipe: PropTypes.node.isRequired,
-  //   keys: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
+// FavoriteClone.propTypes = {
+//   favRecipe: PropTypes.node.isRequired,
+//   keys: PropTypes.arrayOf(PropTypes.string).isRequired,
+// };
