@@ -8,7 +8,7 @@ const Suggestions = (recipe, keys) => {
   useEffect(() => {
     const ending = 'search.php?s=';
     fetchMenu(kind[0], ending);
-  }, []);
+  }, [fetchMenu, kind]);
 
   console.log(recipesRoster[5][kind[1]]);
   return (

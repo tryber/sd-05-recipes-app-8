@@ -17,7 +17,7 @@ const MainRecipes = () => {
     left: <ProfileIcon />,
     center: typeRecipe,
     right: <SearchIcon />,
-    id: 'page-title',
+    // id: 'page-title',
   };
   useEffect(() => {
     const url = window.location.href.split('/');
@@ -25,7 +25,7 @@ const MainRecipes = () => {
     setTypeRecipe(urlType);
     const searchTail = 'search.php?s=';
     fetchMenu(urlType, searchTail);
-  }, [typeRecipe]);
+  }, [typeRecipe, fetchMenu, setTypeRecipe]);
 
   return (
     <Card>

@@ -1,16 +1,5 @@
-import React, { useEffect } from 'react';
-// import { Link } from 'react-router-dom';
-import {
-  BtnCard,
-  Header,
-  ProfileIcon,
-  Card,
-  // ShareIcon,
-  Finished,
-  // FavoriteIcon,
-  // FavoriteClone,
-} from '../components';
-// import blackHeartIcon from '../images/blackHeartIcon.svg';
+import React from 'react';
+import { BtnCard, Header, ProfileIcon, Card, Finished } from '../components';
 
 const headerFavoriteRecipes = {
   left: <ProfileIcon />,
@@ -32,40 +21,13 @@ const FilterButtons = () => (
 );
 
 const FavoritesRecipes = () => {
-  const mockRecipes = [
-    {
-      id: '52771',
-      type: 'comida',
-      area: 'Italian',
-      category: 'Vegetarian',
-      alcoholicOrNot: '',
-      name: 'Spicy Arrabiata Penne',
-      image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
-    },
-    {
-      id: '178319',
-      type: 'bebida',
-      area: '',
-      category: 'Cocktail',
-      alcoholicOrNot: 'Alcoholic',
-      name: 'Aquamarine',
-      image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
-    },
-  ];
-
-  useEffect(() => {
-    localStorage.setItem('favoriteRecipes', JSON.stringify(mockRecipes));
-  }, [mockRecipes]);
-
-  // Object.values(JSON.parse(localStorage.getItem('favoriteRecipes'))).length === 0 ? (
-  //  !JSON.parse(localStorage.getItem('favoriteRecipes')) ? (
-  //   <strong>Loading...</strong>
-  // ) :
+  const hasChosen = JSON.parse(localStorage.getItem('favoriteRecipes'));
   return (
     <Card>
+      {!hasChosen && localStorage.setItem('favoriteRecipes', JSON.stringify([]))}
       <Header {...headerFavoriteRecipes} />
-      <FilterButtons />
-      <Finished keyStorage={'favoriteRecipes'} />
+      {hasChosen && <FilterButtons />}
+      {hasChosen && <Finished keyStorage={'favoriteRecipes'} />}
       <BtnCard {...logoutProps} />
     </Card>
   );

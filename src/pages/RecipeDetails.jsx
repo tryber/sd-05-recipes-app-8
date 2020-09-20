@@ -126,13 +126,12 @@ const RecipeDetails = () => {
     setTypeRecipe(urlType);
     setIdRecipe(urlId);
     fetchRecipeDetails(urlType === 'comidas' ? 'meal' : 'cocktail', urlId);
-  }, [typeRecipe]);
+  }, [typeRecipe, fetchRecipeDetails, setIdRecipe, setTypeRecipe]);
 
   return isLoading ? (
     <p>Loading...</p>
   ) : (
     <Card>
-      {/* {console.log(recipe[keys[1]][0])} */}
       {findLogo(recipe, keys)}
       <ShareIcon id={recipe[keys[1]][0][keys[4]]} type={keys[5]} dataId={dataId} />
       {/* <FavoriteIcon recipe={recipe} keys={keys} /> */}
@@ -157,6 +156,4 @@ const RecipeDetails = () => {
   );
 };
 
-// http://localhost:3000/comidas/52771
-// http://localhost:3000/bebidas/178319
 export default RecipeDetails;

@@ -28,7 +28,7 @@ const Finished = (keyStorage) =>
         alt="favorite-btn"
         data-testid={`${index}-horizontal-favorite-btn`}
       />
-      {/* {x.hasOwnProperty('tags') ? ( */}
+      {/* <FavoriteClone /> */}
       {Object.prototype.hasOwnProperty.call(x, 'tags') ? (
         <div>
           <mark data-testid={`${index}-${x.tags[0]}-horizontal-tag`}>{x.tags[0]}</mark>

@@ -32,6 +32,8 @@ const headerProfile = {
 
 const Profile = () => (
   <Card>
+    {!localStorage.getItem('user') &&
+      localStorage.setItem('user', JSON.stringify({ email: 'teste@teste.com' }))}
     <Header {...headerProfile} />
     <p data-testid="profile-email">{JSON.parse(localStorage.getItem('user')).email}</p>
     <BtnCard {...doneProps} />
