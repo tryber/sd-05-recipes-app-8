@@ -29,6 +29,7 @@ const RecipesProvider = ({ children }) => {
   const [surpriseMe, setSurpriseMe] = useState(true);
   const [areas, setAreas] = useState([]);
   const [selectedArea, setSelectedArea] = useState('');
+  const [ingredients, setIngredients] = useState([]);
 
   const fetchRecipeDetails = (type, id) => {
     getRecipeDetails(type, id).then((receipt) => {
@@ -46,14 +47,12 @@ const RecipesProvider = ({ children }) => {
   };
 
   const fetchKyleMenu = (apiCall, type, category = '') => {
-    const option = type === 'comidas' ? 'meals' : 'drinks';
+    const opt = type === 'comidas' ? 'meals' : 'drinks';
     apiCall(category).then((menu) => {
-      console.log(menu);
-      getButcher(menu[option]);
+      getButcher(menu[opt]);
       setIsLoading(false);
     });
   };
-
   const context = {
     categories,
     email,
@@ -93,6 +92,8 @@ const RecipesProvider = ({ children }) => {
     setAreas,
     selectedArea,
     setSelectedArea,
+    ingredients,
+    setIngredients,
   };
   return (
     <RecipesContext.Provider value={context}>

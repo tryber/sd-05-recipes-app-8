@@ -1,45 +1,23 @@
-import React, {
-  // useContext,
-  useEffect } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-// import { getRandomMeal } from '../services/mealAPI';
-// import { getRandomDrink } from '../services/drinkAPI';
-// import { RecipesContext } from '../context/RecipesContext';
+import { RecipesContext } from '../context/RecipesContext';
 import '../layouts/ExplorerButton.css';
 
 const ExplorerButton = (props) => {
-  // const { fetchKyleMenu, recipesRoster } = useContext(RecipesContext);
-  const {
-    label,
-    // pathTo
-  } = props;
-  // const recipeId = pathTo === 'comidas' ? 'idMeal' : 'idDrink';
-  // const apiCall = { 'comidas': getRandomMeal, 'bebidas': getRandomDrink,}
-  // const redirectTo = `/${pathTo}/${recipesRoster[recipeId]}`;
-  // let redirect = false;
-  
-  useEffect(() => {
-    // fetchKyleMenu(apiCall[pathTo], '')
-    // return () => redirect && console.log(
-    //   `/${pathTo}/${recipesRoster[0][recipeId]}`
-    //   // recipesRoster[0][recipeId]
-    //   );
-  },[])
-
+  const { idRecipe } = useContext(RecipesContext);
+  const recipeType = window.location.pathname.split('/')[2];
 
   return (
     <Link
-      onClick={() => {
-      // console.log(`/${pathTo}/${recipesRoster[recipeId]}`);
-      // redirect = true;
-      // console.log(redirect);
-      }}
-      // to={`/${pathTo}/${recipesRoster[recipeId]}`}
+      to={`/${recipeType}/${idRecipe}`}
       className="explorer-button"
+    >
+    <button
       data-testid="explore-surprise"
     >
-      <span className="explorer-button-label">{label}</span>
+      <span className="explorer-button-label">Me Surpreenda</span>
+    </button>
     </Link>
   );
 };

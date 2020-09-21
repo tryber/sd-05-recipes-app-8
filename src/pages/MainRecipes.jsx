@@ -38,9 +38,13 @@ const MainRecipes = () => {
       apiCall = fetchDrinks;
     }
     fetchKyleMenu(apiCall, urlType, categorySelected);
-    // const searchTail = 'search.php?s=';
-    // fetchMenu(urlType, searchTail);
-  }, [typeRecipe, categorySelected]);
+  }, [categorySelected,
+    typeRecipe,
+    setTypeRecipe,
+    showSearchBar,
+    recipesRoster,
+    fetchKyleMenu,
+    urlType]);
 
   if (recipesRoster.length === 1) {
     const getId = `id${urlType === 'comidas' ? 'Meal' : 'Drink'}`;

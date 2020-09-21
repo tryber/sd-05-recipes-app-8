@@ -18,11 +18,11 @@ import '../layouts/ExploreByArea.css';
 
 const Places = () => {
   const { areas, setAreas, setSelectedArea } = useContext(RecipesContext);
-  useEffect(() => {
-    fetchMealAreas().then(({ meals }) =>
-      setAreas(['All', ...meals.map(({ strArea }) => strArea)]),
-    );
-  }, [setAreas]);
+  // useEffect(() => {
+  //   fetchMealAreas().then(({ meals }) =>
+  //     setAreas(['all', ...meals.map(({ strArea }) => strArea)]),
+  //   );
+  // }, [setAreas]);
   return (
     <select
       name="area"
@@ -33,6 +33,7 @@ const Places = () => {
       lista
       {areas.map((area) => (
         <option
+          key={area}
           data-testid={`${area}-option`}
           value={area.toLowerCase() === 'all' ? '' : area}
         >
@@ -49,9 +50,16 @@ const ExploreByArea = () => {
     right: <SearchIcon />,
     center: 'Explorar Origem',
   };
-  const { showSearchBar, selectedArea, fetchKyleMenu } = useContext(
+  const { setAreas, showSearchBar, selectedArea, fetchKyleMenu } = useContext(
     RecipesContext,
   );
+  useEffect(() => {
+    fetchMealAreas().then(({ meals }) => 
+      setAreas(['All', ...meals.map(({ strArea }) => strArea)])
+    )
+    const apiCall = selectedArea === '' ? fetchMeals : fetchMealsByArea;
+    fetchKyleMenu(apiCall, 'comidas', selectedArea);
+  }, []);
   useEffect(() => {
     const apiCall = selectedArea === '' ? fetchMeals : fetchMealsByArea;
     fetchKyleMenu(apiCall, 'comidas', selectedArea);

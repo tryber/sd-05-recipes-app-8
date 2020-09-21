@@ -15,6 +15,7 @@ import SearchBar from './SearchBar';
 import Progress from './Progress';
 import ExplorerButton from './ExplorerButton';
 import MainContents from './MainContents';
+import IngredientCard from './IngredientCard';
 
 export {
   FavoriteIcon,
@@ -34,4 +35,5 @@ export {
   Progress,
   ExplorerButton,
   MainContents,
+  IngredientCard,
 };

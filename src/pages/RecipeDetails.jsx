@@ -4,7 +4,14 @@ import { RecipesContext } from '../context/RecipesContext';
 import { BtnStart, Card, FavoriteIcon } from '../components';
 
 const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb', 'idMeal', 'comida'];
-const keys2 = ['cocktail', 'drinks', 'strDrink', 'strDrinkThumb', 'idDrink', 'bebida'];
+const keys2 = [
+  'cocktail',
+  'drinks',
+  'strDrink',
+  'strDrinkThumb',
+  'idDrink',
+  'bebida',
+];
 
 const findLogo = (receipt, types) => (
   <figure>
@@ -17,9 +24,13 @@ const findLogo = (receipt, types) => (
     <figcaption>
       <p data-testid="recipe-title">{receipt[types[1]][0][types[2]]}</p>
       {types[1] === 'drinks' ? (
-        <span data-testid="recipe-category">{receipt[types[1]][0].strAlcoholic}</span>
+        <span data-testid="recipe-category">
+          {receipt[types[1]][0].strAlcoholic}
+        </span>
       ) : (
-        <span data-testid="recipe-category">{receipt[types[1]][0].strCategory}</span>
+        <span data-testid="recipe-category">
+          {receipt[types[1]][0].strCategory}
+        </span>
       )}
     </figcaption>
   </figure>
@@ -51,7 +62,10 @@ const findIngredients = (receipt, types) => {
   if (types[1] === 'meals') {
     const ingredientsMenu = Object.values(receipt[types[1]][0]).slice(9, 29);
     const measureRecipes = Object.values(receipt[types[1]][0]).slice(29, 49);
-    const merged = ingredientsMenu.map((value, i) => [value, measureRecipes[i]]);
+    const merged = ingredientsMenu.map((value, i) => [
+      value,
+      measureRecipes[i],
+    ]);
     return ingredientsList(merged);
   }
   const ingredientsMenu = Object.values(receipt[types[1]][0]).slice(21, 36);
@@ -115,9 +129,6 @@ const RecipeDetails = () => {
     setIdRecipe,
     setTypeRecipe,
     typeRecipe,
-    // surpriseMe,
-    // setSurpriseMe,
-    // fetchKyleMenu,
   } = useContext(RecipesContext);
   const keys = typeRecipe === 'comidas' ? keys1 : keys2;
 
@@ -128,7 +139,7 @@ const RecipeDetails = () => {
     setTypeRecipe(urlType);
     setIdRecipe(urlId);
     fetchRecipeDetails(urlType === 'comidas' ? 'meal' : 'cocktail', urlId);
-  }, [typeRecipe]);
+  }, [typeRecipe, fetchRecipeDetails, setIdRecipe, setTypeRecipe]);
 
   return isLoading ? (
     <p>Loading...</p>

@@ -5,6 +5,8 @@ const mealsRecipes = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 const mealsByCategory = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
 const randomMeal = 'https://www.themealdb.com/api/json/v1/1/random.php';
 const mealByArea = 'https://www.themealdb.com/api/json/v1/1/filter.php?a=';
+const ingredientList = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
+const mealByIngredient = 'https://www.themealdb.com/api/json/v1/1/filter.php?i';
 
 const fetchData = (api) =>
   fetch(api).then((response) =>
@@ -18,6 +20,7 @@ export const fetchMeals = (category = '') => {
   }
   return fetchData(`${mealsByCategory}${category}`);
 };
-export const getRandomMeal = () => fetchData(randomMeal);
+export const fetchRandomMeal = () => fetchData(randomMeal);
 export const fetchMealAreas = () => fetchData(mealAreas);
 export const fetchMealsByArea = (area) => fetchData(`${mealByArea}${area}`);
+export const fetchMealsByIngredient = (area) => fetchData(`${mealByIngredient}${area}`);
