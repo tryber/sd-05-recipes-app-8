@@ -8,9 +8,9 @@ const fetchData = (api) =>
     response.json().then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
   );
 
-export const fetchCategories = () => fetchData(drinkCategories);
-export const fetchDrinks = (category = 'All') => {
-  if (category === 'All') {
+export const fetchDrinksCategories = () => fetchData(drinkCategories);
+export const fetchDrinks = (category = '') => {
+  if (category === '') {
     return fetchData(`${drinksRecipes}`);
   }
   return fetchData(`${drinksByCategory}${category}`);

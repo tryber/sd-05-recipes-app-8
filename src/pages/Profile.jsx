@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '../components/Card';
-import { ProfileIcon, Header, BtnCard } from '../components';
+import { ProfileIcon, Header, BtnCard, MenuBottom } from '../components';
 
 const doneProps = {
   id: 'profile-done-btn',
@@ -40,6 +40,7 @@ const Profile = () => (
     <BtnCard {...doneProps} />
     <BtnCard {...favoriteProps} />
     <BtnCard {...logoutProps} />
+    <MenuBottom />
   </Card>
 );
 
