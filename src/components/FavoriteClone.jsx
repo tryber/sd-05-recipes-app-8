@@ -20,7 +20,7 @@ const saveFavorite = (heartIcon, setFavIcon, favRecipe) => {
     : setFavourite();
 };
 
-const FavoriteClone = (favRecipe) => {
+const FavoriteClone = (favRecipe, dataId) => {
   const [favIcon, setFavIcon] = useState(whiteHeartIcon);
   useEffect(() => {
     if (!localStorage.getItem('favoriteRecipes')) {
@@ -33,11 +33,16 @@ const FavoriteClone = (favRecipe) => {
       setFavIcon(blackHeartIcon);
     } else setFavIcon(whiteHeartIcon);
   }, [favRecipe]);
-
+  // console.log(favRecipe, dataId);
   return (
     <figure>
-      <button onClick={() => saveFavorite(favIcon, setFavIcon, favRecipe)}>
-        <img data-testid="favorite-btn" src={favIcon} alt="favoriteIcon" />
+      <button
+        onClick={() => {
+          saveFavorite(favIcon, setFavIcon, favRecipe);
+          // window.location.reload();
+        }}
+      >
+        <img data-testid={dataId} src={favIcon} alt="favoriteIcon" />
       </button>
     </figure>
   );

@@ -1,6 +1,6 @@
-import React from 'react';
-import Card from '../components/Card';
-import { BtnCard } from '../components';
+import React, { useContext } from 'react';
+import { RecipesContext } from '../context/RecipesContext';
+import { BtnCard, Card, Ingredients, LogoRecipe } from '../components';
 
 const logoutProps = {
   direction: '/',
@@ -16,12 +16,20 @@ const doneProps = {
   id: 'done',
 };
 
-const DoingRecipes = () => (
-  <Card>
-    «In Progress»
-    <BtnCard {...logoutProps} />
-    <BtnCard {...doneProps} />
-  </Card>
-);
+const DoingRecipes = () => {
+  const { recipe, keys } = useContext(RecipesContext);
+  const key = Object.keys(JSON.parse(localStorage.getItem('inProgressRecipes')));
+  const receipt = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  const menu = { item: Object.values(receipt[key])[0], quantity: Array(20).fill('') };
+  console.log(menu.item, menu.quantity);
+  return (
+    <Card>
+      <LogoRecipe {...{ recipe, keys }} />
+      <Ingredients {...{ recipe, keys }} />
+      <BtnCard {...logoutProps} />
+      <BtnCard {...doneProps} />
+    </Card>
+  );
+};
 
 export default DoingRecipes;
