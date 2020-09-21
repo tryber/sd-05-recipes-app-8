@@ -1,4 +1,3 @@
-import FavoriteIcon from './FavoriteIcon';
 import Card from './Card';
 import BtnCard from './BtnCard';
 import BtnLogin from './BtnLogin';
@@ -15,9 +14,12 @@ import SearchBar from './SearchBar';
 import Progress from './Progress';
 import ExplorerButton from './ExplorerButton';
 import MainContents from './MainContents';
+import Suggestions from './Suggestions';
+import ShareIcon from './ShareIcon';
+import FavoriteClone from './FavoriteClone';
+import Finished from './Finished';
 
 export {
-  FavoriteIcon,
   Card,
   BtnCard,
   BtnLogin,
@@ -34,4 +36,8 @@ export {
   Progress,
   ExplorerButton,
   MainContents,
+  Suggestions,
+  ShareIcon,
+  FavoriteClone,
+  Finished,
 };

@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  ProfileIcon,
-  Header,
-  MainContents,
-  ExplorerButton,
-  MenuBottom,
-} from '../components';
+import { ProfileIcon, Header, MainContents, ExplorerButton, MenuBottom } from '../components';
 import '../layouts/Explorer.css';
 
 const surpriseMe = {
@@ -22,7 +16,7 @@ class ExploreRecipes extends Component {
     const recipeType = pathname === '/explorar/comidas' ? 'comidas' : 'bebidas';
     const headerExplorer = {
       left: <ProfileIcon />,
-      center: `Explorar ${recipeType}`,
+      center: `Explorar ${recipeType[0].toUpperCase() + recipeType.slice(1)}`,
     };
     const searchByIngredient = {
       testId: 'explore-by-ingredient',
@@ -39,9 +33,7 @@ class ExploreRecipes extends Component {
         <Header {...headerExplorer} />
         <MainContents>
           <ExplorerButton {...searchByIngredient} />
-          {pathname === '/explorar/comidas' && (
-            <ExplorerButton {...searchByArea} />
-          )}
+          {pathname === '/explorar/comidas' && <ExplorerButton {...searchByArea} />}
           <ExplorerButton {...surpriseMe} />
         </MainContents>
         <MenuBottom />
