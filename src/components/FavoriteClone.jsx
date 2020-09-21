@@ -44,8 +44,3 @@ const FavoriteClone = (favRecipe) => {
 };
 
 export default FavoriteClone;
-
-// FavoriteClone.propTypes = {
-//   favRecipe: PropTypes.node.isRequired,
-//   keys: PropTypes.arrayOf(PropTypes.string).isRequired,
-// };
