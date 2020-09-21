@@ -1,0 +1,5 @@
+.profile-user {
+  display: flex;
+  flex-direction: column;
+  margin: 60px 10px 10px;
+}

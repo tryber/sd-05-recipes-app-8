@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Card from '../components/Card';
 import { ProfileIcon, Header, BtnCard, MenuBottom } from '../components';
+import { RecipesContext } from '../context/RecipesContext';
+import '../layouts/Profile.css';
 
 const doneProps = {
   id: 'profile-done-btn',
@@ -30,15 +32,22 @@ const headerProfile = {
   action: false,
 };
 
-const Profile = () => (
-  <Card>
-    <Header {...headerProfile} />
-    <p data-testid="profile-email">{JSON.parse(localStorage.getItem('user')).email}</p>
-    <BtnCard {...doneProps} />
-    <BtnCard {...favoriteProps} />
-    <BtnCard {...logoutProps} />
-    <MenuBottom />
-  </Card>
-);
+const Profile = () => {
+  const {email} = useContext(RecipesContext);
+  return (
+    <Card>
+      <Header {...headerProfile} />
+      {console.log(email)}
+      <p className="profile-user" data-testid="profile-email">
+        {/* {JSON.parse(localStorage.getItem('user')).email} */}
+        {email}
+      </p>
+      <BtnCard {...doneProps} />
+      <BtnCard {...favoriteProps} />
+      <BtnCard {...logoutProps} />
+      <MenuBottom />
+    </Card>
+  );
+};
 
 export default Profile;
