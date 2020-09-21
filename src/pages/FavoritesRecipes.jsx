@@ -4,12 +4,15 @@ import { BtnCard, Header, ProfileIcon, Card, Finished } from '../components';
 const headerFavoriteRecipes = {
   left: <ProfileIcon />,
   center: 'Receitas Favoritas',
+  right: false,
   id: 'page-title',
 };
 
 const logoutProps = {
   direction: '/',
   value: 'Sair',
+  id: 'logout-btn',
+  action: false,
 };
 
 const FilterButtons = () => (

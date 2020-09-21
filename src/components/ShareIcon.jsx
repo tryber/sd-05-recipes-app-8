@@ -7,14 +7,16 @@ const ShareIcon = ({ id, type, dataId }) => {
   const [share, setShare] = useState('');
   return (
     <figure>
-      <button
-        data-testid={dataId}
-        onClick={() => {
-          copy(`${window.location.origin}/${type}s/${id}`);
-          setShare('Link copiado!');
-        }}
-      >
-        <img src={shareIcon} alt="shareIcon" />
+      <button>
+        <img
+          data-testid={dataId}
+          src={shareIcon}
+          alt="shareIcon"
+          onClick={() => {
+            copy(`${window.location.origin}/${type}s/${id}`);
+            setShare('Link copiado!');
+          }}
+        />
       </button>
       {share}
     </figure>

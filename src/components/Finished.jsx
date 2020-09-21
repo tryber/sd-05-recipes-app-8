@@ -23,11 +23,9 @@ const Finished = (keyStorage) =>
       </Link>
       <time data-testid={`${index}-horizontal-done-date`}>{x.doneDate}</time>
       <ShareIcon id={x.id} type={x.type} dataId={`${index}-horizontal-share-btn`} />
-      <img
-        src={blackHeartIcon}
-        alt="favorite-btn"
-        data-testid={`${index}-horizontal-favorite-btn`}
-      />
+      <button data-testid={`${index}-horizontal-favorite-btn`}>
+        <img src={blackHeartIcon} alt="favorite-btn" />
+      </button>
       {/* <FavoriteClone /> */}
       {Object.prototype.hasOwnProperty.call(x, 'tags') ? (
         <div>

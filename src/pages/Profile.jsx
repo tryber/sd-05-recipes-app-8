@@ -26,6 +26,7 @@ const logoutProps = {
 const headerProfile = {
   left: <ProfileIcon />,
   center: 'Perfil',
+  right: false,
   id: 'page-title',
   action: false,
 };

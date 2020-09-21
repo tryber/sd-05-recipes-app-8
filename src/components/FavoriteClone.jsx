@@ -22,7 +22,6 @@ const saveFavorite = (heartIcon, setFavIcon, favRecipe) => {
 
 const FavoriteClone = (favRecipe) => {
   const [favIcon, setFavIcon] = useState(whiteHeartIcon);
-  console.log(favRecipe);
   useEffect(() => {
     if (!localStorage.getItem('favoriteRecipes')) {
       localStorage.setItem('favoriteRecipes', JSON.stringify([]));
