@@ -1,4 +1,3 @@
-import FavoriteIcon from './FavoriteIcon';
 import Card from './Card';
 import BtnCard from './BtnCard';
 import BtnLogin from './BtnLogin';
@@ -21,7 +20,6 @@ import FavoriteClone from './FavoriteClone';
 import Finished from './Finished';
 
 export {
-  FavoriteIcon,
   Card,
   BtnCard,
   BtnLogin,
