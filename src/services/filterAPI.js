@@ -1,47 +1,43 @@
-export const mealFilterIngredient = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=';
-export const mealFilterName = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
-export const mealFilterFL = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
-export const drinkFilterIngredient = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?i=';
-export const drinkFilterName = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=';
-export const drinkFilterFL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
-const filter = ['ingredient', 'name', 'first-letter'];
+import { fetchRecipes } from './getRecipeDetails'
 
-function fetchFilter(api, filter) {
-  fetch(`${api}${filter}`)
-    .then((response) => {
-      console.log(response)
-      response
-        .json()
-        .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)));
-    });
-}
+// variável que recebe valor conforme muda estado do tipo de filtro
+export let typeSearch;
 
-export const cocktailFetch = (btn, setState, inputText) => {
-  switch (btn) {
-    case btn === filter[0]:
-      return Promise.resolve(fetchFilter(mealFilterIngredient, inputText)
-        .then((data) => setState([data])));
-    case btn === filter[1]:
-      return Promise.resolve(fetchFilter(mealFilterName, inputText)
-        .then((data) => setState([data])));
-    case btn === filter[2]:
-      inputText.length !== 1 ? alert('Sua busca deve conter somente 1 (um) caracter') :
-        Promise.resolve(fetchFilter(mealFilterFL, inputText)
-          .then((data) => setState([data])));
-  }
-}
-
-export const mealsFetch = (btn, setState, inputText) => {
-  switch (btn) {
-    case btn === filter[0]:
-      return Promise.resolve(fetchFilter(drinkFilterIngredient, inputText)
-        .then((data) => setState([data])));
-    case btn === filter[1]:
-      return Promise.resolve(fetchFilter(drinkFilterName, inputText)
-        .then((data) => setState([data])));
-    case btn === filter[2]:
-      inputText.length !== 1 ? alert('Sua busca deve conter somente 1 (um) caracter') :
-        Promise.resolve(fetchFilter(drinkFilterFL, inputText)
-          .then((data) => setState([data])));
-  }
+export const ingredientFilter = (typeRecipe, text) => {
+  typeRecipe === 'comidas' ?
+    `filter.php?i=${text}` :
+    `search.php?i=${text}`
 };
+
+export const nameFilter = (typeRecipe, text) => {
+  typeRecipe === 'comidas' ?
+    `search.php?s=${text}` :
+    `search.php?f=${text}`;
+};
+
+export const firstLetterFilter = (typeRecipe, text) => {
+  typeRecipe === 'comidas' ?
+    `search.php?f=${text}` :
+    `search.php?s=${text}`;
+};
+
+export function checkType(filterType, searchBarInput) {
+  switch (filterType) {
+    case filterType === 'ingredient':
+      typeSearch === ingredientFilter(searchBarInput);
+    case filterType === 'name':
+      typeSearch === nameFilter(searchBarInput);
+    case filterType === 'first-letter':
+      typeSearch === firstLetterFilter(searchBarInput);
+    default:
+      typeSearch;
+  }
+}
+
+export const fetchByFilter = (setState, typeRecipe) => {
+  return typeRecipe === 'comida' ?
+    fetchRecipes('meal', typeSearch)
+      .then(({ meals }) => setState([meals])) :
+    fetchRecipes('cocktails', typeSearch)
+      .then(({ cocktails }) => setState([cocktails]));
+}

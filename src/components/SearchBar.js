@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/RecipesContext';
-import { cocktailFetch, mealsFetch, setFilterHeader } from '../services/filterAPI';
 
 import '../layouts/SearchBar.css';
 
@@ -61,12 +60,6 @@ const SearchBar = () => {
       <button
         type="button"
         data-testid="exec-search-btn"
-        onClick={() => {
-          console.log(typeRecipe, setSearchBarInput, filterType, setRecipesFiltered, searchBarInput)
-          typeRecipe === 'comidas' ?
-            mealsFetch(filterType, setRecipesFiltered, searchBarInput) :
-            cocktailFetch(filterType, setRecipesFiltered, searchBarInput)
-        }}
       >
         Buscar
       </button>
