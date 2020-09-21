@@ -14,7 +14,7 @@ const logoutProps = {
 
 const ExploreByIngredients = () => {
   const {} = useContext(RecipesContext);
-  
+
   return (
   <Card>
     <Header {...headerIngredients} />

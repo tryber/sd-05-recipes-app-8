@@ -28,26 +28,22 @@ const logoutProps = {
 const headerProfile = {
   left: <ProfileIcon />,
   center: 'Perfil',
+  right: false,
   id: 'page-title',
   action: false,
 };
 
-const Profile = () => {
-  const {email} = useContext(RecipesContext);
-  return (
-    <Card>
-      <Header {...headerProfile} />
-      {console.log(email)}
-      <p className="profile-user" data-testid="profile-email">
-        {/* {JSON.parse(localStorage.getItem('user')).email} */}
-        {email}
-      </p>
-      <BtnCard {...doneProps} />
-      <BtnCard {...favoriteProps} />
-      <BtnCard {...logoutProps} />
-      <MenuBottom />
-    </Card>
-  );
-};
+const Profile = () => (
+  <Card>
+    {!localStorage.getItem('user') &&
+      localStorage.setItem('user', JSON.stringify({ email: 'teste@teste.com' }))}
+    <Header {...headerProfile} />
+    <p data-testid="profile-email">{JSON.parse(localStorage.getItem('user')).email}</p>
+    <BtnCard {...doneProps} />
+    <BtnCard {...favoriteProps} />
+    <BtnCard {...logoutProps} />
+    <MenuBottom />
+  </Card>
+);
 
 export default Profile;

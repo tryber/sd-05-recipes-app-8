@@ -51,7 +51,7 @@ BtnStart.propTypes = {
   typeRecipe: PropTypes.string.isRequired,
   idRecipe: PropTypes.string.isRequired,
   idTag: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.arrayOf(PropTypes.string).isRequired,
   recipe: PropTypes.node.isRequired,
   keyword: PropTypes.node.isRequired,
 };

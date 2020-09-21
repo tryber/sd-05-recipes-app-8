@@ -27,7 +27,7 @@ const MainRecipes = () => {
     left: <ProfileIcon />,
     center: typeRecipe,
     right: <SearchIcon />,
-    id: 'page-title',
+    // id: 'page-title',
   };
   const url = window.location.href.split('/');
   const urlType = url.reverse()[0];
