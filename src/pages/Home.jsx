@@ -12,6 +12,7 @@ import {
   Profile,
   RecipeDetails,
   ExploreByArea,
+  NotFound,
 } from './';
 
 const Home = () => (
@@ -41,6 +42,7 @@ const Home = () => (
       <Route exact path="/receitas-favoritas" component={FavoritesRecipes} />
       <Route exact path="/receitas-feitas" component={DoneRecipes} />
       <Route exact path="/perfil" component={Profile} />
+      <Route component={NotFound} />
     </Switch>
   </Router>
 );

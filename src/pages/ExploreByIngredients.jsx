@@ -2,6 +2,12 @@ import React, { useContext, useEffect } from 'react';
 import { BtnCard, Header, ProfileIcon, MenuBottom } from '../components';
 import Card from '../components/Card';
 import { RecipesContext } from '../context/RecipesContext';
+import { fetchMealIngredients } from '../services/mealAPI';
+import { fetchDrinkIngredients } from '../services/drinkAPI';
+import parseRecipesData from '../helper/fitRecipesData';
+import IngredientCard from '../components/IngredientCard';
+// import { fetchDrinkIngredients } from '../services/drinkAPI';
+import '../layouts/MainFoodContent.css';
 
 const headerIngredients = {
   left: <ProfileIcon />,
@@ -12,15 +18,43 @@ const logoutProps = {
   value: 'Sair',
 };
 
+const IngredientList = () => {
+  const { ingredients } = useContext(RecipesContext);
+  return (
+    <div className="recipes-card-container">
+      {ingredients.length >= 1 &&
+        ingredients.slice(0, 12).map(({ strIngredient }, idx) => (
+          <IngredientCard
+            idx={idx.toString()}
+            text={strIngredient}
+            key={idx.toString()}
+            // imagePath={mealIngSRC(strIngredient)}
+          />
+        ))}
+    </div>
+  );
+};
+
 const ExploreByIngredients = () => {
-  const {} = useContext(RecipesContext);
+  const { setIngredients } = useContext(RecipesContext);
+  const url = window.location.pathname.split('/')[2];
+  useEffect(() => {
+    setIngredients([]);
+    const apiCall =
+      url === 'comidas' ? fetchMealIngredients : fetchDrinkIngredients;
+    apiCall().then((response) =>
+      setIngredients([...parseRecipesData(response)]),
+    );
+  }, []);
 
   return (
-  <Card>
-    <Header {...headerIngredients} />
-    <BtnCard {...logoutProps} />
-    <MenuBottom />
-  </Card>
-);}
+    <Card>
+      <Header {...headerIngredients} />
+      <BtnCard {...logoutProps} />
+      <IngredientList />
+      <MenuBottom />
+    </Card>
+  );
+};
 
 export default ExploreByIngredients;

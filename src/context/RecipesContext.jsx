@@ -38,7 +38,9 @@ const RecipesProvider = ({ children }) => {
     });
   };
 
-  const getButcher = (listMenu) => setRecipesRoster(listMenu.slice(0, 12));
+  const getButcher = (listMenu) => {
+    setRecipesRoster(listMenu.slice(0, 12));
+  };
 
   const fetchMenu = (type, suffix) => {
     const option =
@@ -53,6 +55,11 @@ const RecipesProvider = ({ children }) => {
       setIsLoading(false);
     });
   };
+
+  const fillContext = (data, context) => {
+    context(['All', ...data]);
+  };
+
   const context = {
     categories,
     email,
@@ -94,6 +101,7 @@ const RecipesProvider = ({ children }) => {
     setSelectedArea,
     ingredients,
     setIngredients,
+    fillContext,
   };
   return (
     <RecipesContext.Provider value={context}>
