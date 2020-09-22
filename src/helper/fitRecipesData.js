@@ -15,11 +15,14 @@ const nameBase = {
 };
 
 function itemParser(item, type) {
+  const newItem = {};
   Object.keys(nameBase[type]).forEach((keyName) => {
     if (Object.keys(item).includes(keyName)) {
-      item[nameBase[type][keyName]] = item[keyName];
-      delete item[keyName];
+      newItem[nameBase[type][keyName]] = item[keyName];
+    } else {
+      newItem[keyName] = item[keyName];
     }
+    return newItem;
   });
 }
 

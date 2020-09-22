@@ -1,21 +1,16 @@
 import React, { useContext, useEffect } from 'react';
-import { BtnCard, Header, ProfileIcon, MenuBottom } from '../components';
+import { Header, ProfileIcon, MenuBottom } from '../components';
 import Card from '../components/Card';
 import { RecipesContext } from '../context/RecipesContext';
 import { fetchMealIngredients } from '../services/mealAPI';
 import { fetchDrinkIngredients } from '../services/drinkAPI';
 import parseRecipesData from '../helper/fitRecipesData';
 import IngredientCard from '../components/IngredientCard';
-// import { fetchDrinkIngredients } from '../services/drinkAPI';
 import '../layouts/MainFoodContent.css';
 
 const headerIngredients = {
   left: <ProfileIcon />,
   center: 'Explorar Ingredientes',
-};
-const logoutProps = {
-  direction: '/',
-  value: 'Sair',
 };
 
 const IngredientList = () => {

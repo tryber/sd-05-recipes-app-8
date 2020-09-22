@@ -19,6 +19,6 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  left: <div/>,
-  right: <div/>,
-}
+  left: <div />,
+  right: <div />,
+};

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Card from '../components/Card';
 import { ProfileIcon, Header, BtnCard, MenuBottom } from '../components';
 import '../layouts/Profile.css';
