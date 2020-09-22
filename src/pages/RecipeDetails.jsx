@@ -13,19 +13,22 @@ import {
 
 const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb', 'idMeal', 'comida'];
 const keys2 = ['cocktail', 'drinks', 'strDrink', 'strDrinkThumb', 'idDrink', 'bebida'];
+const favId = 'favorite-btn';
+const shareId = 'share-btn';
+const itemId = 'name-and-measure';
 
-const findYoutube = (receipt, types) =>
-  types[1] === 'meals' && (
+const YouTubeSample = (props) =>
+  props.keys[1] === 'meals' && (
     <div data-testid="video">
       <YouTube
-        videoId={receipt[types[1]][0].strYoutube.split('=')[1]}
+        videoId={props.recipe[props.keys[1]][0].strYoutube.split('=')[1]}
         alt="video"
         opts={{ height: '200', width: '320' }}
       />
     </div>
   );
 
-const findSuggestions = () => (
+const Suggestions = () => (
   <figure>
     <img
       data-testid="0-recomendation-card"
@@ -50,10 +53,6 @@ const startRecipe = (typeMenu, idMenu, receipt, type) => {
   };
   return progressProps;
 };
-const dataId = 'share-btn';
-const url = window.location.href.split('/');
-const urlType = url.reverse()[1];
-const urlId = url[0];
 
 const RecipeDetails = () => {
   const {
@@ -67,35 +66,30 @@ const RecipeDetails = () => {
     setTypeRecipe,
     typeRecipe,
   } = useContext(RecipesContext);
+
   useEffect(() => {
+    const url = window.location.href.split('/');
+    const urlType = url.reverse()[1];
+    const urlId = url[0];
     setTypeRecipe(urlType);
     setIdRecipe(urlId);
     fetchRecipeDetails(urlType === 'comidas' ? 'meal' : 'cocktail', urlId);
   }, [typeRecipe]);
+
   if (typeRecipe === 'comidas') setKeys(keys1);
   else setKeys(keys2);
+
   return isLoading ? (
     <p>Loading...</p>
   ) : (
     <Card>
       <LogoRecipe {...{ recipe, keys }} />
-      <ShareIcon id={recipe[keys[1]][0][keys[4]]} type={keys[5]} dataId={dataId} />
-      <FavoriteClone
-        {...{
-          id: recipe[keys[1]][0][keys[4]],
-          type: keys[5],
-          area: recipe[keys[1]][0].strArea || '',
-          category: recipe[keys[1]][0].strCategory || '',
-          alcoholicOrNot: recipe[keys[1]][0].strAlcoholic || '',
-          name: recipe[keys[1]][0][keys[2]],
-          image: recipe[keys[1]][0][keys[3]],
-        }}
-        dataId="favorite-btn"
-      />
-      <Ingredients {...{ recipe, keys }} />
+      <ShareIcon id={idRecipe} type={typeRecipe} dataId={shareId} />
+      <FavoriteClone {...{ recipe, keys, favId }} />
+      <Ingredients {...{ recipe, keys, itemId }} />
       <Instructions {...{ recipe, keys }} />
-      {findYoutube(recipe, keys)}
-      {findSuggestions()}
+      <YouTubeSample {...{ recipe, keys }} />
+      <Suggestions {...{ recipe, keys }} />
       <BtnStart {...startRecipe(typeRecipe, idRecipe, recipe, keys)} />
     </Card>
   );

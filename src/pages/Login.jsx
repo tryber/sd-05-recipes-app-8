@@ -4,7 +4,7 @@ import Card from '../components/Card';
 
 const Login = () => (
   <Card>
-    <h1>Batida de Front</h1>
+    <p>foo@bar.com</p>
     <InputEmail />
     <InputPassword />
     <BtnLogin />
