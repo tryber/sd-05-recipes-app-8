@@ -9,7 +9,7 @@ const ShareIcon = ({ id, type, dataId }) => {
     <figure>
       <button
         onClick={() => {
-          copy(`${window.location.origin}/${type}s/${id}`);
+          copy(`${window.location.origin}/${type}/${id}`);
           setShare('Link copiado!');
         }}
       >

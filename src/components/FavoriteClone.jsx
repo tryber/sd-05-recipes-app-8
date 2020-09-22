@@ -37,8 +37,8 @@ const FavoriteClone = (props) => {
     } else if (Object.values(JSON.parse(localStorage.getItem('favoriteRecipes'))).length === 0) {
       setFavIcon(whiteHeartIcon);
     } else if (
-      [props.recipe][0].id ===
-      Object.values(JSON.parse(localStorage.getItem('favoriteRecipes'))[0])[0]
+      // [props.recipe][0].id ===
+      receipt.id === Object.values(JSON.parse(localStorage.getItem('favoriteRecipes'))[0])[0]
     ) {
       setFavIcon(blackHeartIcon);
     } else setFavIcon(whiteHeartIcon);
