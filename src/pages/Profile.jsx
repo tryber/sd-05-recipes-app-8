@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import Card from '../components/Card';
 import { ProfileIcon, Header, BtnCard, MenuBottom } from '../components';
-import { RecipesContext } from '../context/RecipesContext';
 import '../layouts/Profile.css';
 
 const doneProps = {

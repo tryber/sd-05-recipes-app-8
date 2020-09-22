@@ -6,7 +6,7 @@ import '../layouts/NotFound.css';
 const NotFound = () => {
   const headerExplorer = {
     left: <ProfileIcon />,
-    center: `Ops...`,
+    center: 'Ops...',
     right: <div />,
   };
   return (

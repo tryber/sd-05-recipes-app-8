@@ -14,7 +14,11 @@ export default Header;
 
 Header.propTypes = {
   center: PropTypes.string.isRequired,
-  // id: PropTypes.string.isRequired,
-  left: PropTypes.node.isRequired,
-  right: PropTypes.node.isRequired,
+  left: PropTypes.node,
+  right: PropTypes.node,
 };
+
+Header.defaultProps = {
+  left: <div/>,
+  right: <div/>,
+}

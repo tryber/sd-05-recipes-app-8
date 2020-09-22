@@ -28,7 +28,6 @@ const IngredientList = () => {
             idx={idx.toString()}
             text={strIngredient}
             key={idx.toString()}
-            // imagePath={mealIngSRC(strIngredient)}
           />
         ))}
     </div>
@@ -50,7 +49,6 @@ const ExploreByIngredients = () => {
   return (
     <Card>
       <Header {...headerIngredients} />
-      <BtnCard {...logoutProps} />
       <IngredientList />
       <MenuBottom />
     </Card>
