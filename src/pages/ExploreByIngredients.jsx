@@ -36,9 +36,7 @@ const ExploreByIngredients = () => {
     setIngredients([]);
     const apiCall =
       url === 'comidas' ? fetchMealIngredients : fetchDrinkIngredients;
-    apiCall().then((response) =>
-      setIngredients([...parseRecipesData(response)]),
-    );
+    apiCall().then((response) => setIngredients([...parseRecipesData(response)]));
   }, []);
 
   return (

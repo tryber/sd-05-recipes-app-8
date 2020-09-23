@@ -16,21 +16,22 @@ const nameBase = {
 
 function itemParser(item, type) {
   const newItem = {};
-  Object.keys(nameBase[type]).forEach((keyName) => {
-    if (Object.keys(item).includes(keyName)) {
-      newItem[nameBase[type][keyName]] = item[keyName];
+  Object.keys(item).forEach((itemKey) => {
+    if (Object.keys(nameBase[type]).includes(itemKey)) {
+      newItem[nameBase[type][itemKey]] = item[itemKey];
     } else {
-      newItem[keyName] = item[keyName];
+      newItem[itemKey] = item[itemKey];
     }
-    return newItem;
   });
+  // console.log(item, newItem);
+  return newItem;
 }
 
 function parseRecipesData(inputData) {
   const inputType = Object.keys(inputData)[0];
   const oldData = [...inputData[inputType]];
-  oldData.forEach((item) => itemParser(item, inputType));
-  return oldData;
+  const parsedData = [...oldData.map((item) => itemParser(item, inputType))];
+  return parsedData;
 }
 
 export default parseRecipesData;
