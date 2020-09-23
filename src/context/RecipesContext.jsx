@@ -14,18 +14,17 @@ const RecipesProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [idRecipe, setIdRecipe] = useState('');
   const [recipesRoster, setRecipesRoster] = useState([]);
-  const [keys, setKeys] = useState([
-    'meal',
-    'meals',
-    'strMeal',
-    'strMealThumb',
-  ]);
+  const [keys, setKeys] = useState(['meal', 'meals', 'strMeal', 'strMealThumb']);
   const [categorySelected, setCategorySelected] = useState('');
   const [typeBtn, setTypeBtn] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [searchBarInput, setSearchBarInput] = useState('');
   const [filterType, setFilterType] = useState('');
   const [recipesFiltered, setRecipesFiltered] = useState([]);
+  const [surpriseMe, setSurpriseMe] = useState(true);
+  const [areas, setAreas] = useState([]);
+  const [selectedArea, setSelectedArea] = useState('');
+  const [ingredients, setIngredients] = useState([]);
 
   const fetchRecipeDetails = (type, id) => {
     getRecipeDetails(type, id).then((receipt) => {
@@ -34,22 +33,26 @@ const RecipesProvider = ({ children }) => {
     });
   };
 
-  const getButcher = (listMenu) => setRecipesRoster(listMenu.slice(0, 12));
+  const getButcher = (listMenu) => {
+    setRecipesRoster(listMenu.slice(0, 12));
+  };
 
   const fetchMenu = (type, suffix) => {
-    const option =
-      type === 'comidas' ? ['meal', 'meals'] : ['cocktail', 'drinks'];
+    const option = type === 'comidas' ? ['meal', 'meals'] : ['cocktail', 'drinks'];
     fetchRecipes(option[0], suffix).then((menu) => getButcher(menu[option[1]]));
   };
 
-  const fetchKyleMenu = (apiCall, type, category) => {
-    const option = type === 'comidas' ? 'meals' : 'drinks';
+  const fetchKyleMenu = (apiCall, type, category = '') => {
+    const opt = type === 'comidas' ? 'meals' : 'drinks';
     apiCall(category).then((menu) => {
-      getButcher(menu[option]);
+      getButcher(menu[opt]);
+      setIsLoading(false);
     });
   };
 
-  const setMenuList = (menuList) => setRecipesRoster(menuList.slice(0, 12));
+  const fillContext = (data, context) => {
+    context(['All', ...data]);
+  };
 
   const context = {
     categories,
@@ -83,14 +86,18 @@ const RecipesProvider = ({ children }) => {
     setFilterType,
     recipesFiltered,
     setRecipesFiltered,
-    setMenuList,
     fetchKyleMenu,
+    surpriseMe,
+    setSurpriseMe,
+    areas,
+    setAreas,
+    selectedArea,
+    setSelectedArea,
+    ingredients,
+    setIngredients,
+    fillContext,
   };
-  return (
-    <RecipesContext.Provider value={context}>
-      {children}
-    </RecipesContext.Provider>
-  );
+  return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;
 };
 
 export default RecipesProvider;

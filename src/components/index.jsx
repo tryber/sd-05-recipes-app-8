@@ -14,10 +14,14 @@ import SearchBar from './SearchBar';
 import Progress from './Progress';
 import ExplorerButton from './ExplorerButton';
 import MainContents from './MainContents';
+import IngredientCard from './IngredientCard';
 import Suggestions from './Suggestions';
 import ShareIcon from './ShareIcon';
 import FavoriteClone from './FavoriteClone';
 import Finished from './Finished';
+import Ingredients from './Ingredients';
+import LogoRecipe from './LogoRecipe';
+import Instructions from './Instructions';
 
 export {
   Card,
@@ -36,8 +40,12 @@ export {
   Progress,
   ExplorerButton,
   MainContents,
+  IngredientCard,
   Suggestions,
   ShareIcon,
   FavoriteClone,
   Finished,
+  Ingredients,
+  LogoRecipe,
+  Instructions,
 };

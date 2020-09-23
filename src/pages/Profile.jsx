@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../components/Card';
 import { ProfileIcon, Header, BtnCard, MenuBottom } from '../components';
+import '../layouts/Profile.css';
 
 const doneProps = {
   id: 'profile-done-btn',
