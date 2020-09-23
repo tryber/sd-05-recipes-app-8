@@ -80,6 +80,7 @@ const RecipesProvider = ({ children }) => {
     setMenuList,
     fetchKyleMenu,
   };
+
   return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;
 };
 
