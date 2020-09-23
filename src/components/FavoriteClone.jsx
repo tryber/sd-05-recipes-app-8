@@ -43,7 +43,7 @@ const FavoriteClone = (props) => {
       setFavIcon(blackHeartIcon);
     } else setFavIcon(whiteHeartIcon);
   }, [props.recipe]);
-  // console.log(favRecipe);
+
   return (
     <figure>
       <button

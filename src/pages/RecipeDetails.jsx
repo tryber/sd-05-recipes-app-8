@@ -78,7 +78,7 @@ const RecipeDetails = () => {
     setTypeRecipe(urlType);
     setIdRecipe(urlId);
     const urlTail = 'search.php?s=';
-    fetchMenu(urlType);
+    // fetchMenu(urlType);
     fetchRecipeDetails(urlType === 'comidas' ? 'meal' : 'cocktail', urlId, urlTail);
   }, [typeRecipe]);
 
@@ -95,7 +95,7 @@ const RecipeDetails = () => {
       <Ingredients {...{ recipe, keys, itemId }} />
       <Instructions {...{ recipe, keys }} />
       <YouTubeSample {...{ recipe, keys }} />
-      <Suggestions {...{ recipe, keys }} />
+      <Suggestions />
       {/* <Tips {...{ recipesRoster }} /> */}
       <BtnStart {...startRecipe(typeRecipe, idRecipe, recipe, keys)} />
     </Card>
