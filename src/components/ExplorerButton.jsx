@@ -5,9 +5,10 @@ import '../layouts/ExplorerButton.css';
 
 const ExplorerButton = (props) => {
   const { label, pathTo, testId } = props;
+  const redirectTo = (testId === 'explore-surprise') ? `/${pathTo}` : `/explorar/${pathTo}`;
   return (
     <Link
-      to={`/explorar/${pathTo}`}
+      to={redirectTo}
       className="explorer-button"
       data-testid={testId}
     >

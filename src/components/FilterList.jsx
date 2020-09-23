@@ -43,7 +43,7 @@ export default function FilterList() {
           .map(({ strCategory }) => strCategory),
       ]),
     );
-  }, [typeRecipe]);
+  }, [typeRecipe, setCategories]);
 
   return (
     <div className="category-list">

@@ -27,7 +27,6 @@ const MainRecipes = () => {
     left: <ProfileIcon />,
     center: typeRecipe,
     right: <SearchIcon />,
-    // id: 'page-title',
   };
   const url = window.location.href.split('/');
   const urlType = url.reverse()[0];
@@ -38,14 +37,11 @@ const MainRecipes = () => {
       apiCall = fetchDrinks;
     }
     fetchKyleMenu(apiCall, urlType, categorySelected);
-    // const searchTail = 'search.php?s=';
-    // fetchMenu(urlType, searchTail);
-  }, [typeRecipe, categorySelected]);
+  }, [categorySelected]);
 
   if (recipesRoster.length === 1) {
     const getId = `id${urlType === 'comidas' ? 'Meal' : 'Drink'}`;
-    console.log(getId, recipesRoster);
-    return <Redirect to={`/${urlType}/${recipesRoster[0][getId]}`} />;
+    return (<Redirect to={`/${urlType}/${recipesRoster[0][getId]}`} />);
   }
 
   return (

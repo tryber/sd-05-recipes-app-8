@@ -9,6 +9,8 @@ import ExploreRecipes from './ExploreRecipes';
 import ExploreByIngredients from './ExploreByIngredients';
 import RecipeDetails from './RecipeDetails';
 import DoingRecipes from './DoingRecipes';
+import ExploreByArea from './ExploreByArea';
+import NotFound from './NotFound';
 
 export {
   DoingRecipes,
@@ -22,4 +24,6 @@ export {
   // MealsRecipes,
   Profile,
   RecipeDetails,
+  ExploreByArea,
+  NotFound,
 };
