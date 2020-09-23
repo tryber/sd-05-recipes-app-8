@@ -5,7 +5,6 @@ import '../layouts/MainFoodContent.css';
 
 const MainContent = () => {
   const { recipesRoster, categorySelected } = useContext(RecipesContext);
-
   return (
     <div className="recipes-card-container">
       {recipesRoster.length >= 1 &&
