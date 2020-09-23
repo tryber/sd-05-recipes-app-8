@@ -34,7 +34,6 @@ const RecipesProvider = ({ children }) => {
   };
 
   const getButcher = (listMenu) => setRecipesRoster(listMenu.slice(0, 6));
-  };
 
   const fetchMenu = (type, suffix) => {
     const option = type === 'comidas' ? ['cocktail', 'drinks'] : ['meal', 'meals'];
@@ -99,7 +98,6 @@ const RecipesProvider = ({ children }) => {
 
   return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;
 };
-
 export default RecipesProvider;
 
 RecipesProvider.propTypes = { children: PropTypes.node.isRequired };
