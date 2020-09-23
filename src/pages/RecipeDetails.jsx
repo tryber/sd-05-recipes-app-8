@@ -1,9 +1,18 @@
 import React, { useContext, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import { RecipesContext } from '../context/RecipesContext';
-import { BtnStart, Card, ShareIcon, FavoriteClone } from '../components';
+import {
+  BtnStart,
+  Card,
+  ShareIcon,
+  FavoriteClone,
+  Ingredients,
+  LogoRecipe,
+  Instructions,
+} from '../components';
 
 const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb', 'idMeal', 'comida'];
+<<<<<<< HEAD
 const keys2 = [
   'cocktail',
   'drinks',
@@ -85,16 +94,25 @@ const findMethod = (receipt, types) => (
 
 const findYoutube = (receipt, types) =>
   types[1] === 'meals' && (
+=======
+const keys2 = ['cocktail', 'drinks', 'strDrink', 'strDrinkThumb', 'idDrink', 'bebida'];
+const favId = 'favorite-btn';
+const shareId = 'share-btn';
+const itemId = 'name-and-measure';
+
+const YouTubeSample = (props) =>
+  props.keys[1] === 'meals' && (
+>>>>>>> 4c4751d851031d089f6466c14386ab8ac46836c1
     <div data-testid="video">
       <YouTube
-        videoId={receipt[types[1]][0].strYoutube.split('=')[1]}
+        videoId={props.recipe[props.keys[1]][0].strYoutube.split('=')[1]}
         alt="video"
         opts={{ height: '200', width: '320' }}
       />
     </div>
   );
 
-const findSuggestions = () => (
+const Suggestions = () => (
   <figure>
     <img
       data-testid="0-recomendation-card"
@@ -125,13 +143,13 @@ const RecipeDetails = () => {
     fetchRecipeDetails,
     idRecipe,
     isLoading,
+    keys,
     recipe,
     setIdRecipe,
+    setKeys,
     setTypeRecipe,
     typeRecipe,
   } = useContext(RecipesContext);
-  const keys = typeRecipe === 'comidas' ? keys1 : keys2;
-  const dataId = 'share-btn';
 
   useEffect(() => {
     const url = window.location.href.split('/');
@@ -140,31 +158,22 @@ const RecipeDetails = () => {
     setTypeRecipe(urlType);
     setIdRecipe(urlId);
     fetchRecipeDetails(urlType === 'comidas' ? 'meal' : 'cocktail', urlId);
-  }, [typeRecipe, fetchRecipeDetails, setIdRecipe, setTypeRecipe]);
+  }, [typeRecipe]);
+
+  if (typeRecipe === 'comidas') setKeys(keys1);
+  else setKeys(keys2);
 
   return isLoading ? (
     <p>Loading...</p>
   ) : (
     <Card>
-      {findLogo(recipe, keys)}
-      <ShareIcon id={recipe[keys[1]][0][keys[4]]} type={keys[5]} dataId={dataId} />
-      {/* <FavoriteIcon recipe={recipe} keys={keys} /> */}
-      <FavoriteClone
-        {...{
-          id: recipe[keys[1]][0][keys[4]],
-          type: keys[5],
-          area: recipe[keys[1]][0].strArea || '',
-          category: recipe[keys[1]][0].strCategory || '',
-          alcoholicOrNot: recipe[keys[1]][0].strAlcoholic || '',
-          name: recipe[keys[1]][0][keys[2]],
-          image: recipe[keys[1]][0][keys[3]],
-        }}
-      />
-      {findIngredients(recipe, keys)}
-      {findMethod(recipe, keys)}
-      {findYoutube(recipe, keys)}
-      {findSuggestions()}
-      {/* <Suggestions recipe={recipe} keys={keys} /> */}
+      <LogoRecipe {...{ recipe, keys }} />
+      <ShareIcon id={idRecipe} type={typeRecipe} dataId={shareId} />
+      <FavoriteClone {...{ recipe, keys, favId }} />
+      <Ingredients {...{ recipe, keys, itemId }} />
+      <Instructions {...{ recipe, keys }} />
+      <YouTubeSample {...{ recipe, keys }} />
+      <Suggestions {...{ recipe, keys }} />
       <BtnStart {...startRecipe(typeRecipe, idRecipe, recipe, keys)} />
     </Card>
   );

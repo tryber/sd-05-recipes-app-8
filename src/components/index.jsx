@@ -19,6 +19,9 @@ import Suggestions from './Suggestions';
 import ShareIcon from './ShareIcon';
 import FavoriteClone from './FavoriteClone';
 import Finished from './Finished';
+import Ingredients from './Ingredients';
+import LogoRecipe from './LogoRecipe';
+import Instructions from './Instructions';
 
 export {
   Card,
@@ -42,4 +45,7 @@ export {
   ShareIcon,
   FavoriteClone,
   Finished,
+  Ingredients,
+  LogoRecipe,
+  Instructions,
 };

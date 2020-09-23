@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+// import { RecipesContext } from '../context/RecipesContext';
 import { ShareIcon } from '../components';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 const Finished = (keyStorage) =>
+  // const { keys } = useContext(RecipesContext);
   JSON.parse(localStorage.getItem(keyStorage.keyStorage)).map((x, index) => (
     <div>
       <Link to={`/${x.type}s/${x.id}`}>
@@ -22,11 +24,9 @@ const Finished = (keyStorage) =>
         <b data-testid={`${index}-horizontal-name`}>{x.name}</b>
       </Link>
       <time data-testid={`${index}-horizontal-done-date`}>{x.doneDate}</time>
-      <ShareIcon id={x.id} type={x.type} dataId={`${index}-horizontal-share-btn`} />
-      <button data-testid={`${index}-horizontal-favorite-btn`}>
-        <img src={blackHeartIcon} alt="favorite-btn" />
-      </button>
-      {/* <FavoriteClone /> */}
+      <ShareIcon id={x.id} type={`${x.type}s`} dataId={`${index}-horizontal-share-btn`} />
+      <img data-testid={`${index}-horizontal-favorite-btn`} src={blackHeartIcon} alt="provisory" />
+      {/* <FavoriteClone dataId={`${index}-horizontal-favorite-btn`} /> */}
       {Object.prototype.hasOwnProperty.call(x, 'tags') ? (
         <div>
           <mark data-testid={`${index}-${x.tags[0]}-horizontal-tag`}>{x.tags[0]}</mark>
