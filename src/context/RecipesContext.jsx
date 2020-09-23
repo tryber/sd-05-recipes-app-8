@@ -29,10 +29,10 @@ const RecipesProvider = ({ children }) => {
     });
   };
 
-  const getButcher = (listMenu) => setRecipesRoster(listMenu.slice(0, 12));
+  const getButcher = (listMenu) => setRecipesRoster(listMenu.slice(0, 6));
 
   const fetchMenu = (type, suffix) => {
-    const option = type === 'comidas' ? ['meal', 'meals'] : ['cocktail', 'drinks'];
+    const option = type === 'comidas' ? ['cocktail', 'drinks'] : ['meal', 'meals'];
     fetchRecipes(option[0], suffix).then((menu) => getButcher(menu[option[1]]));
   };
 

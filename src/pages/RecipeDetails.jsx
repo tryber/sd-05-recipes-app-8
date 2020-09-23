@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import { RecipesContext } from '../context/RecipesContext';
+import '../layouts/Tips.css';
 import {
   BtnStart,
   Card,
@@ -9,6 +10,7 @@ import {
   Ingredients,
   LogoRecipe,
   Instructions,
+  // Tips,
 } from '../components';
 
 const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb', 'idMeal', 'comida'];
@@ -56,11 +58,13 @@ const startRecipe = (typeMenu, idMenu, receipt, type) => {
 
 const RecipeDetails = () => {
   const {
+    fetchMenu,
     fetchRecipeDetails,
     idRecipe,
     isLoading,
     keys,
     recipe,
+    // recipesRoster,
     setIdRecipe,
     setKeys,
     setTypeRecipe,
@@ -73,7 +77,9 @@ const RecipeDetails = () => {
     const urlId = url[0];
     setTypeRecipe(urlType);
     setIdRecipe(urlId);
-    fetchRecipeDetails(urlType === 'comidas' ? 'meal' : 'cocktail', urlId);
+    const urlTail = 'search.php?s=';
+    fetchMenu(urlType);
+    fetchRecipeDetails(urlType === 'comidas' ? 'meal' : 'cocktail', urlId, urlTail);
   }, [typeRecipe]);
 
   if (typeRecipe === 'comidas') setKeys(keys1);
@@ -90,6 +96,7 @@ const RecipeDetails = () => {
       <Instructions {...{ recipe, keys }} />
       <YouTubeSample {...{ recipe, keys }} />
       <Suggestions {...{ recipe, keys }} />
+      {/* <Tips {...{ recipesRoster }} /> */}
       <BtnStart {...startRecipe(typeRecipe, idRecipe, recipe, keys)} />
     </Card>
   );

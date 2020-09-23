@@ -1,0 +1,30 @@
+/* * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+} */
+
+body {
+  font-family: sans-serif;
+}
+
+.gallery {
+  background: #eee;
+}
+
+.gallery-cell {
+  background: #8c8;
+  counter-increment: gallery-cell;
+  height: 200px;
+  margin-right: 10px;
+  width: 66%;
+}
+
+/* cell number */
+.gallery-cell:before {
+  color: white;
+  content: counter(gallery-cell);
+  display: block;
+  font-size: 80px;
+  line-height: 200px;
+  text-align: center;
+}
