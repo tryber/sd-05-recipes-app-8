@@ -30,19 +30,19 @@ const YouTubeSample = (props) =>
     </div>
   );
 
-const Suggestions = () => (
-  <figure>
-    <img
-      data-testid="0-recomendation-card"
-      src="https://www.themealdb.com/images/media/meals/58oia61564916529.jpg"
-      alt="recommendation"
-      style={{ maxHeight: '50px' }}
-    />
-    <figcaption>
-      <span data-testid="0-recomendation-title" />
-    </figcaption>
-  </figure>
-);
+// const Suggestions = () => (
+//   <figure>
+//     <img
+//       data-testid="0-recomendation-card"
+//       src="https://www.themealdb.com/images/media/meals/58oia61564916529.jpg"
+//       alt="recommendation"
+//       style={{ maxHeight: '50px' }}
+//     />
+//     <figcaption>
+//       <span data-testid="0-recomendation-title" />
+//     </figcaption>
+//   </figure>
+// );
 
 const startRecipe = (typeMenu, idMenu, receipt, type) => {
   const progressProps = {
@@ -80,7 +80,7 @@ const RecipeDetails = () => {
     // const urlTail = 'search.php?s=';
     // fetchMenu(urlType, urlTail);
     fetchRecipeDetails(urlType === 'comidas' ? 'meal' : 'cocktail', urlId);
-  }, [typeRecipe]);
+  }, [typeRecipe, fetchRecipeDetails, setIdRecipe, setTypeRecipe]);
 
   if (typeRecipe === 'comidas') setKeys(keys1);
   else setKeys(keys2);

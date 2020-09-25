@@ -47,7 +47,7 @@ const DoingRecipes = () => {
     setTypeRecipe(urlType);
     setIdRecipe(urlId);
     fetchRecipeDetails(urlType === 'comidas' ? 'meal' : 'cocktail', urlId);
-  }, [typeRecipe]);
+  }, [typeRecipe, fetchRecipeDetails, setIdRecipe, setTypeRecipe]);
 
   if (typeRecipe === 'comidas') setKeys(keys1);
   else setKeys(keys2);

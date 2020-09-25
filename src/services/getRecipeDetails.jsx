@@ -14,7 +14,7 @@ const getRecipeDetails = (type, id) => {
 
 const fetchRecipes = (type, suffix) => {
   const RECIPE_PATH = `https://www.the${type}db.com/api/json/v1/1/${suffix}`;
-  console.log(RECIPE_PATH);
+  // console.log(RECIPE_PATH);
   return fetch(RECIPE_PATH).then((response) =>
     response.json().then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
   );

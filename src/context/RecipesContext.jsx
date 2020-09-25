@@ -40,7 +40,7 @@ const RecipesProvider = ({ children }) => {
   };
 
   const fetchMenu = (option, suffix) => {
-    console.log(option, suffix);
+    // console.log(option, suffix);
     fetchRecipes(option[0], suffix).then((menu) => getButcher(menu[option[1]]));
   };
 
