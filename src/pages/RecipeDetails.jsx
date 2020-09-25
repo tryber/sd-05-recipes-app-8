@@ -77,7 +77,6 @@ const RecipeDetails = () => {
       <Ingredients {...{ recipe, keys, itemId }} />
       <Instructions {...{ recipe, keys }} />
       <YouTubeSample {...{ recipe, keys }} />
-      {/* <Suggestions /> */}
       <Tips />
       <BtnStart {...startRecipe(typeRecipe, idRecipe, recipe, keys)} />
     </Card>
