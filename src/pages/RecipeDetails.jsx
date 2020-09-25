@@ -58,7 +58,7 @@ const startRecipe = (typeMenu, idMenu, receipt, type) => {
 
 const RecipeDetails = () => {
   const {
-    fetchMenu,
+    // fetchMenu,
     fetchRecipeDetails,
     idRecipe,
     isLoading,
@@ -79,7 +79,7 @@ const RecipeDetails = () => {
     setIdRecipe(urlId);
     const urlTail = 'search.php?s=';
     // fetchMenu(urlType);
-    fetchRecipeDetails(urlType === 'comidas' ? 'meal' : 'cocktail', urlId, urlTail);
+    fetchRecipeDetails(urlType === 'comidas' ? 'meal' : 'cocktail', urlId);
   }, [typeRecipe]);
 
   if (typeRecipe === 'comidas') setKeys(keys1);

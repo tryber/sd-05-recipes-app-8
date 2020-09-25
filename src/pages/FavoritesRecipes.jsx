@@ -1,5 +1,6 @@
-import React from 'react';
-import { BtnCard, Header, ProfileIcon, Card, Finished } from '../components';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { BtnCard, Header, ProfileIcon, Card, Finished, FilterButtons } from '../components';
 import '../layouts/FilterList.css';
 
 const headerFavoriteRecipes = {
@@ -9,70 +10,71 @@ const headerFavoriteRecipes = {
   id: 'page-title',
 };
 
-const logoutProps = {
-  direction: '/',
-  value: 'Sair',
-  id: 'logout-btn',
-  action: false,
-};
+// const logoutProps = {
+//   direction: '/',
+//   value: 'Sair',
+//   id: 'logout-btn',
+//   action: false,
+// };
 
-const mockFavorites = [
-  {
-    id: '52771',
-    type: 'comida',
-    area: 'Italian',
-    category: 'Vegetarian',
-    alcoholicOrNot: '',
-    name: 'Spicy Arrabiata Penne',
-    image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
-  },
-  {
-    id: '178319',
-    type: 'bebida',
-    area: '',
-    category: 'Cocktail',
-    alcoholicOrNot: 'Alcoholic',
-    name: 'Aquamarine',
-    image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
-  },
-];
+// const filterByType = (hasChosen, setHasChosen, allRecipes, typeMenu) => {
+//   console.log(hasChosen, setHasChosen, typeMenu, allRecipes);
+//   setHasChosen(
+//     !typeMenu
+//       ? Object.values(allRecipes)
+//       : Object.values(allRecipes).filter((x) => x.type.includes(typeMenu)),
+//   );
+// };
 
-const FilterButtons = () => (
-  <div>
-    <button data-testid="filter-by-all-btn" className={'button-category-filter'}>
-      All
-    </button>
-    <button data-testid="filter-by-food-btn" className={'button-category-filter'}>
-      Foods
-    </button>
-    <button data-testid="filter-by-drink-btn" className={'button-category-filter'}>
-      Drinks
-    </button>
-  </div>
-);
+// const FilterButtons = (props) => (
+//   <div className="category-list">
+//     <button
+//       data-testid="filter-by-all-btn"
+//       className={'button-category-filter'}
+//       onClick={() => filterByType(props.hasChosen, props.setHasChosen, props.allRecipes)}
+//     >
+//       All
+//     </button>
+//     <button
+//       data-testid="filter-by-food-btn"
+//       className={'button-category-filter'}
+//       onClick={() =>
+// filterByType(props.hasChosen, props.setHasChosen, props.allRecipes, 'comida')}
+//     >
+//       Foods
+//     </button>
+//     <button
+//       data-testid="filter-by-drink-btn"
+//       className={'button-category-filter'}
+//       onClick={() =>
+// filterByType(props.hasChosen, props.setHasChosen, props.allRecipes, 'bebida')}
+//     >
+//       Drinks
+//     </button>
+//   </div>
+// );
 
 const FavoritesRecipes = () => {
-  const hasChosen = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  // const isInitialMount = useRef(true);
-  // useEffect(() => {
-  // console.log(hasChosen);
-  // if (isInitialMount.current) { // https://bit.ly/3ckpXoY
-  //   isInitialMount.current = false;
-  // } else setHasChosen(JSON.parse(localStorage.getItem('favoriteRecipes')));
-  //   if (!hasChosen) setHasChosen(JSON.parse(localStorage.getItem('favoriteRecipes')));
-  // }, [hasChosen]);
-  console.log(JSON.parse(localStorage.getItem('favoriteRecipes')));
-  // const hasChosen = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  console.log(hasChosen);
+  const allRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  const [hasChosen, setHasChosen] = useState(JSON.parse(localStorage.getItem('favoriteRecipes')));
+
   return (
     <Card>
-      {!hasChosen && localStorage.setItem('favoriteRecipes', JSON.stringify(mockFavorites))}
+      {/* {!hasChosen && localStorage.setItem('favoriteRecipes', JSON.stringify(mockFavorites))} */}
       <Header {...headerFavoriteRecipes} />
-      {hasChosen && <FilterButtons />}
-      {hasChosen && <Finished keyStorage={'favoriteRecipes'} />}
-      <BtnCard {...logoutProps} />
+      {hasChosen && (
+        <FilterButtons allRecipes={allRecipes} hasChosen={hasChosen} setHasChosen={setHasChosen} />
+      )}
+      <Finished listRecipes={hasChosen} />
+      {/* <BtnCard {...logoutProps} /> */}
     </Card>
   );
 };
 
 export default FavoritesRecipes;
+
+FavoritesRecipes.propTypes = {
+  allRecipes: PropTypes.node.isRequired,
+  hasChosen: PropTypes.node.isRequired,
+  setHasChosen: PropTypes.node.isRequired,
+};

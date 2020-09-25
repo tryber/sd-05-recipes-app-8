@@ -56,7 +56,6 @@ const DoingRecipes = () => {
     <p>Processando...</p>
   ) : (
     <Card>
-      {console.log(recipe)}
       <LogoRecipe {...{ recipe, keys }} />
       <ShareIcon id={recipe[keys[1]][0][keys[4]]} type={`${keys[5]}s`} dataId={shareId} />
       <FavoriteClone {...{ recipe, keys, favId }} />

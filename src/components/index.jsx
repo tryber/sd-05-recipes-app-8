@@ -23,6 +23,7 @@ import Finished from './Finished';
 import Ingredients from './Ingredients';
 import LogoRecipe from './LogoRecipe';
 import Instructions from './Instructions';
+import FilterButtons from './FilterButtons';
 
 export {
   Card,
@@ -50,4 +51,5 @@ export {
   Ingredients,
   LogoRecipe,
   Instructions,
+  FilterButtons,
 };

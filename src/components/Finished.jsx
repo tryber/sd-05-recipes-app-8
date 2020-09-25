@@ -5,10 +5,14 @@ import PropTypes from 'prop-types';
 import { ShareIcon } from '../components';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
-const Finished = (keyStorage) =>
-  // const { keys } = useContext(RecipesContext);
-  JSON.parse(localStorage.getItem(keyStorage.keyStorage)).map((x, index) => (
+const Finished = (props) =>
+  // JSON.parse(localStorage.getItem(keyStorage.keyStorage)).map((x, index) => (
+  // <>{console.log(keyStorage)}</>
+  // );
+
+  props.listRecipes.map((x, index) => (
     <div>
+      {console.log(x)}
       <Link to={`/${x.type}s/${x.id}`}>
         <img
           data-testid={`${index}-horizontal-image`}
