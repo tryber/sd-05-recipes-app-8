@@ -1,29 +1,33 @@
-import React from 'react';
-// import React, { useContext, useEffect } from 'react';
+// import React from 'react';
+import React, { useContext, useEffect } from 'react';
 // import Slider from 'react-slick';
-// import { RecipesContext } from '../context/RecipesContext';
+import { RecipesContext } from '../context/RecipesContext';
 
-const Tips = (props) => {
-  // const { fetchMenu, recipesRoster } = useContext(RecipesContext);
+const Tips = () => {
+  const { fetchMenu, recipesRoster, loadingTips, typeRecipe } = useContext(RecipesContext);
 
-  // useEffect(() => {
-  //   const url = window.location.href.split('/');
-  //   const urlType = url.reverse()[1];
-  //   const urlId = url[0];
-  //   const urlTail = 'search.php?s=';
-  //   fetchMenu(urlType, urlTail);
-  // }, []);
-
-  // console.log(props.recipesRoster, recipesRoster);
+  useEffect(() => {
+    const url = window.location.href.split('/');
+    const urlType = url.reverse()[1];
+    const urlId = url[0];
+    const typeTip = urlType === 'comidas' ? ['cocktail', 'drinks'] : ['meal', 'meals'];
+    const urlTail = 'search.php?s=';
+    console.log(urlType, typeTip, urlId, urlTail);
+    fetchMenu(typeTip, urlTail);
+  }, []);
 
   const kind =
-    Object.keys(props.recipesRoster[0])[0] === 'idMeal'
-      ? ['strMeal', 'strMealThumb', 'strCategory']
-      : ['strDrink', 'strDrinkThumb', 'strAlcoholic'];
-  return (
+    typeRecipe === 'comidas'
+      ? ['strDrink', 'strDrinkThumb', 'strAlcoholic']
+      : ['strMeal', 'strMealThumb', 'strCategory'];
+
+  return loadingTips ? (
+    <p>Loading...</p>
+  ) : (
     // <Slider {...settings}>{<img src={menu[kind[1]]} />}</Slider>
-    props.recipesRoster.map((tip, index) => (
-      <figure key={tip}>
+    recipesRoster.map((tip, index) => (
+      <figure key={tip} style={{ overflow: 'auto', display: 'flex' }}>
+        {console.log(recipesRoster)}
         <img
           data-testid={`${index}-recomendation-card`}
           src={tip[kind[1]]}

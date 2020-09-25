@@ -25,6 +25,7 @@ const RecipesProvider = ({ children }) => {
   const [areas, setAreas] = useState([]);
   const [selectedArea, setSelectedArea] = useState('');
   const [ingredients, setIngredients] = useState([]);
+  const [loadingTips, setLoadingTips] = useState(true);
 
   const fetchRecipeDetails = (type, id) => {
     getRecipeDetails(type, id).then((receipt) => {
@@ -33,10 +34,14 @@ const RecipesProvider = ({ children }) => {
     });
   };
 
-  const getButcher = (listMenu) => setRecipesRoster(listMenu.slice(0, 6));
+  const getButcher = (listMenu) => {
+    setRecipesRoster(listMenu.slice(0, 6));
+    setLoadingTips(false);
+  };
 
-  const fetchMenu = (type, suffix) => {
-    const option = type === 'comidas' ? ['cocktail', 'drinks'] : ['meal', 'meals'];
+  const fetchMenu = (option, suffix) => {
+    // const option = type === 'comidas' ? ['cocktail', 'drinks'] : ['meal', 'meals'];
+    console.log(option, suffix);
     fetchRecipes(option[0], suffix).then((menu) => getButcher(menu[option[1]]));
   };
 
@@ -94,6 +99,7 @@ const RecipesProvider = ({ children }) => {
     ingredients,
     setIngredients,
     fillContext,
+    loadingTips,
   };
 
   return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;

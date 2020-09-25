@@ -10,7 +10,7 @@ import {
   Ingredients,
   LogoRecipe,
   Instructions,
-  // Tips,
+  Tips,
 } from '../components';
 
 const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb', 'idMeal', 'comida'];
@@ -78,7 +78,7 @@ const RecipeDetails = () => {
     setTypeRecipe(urlType);
     setIdRecipe(urlId);
     // const urlTail = 'search.php?s=';
-    // fetchMenu(urlType);
+    // fetchMenu(urlType, urlTail);
     fetchRecipeDetails(urlType === 'comidas' ? 'meal' : 'cocktail', urlId);
   }, [typeRecipe]);
 
@@ -96,7 +96,8 @@ const RecipeDetails = () => {
       <Instructions {...{ recipe, keys }} />
       <YouTubeSample {...{ recipe, keys }} />
       <Suggestions />
-      {/* <Tips {...{ recipesRoster }} /> */}
+      <Tips />
+      {/* {...{ recipesRoster }}  */}
       <BtnStart {...startRecipe(typeRecipe, idRecipe, recipe, keys)} />
     </Card>
   );
