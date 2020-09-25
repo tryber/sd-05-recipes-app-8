@@ -77,7 +77,7 @@ const RecipeDetails = () => {
     const urlId = url[0];
     setTypeRecipe(urlType);
     setIdRecipe(urlId);
-    const urlTail = 'search.php?s=';
+    // const urlTail = 'search.php?s=';
     // fetchMenu(urlType);
     fetchRecipeDetails(urlType === 'comidas' ? 'meal' : 'cocktail', urlId);
   }, [typeRecipe]);
