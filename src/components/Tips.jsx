@@ -1,9 +1,8 @@
-// import React from 'react';
 import React, { useContext, useEffect } from 'react';
 import Slider from 'react-slick';
-import { RecipesContext } from '../context/RecipesContext';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { RecipesContext } from '../context/RecipesContext';
 
 const Tips = () => {
   const { fetchMenu, recipesRoster, loadingTips, typeRecipe } = useContext(RecipesContext);
@@ -11,7 +10,7 @@ const Tips = () => {
   useEffect(() => {
     const url = window.location.href.split('/');
     const urlType = url.reverse()[1];
-    const urlId = url[0];
+    // const urlId = url[0];
     const typeTip = urlType === 'comidas' ? ['cocktail', 'drinks'] : ['meal', 'meals'];
     const urlTail = 'search.php?s=';
     fetchMenu(typeTip, urlTail);
