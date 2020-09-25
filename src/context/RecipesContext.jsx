@@ -39,10 +39,8 @@ const RecipesProvider = ({ children }) => {
     setLoadingTips(false);
   };
 
-  const fetchMenu = (option, suffix) => {
-    // console.log(option, suffix);
+  const fetchMenu = (option, suffix) =>
     fetchRecipes(option[0], suffix).then((menu) => getButcher(menu[option[1]]));
-  };
 
   const fetchKyleMenu = (apiCall, type, category = '') => {
     const opt = type === 'comidas' ? 'meals' : 'drinks';

@@ -14,7 +14,7 @@ const Tips = () => {
     const typeTip = urlType === 'comidas' ? ['cocktail', 'drinks'] : ['meal', 'meals'];
     const urlTail = 'search.php?s=';
     fetchMenu(typeTip, urlTail);
-  }, [fetchMenu]);
+  }, []);
 
   const kind =
     typeRecipe === 'comidas'
