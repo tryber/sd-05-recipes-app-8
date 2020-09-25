@@ -18,8 +18,9 @@ const labelButton = (typeRecipe, idRecipe, value) => {
   if (
     !localStorage.getItem('inProgressRecipes') ||
     !Object.keys(JSON.parse(localStorage.getItem('inProgressRecipes')))[typeRecipe]
-  )
+  ) {
     return value[0];
+  }
   if (
     Object.keys(JSON.parse(localStorage.getItem('inProgressRecipes'))[typeRecipe])[0] === idRecipe
   ) {
