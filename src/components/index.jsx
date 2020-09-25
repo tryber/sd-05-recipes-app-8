@@ -16,7 +16,6 @@ import ExplorerButton from './ExplorerButton';
 import MainContents from './MainContents';
 import Tips from './Tips';
 import IngredientCard from './IngredientCard';
-// import Suggestions from './Suggestions';
 import ShareIcon from './ShareIcon';
 import FavoriteClone from './FavoriteClone';
 import Finished from './Finished';
@@ -44,7 +43,6 @@ export {
   MainContents,
   Tips,
   IngredientCard,
-  // Suggestions,
   ShareIcon,
   FavoriteClone,
   Finished,

@@ -6,10 +6,6 @@ import { ShareIcon } from '../components';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 const Finished = (props) =>
-  // JSON.parse(localStorage.getItem(keyStorage.keyStorage)).map((x, index) => (
-  // <>{console.log(keyStorage)}</>
-  // );
-
   props.listRecipes.map((x, index) => (
     <div>
       {console.log(x)}

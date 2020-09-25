@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 
 const LogoRecipe = (props) => (
   <figure>
-    {/* {console.log(props.recipe)}
-    {console.log(props.keys)}
-    {console.log(props.recipe[props.keys[1]])}
-    {console.log(props.recipe[props.keys[1]][0][props.keys[3]])} */}
     <img
       data-testid="recipe-photo"
       src={props.recipe[props.keys[1]][0][props.keys[3]]}
