@@ -22,6 +22,7 @@ import Finished from './Finished';
 import Ingredients from './Ingredients';
 import LogoRecipe from './LogoRecipe';
 import Instructions from './Instructions';
+import FilterCard from './filter/FilterCard';
 import FilterButtons from './FilterButtons';
 
 export {
@@ -49,5 +50,6 @@ export {
   Ingredients,
   LogoRecipe,
   Instructions,
+  FilterCard,
   FilterButtons,
 };

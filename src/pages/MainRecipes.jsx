@@ -10,19 +10,17 @@ import {
   FilterList,
   SearchBar,
   Card,
+  FilterCard,
 } from '../components';
 import { fetchMeals } from '../services/mealAPI.js';
 import { fetchDrinks } from '../services/drinkAPI.js';
 
 const MainRecipes = () => {
   const {
-    categorySelected,
-    fetchKyleMenu,
-    typeRecipe,
-    setTypeRecipe,
-    showSearchBar,
-    recipesRoster,
+    categorySelected, fetchKyleMenu, typeRecipe,
+    setTypeRecipe, showSearchBar,
   } = useContext(RecipesContext);
+  const { recipesFiltered, recipesRoster } = useContext(RecipesContext);
   const headerMainRecipes = {
     left: <ProfileIcon />,
     center: typeRecipe,
@@ -49,7 +47,8 @@ const MainRecipes = () => {
       <Header {...headerMainRecipes} />
       {showSearchBar && <SearchBar />}
       {!showSearchBar && <FilterList />}
-      <MainContent />
+      {recipesFiltered.length === 0 && <MainContent />}
+      {recipesFiltered.length !== 0 && <FilterCard />}
       <MenuBottom />
     </Card>
   );
