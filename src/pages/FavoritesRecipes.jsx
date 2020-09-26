@@ -28,7 +28,7 @@ const FavoritesRecipes = () => {
 export default FavoritesRecipes;
 
 FavoritesRecipes.propTypes = {
-  allRecipes: PropTypes.node.isRequired,
-  hasChosen: PropTypes.node.isRequired,
-  setHasChosen: PropTypes.node.isRequired,
+  allRecipes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  hasChosen: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setHasChosen: PropTypes.func.isRequired,
 };

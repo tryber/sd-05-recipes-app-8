@@ -10,7 +10,6 @@ const Tips = () => {
   useEffect(() => {
     const url = window.location.href.split('/');
     const urlType = url.reverse()[1];
-    // const urlId = url[0];
     const typeTip = urlType === 'comidas' ? ['cocktail', 'drinks'] : ['meal', 'meals'];
     const urlTail = 'search.php?s=';
     fetchMenu(typeTip, urlTail);
@@ -37,7 +36,7 @@ const Tips = () => {
           <img
             data-testid={`${index}-recomendation-card`}
             src={tip[kind[1]]}
-            alt={`${index}-recomendation-card`}
+            alt={`${index}-tip`}
             style={{ maxHeight: '80px' }}
           />
           <figcaption>

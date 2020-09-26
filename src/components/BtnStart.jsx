@@ -17,7 +17,7 @@ const findIngredients = (receipt, types) => {
 const labelButton = (typeRecipe, idRecipe, value) => {
   if (
     !localStorage.getItem('inProgressRecipes') ||
-    !Object.keys(JSON.parse(localStorage.getItem('inProgressRecipes')))[typeRecipe]
+    !JSON.parse(localStorage.getItem('inProgressRecipes'))[typeRecipe]
   ) {
     return value[0];
   }
@@ -26,7 +26,9 @@ const labelButton = (typeRecipe, idRecipe, value) => {
   ) {
     return value[1];
   }
-  return value[0];
+  {
+    return value[0];
+  }
 };
 
 const setStorage = (attribute, idMenu, receipt) => {
@@ -45,7 +47,6 @@ const setStorage = (attribute, idMenu, receipt) => {
     auxProgress[attribute] = Object.assign(auxProgress[attribute], auxReceipt);
     localStorage.setItem('inProgressRecipes', JSON.stringify(auxProgress));
   }
-  //
 };
 
 const BtnStart = (props) => {

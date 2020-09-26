@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const filterByType = (hasChosen, setHasChosen, allRecipes, typeMenu) => {
-  console.log(hasChosen, setHasChosen, typeMenu, allRecipes);
   setHasChosen(
     !typeMenu
       ? Object.values(allRecipes)
@@ -38,7 +37,7 @@ const FilterButtons = (props) => (
 export default FilterButtons;
 
 FilterButtons.propTypes = {
-  allRecipes: PropTypes.node.isRequired,
-  hasChosen: PropTypes.node.isRequired,
-  setHasChosen: PropTypes.node.isRequired,
+  allRecipes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  hasChosen: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setHasChosen: PropTypes.func.isRequired,
 };
