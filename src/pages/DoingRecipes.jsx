@@ -47,7 +47,7 @@ const DoingRecipes = () => {
     setTypeRecipe(urlType);
     setIdRecipe(urlId);
     fetchRecipeDetails(urlType === 'comidas' ? 'meal' : 'cocktail', urlId);
-  }, [typeRecipe]);
+  }, [typeRecipe, fetchRecipeDetails, setIdRecipe, setTypeRecipe]);
 
   if (typeRecipe === 'comidas') setKeys(keys1);
   else setKeys(keys2);
@@ -56,9 +56,8 @@ const DoingRecipes = () => {
     <p>Processando...</p>
   ) : (
     <Card>
-      {console.log(recipe)}
       <LogoRecipe {...{ recipe, keys }} />
-      <ShareIcon id={recipe[keys[1]][0][keys[4]]} type={keys[5]} dataId={shareId} />
+      <ShareIcon id={recipe[keys[1]][0][keys[4]]} type={`${keys[5]}s`} dataId={shareId} />
       <FavoriteClone {...{ recipe, keys, favId }} />
       <Ingredients {...{ recipe, keys, itemId }} />
       <Instructions {...{ recipe, keys }} />
