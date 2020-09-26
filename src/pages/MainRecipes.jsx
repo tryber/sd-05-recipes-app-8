@@ -11,7 +11,6 @@ import {
   SearchBar,
   Card,
   FilterCard,
-  MainContents
 } from '../components';
 import { fetchMeals } from '../services/mealAPI.js';
 import { fetchDrinks } from '../services/drinkAPI.js';
@@ -48,7 +47,7 @@ const MainRecipes = () => {
       <Header {...headerMainRecipes} />
       {showSearchBar && <SearchBar />}
       {!showSearchBar && <FilterList />}
-      {recipesFiltered.length === 0 && <MainContents />}
+      {recipesFiltered.length === 0 && <MainContent />}
       {recipesFiltered.length !== 0 && <FilterCard />}
       <MenuBottom />
     </Card>
