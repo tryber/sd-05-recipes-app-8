@@ -2,16 +2,16 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../../context/RecipesContext';
 
-const RenderFilteresCard = (props) => {
-  return (
+const RenderFilteresCard = (props) =>
+  (
     <section key={props.id}>
       <img className="filter-recipes-img" data-testid={`${props.index}-card-image`} src={props.img} alt={props.id} />
       <div className="card-name">
         <p data-testid={`${props.index}-card-name`}>{props.name}</p>
       </div>
     </section>
-  )
-}
+  );
+
 
 const FilterCard = () => {
   const { recipesFiltered, typeRecipe } = useContext(RecipesContext);
@@ -36,13 +36,13 @@ const FilterCard = () => {
         ))};
     </section>
   );
-}
+};
 
 RenderFilteresCard.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
-}
+};
 
 export default FilterCard;

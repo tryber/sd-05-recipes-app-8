@@ -17,13 +17,8 @@ import { fetchDrinks } from '../services/drinkAPI.js';
 
 const MainRecipes = () => {
   const {
-    categorySelected,
-    fetchKyleMenu,
-    typeRecipe,
-    setTypeRecipe,
-    showSearchBar,
-    recipesRoster,
-    recipesFiltered
+    categorySelected, fetchKyleMenu, typeRecipe,
+    setTypeRecipe, showSearchBar, recipesRoster, recipesFiltered,
   } = useContext(RecipesContext);
   const headerMainRecipes = {
     left: <ProfileIcon />,
@@ -51,7 +46,7 @@ const MainRecipes = () => {
       <Header {...headerMainRecipes} />
       {showSearchBar && <SearchBar />}
       {!showSearchBar && <FilterList />}
-      {recipesFiltered.length == 0 ? <MainContent /> : <FilterCard />}
+      {recipesFiltered.length === 0 ? <MainContent /> : <FilterCard />}
       <MenuBottom />
     </Card>
   );

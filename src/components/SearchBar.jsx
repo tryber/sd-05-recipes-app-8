@@ -1,4 +1,3 @@
-
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/RecipesContext';
@@ -7,21 +6,22 @@ import { getRecipesDrinks, getRecipesMeal } from '../services/filterAPI';
 import '../layouts/SearchBar.css';
 
 const setFilter = (
-  URL, Btn, getRecipes, inputText, setState
+  URL, Btn, getRecipes, inputText, setState,
 ) => {
   if (Btn === 'ingredient') {
     getRecipes(URL[0], inputText)
-      .then((data) => setState([data]))
+      .then((data) => setState([data]));
   }
   if (Btn === 'name') {
     getRecipes(URL[1], inputText)
-    .then((data) => setState([data]))
+    .then((data) => setState([data]));
   }
   if (Btn === 'first-letter') {
     return inputText.length !== 1 ? alert('Sua busca deve conter somente 1 (um) caracter') :
       getRecipes(URL[2], inputText)
-      .then((data) => setState([data]))
+      .then((data) => setState([data]));
   }
+  return null
 };
 
 const InputRender = (props) => {
@@ -51,7 +51,7 @@ const InputText = (props) => (
 );
 const SearchBar = () => {
   const {
-    setFilterType, filterType, searchBarInput, setRecipesFiltered, typeRecipe, setSearchBarInput
+    setFilterType, filterType, searchBarInput, setRecipesFiltered, typeRecipe, setSearchBarInput,
   } = useContext(RecipesContext);
   return (
     <section className="search-bar-container">
