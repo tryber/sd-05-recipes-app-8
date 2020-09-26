@@ -9,20 +9,22 @@ const RecipesProvider = ({ children }) => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [typeRecipe, setTypeRecipe] = useState('comidas');
-  const [categories, setCategories] = useState({
-    catList: [],
-    choose: 'All',
-  });
+  const [categories, setCategories] = useState([]);
   const [recipe, setRecipe] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [idRecipe, setIdRecipe] = useState('');
   const [recipesRoster, setRecipesRoster] = useState([]);
   const [keys, setKeys] = useState(['meal', 'meals', 'strMeal', 'strMealThumb']);
+  const [categorySelected, setCategorySelected] = useState('');
   const [typeBtn, setTypeBtn] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [searchBarInput, setSearchBarInput] = useState('');
   const [filterType, setFilterType] = useState('');
   const [recipesFiltered, setRecipesFiltered] = useState([]);
+  const [surpriseMe, setSurpriseMe] = useState(true);
+  const [areas, setAreas] = useState([]);
+  const [selectedArea, setSelectedArea] = useState('');
+  const [ingredients, setIngredients] = useState([]);
 
   const fetchRecipeDetails = (type, id) => {
     getRecipeDetails(type, id).then((receipt) => {
@@ -31,11 +33,25 @@ const RecipesProvider = ({ children }) => {
     });
   };
 
-  const getButcher = (listMenu) => setRecipesRoster(listMenu.slice(0, 12));
+  const getButcher = (listMenu) => {
+    setRecipesRoster(listMenu.slice(0, 12));
+  };
 
   const fetchMenu = (type, suffix) => {
     const option = type === 'comidas' ? ['meal', 'meals'] : ['cocktail', 'drinks'];
     fetchRecipes(option[0], suffix).then((menu) => getButcher(menu[option[1]]));
+  };
+
+  const fetchKyleMenu = (apiCall, type, category = '') => {
+    const opt = type === 'comidas' ? 'meals' : 'drinks';
+    apiCall(category).then((menu) => {
+      getButcher(menu[opt]);
+      setIsLoading(false);
+    });
+  };
+
+  const fillContext = (data, context) => {
+    context(['All', ...data]);
   };
 
   const context = {
@@ -58,6 +74,8 @@ const RecipesProvider = ({ children }) => {
     setRecipesList,
     setTypeRecipe,
     typeRecipe,
+    categorySelected,
+    setCategorySelected,
     typeBtn,
     setTypeBtn,
     showSearchBar,
@@ -68,6 +86,16 @@ const RecipesProvider = ({ children }) => {
     setFilterType,
     recipesFiltered,
     setRecipesFiltered,
+    fetchKyleMenu,
+    surpriseMe,
+    setSurpriseMe,
+    areas,
+    setAreas,
+    selectedArea,
+    setSelectedArea,
+    ingredients,
+    setIngredients,
+    fillContext,
   };
   return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;
 };

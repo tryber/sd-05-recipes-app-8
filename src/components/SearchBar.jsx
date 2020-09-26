@@ -1,8 +1,28 @@
+
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/RecipesContext';
-
+import { URL_COCKTAILS, URL_MEALS } from './filter/';
+import { getRecipesDrinks, getRecipesMeal } from '../services/filterAPI';
 import '../layouts/SearchBar.css';
+
+const setFilter = (
+  URL, Btn, getRecipes, inputText, setState
+) => {
+  if (Btn === 'ingredient') {
+    getRecipes(URL[0], inputText)
+      .then((data) => setState([data]))
+  }
+  if (Btn === 'name') {
+    getRecipes(URL[1], inputText)
+    .then((data) => setState([data]))
+  }
+  if (Btn === 'first-letter') {
+    return inputText.length !== 1 ? alert('Sua busca deve conter somente 1 (um) caracter') :
+      getRecipes(URL[2], inputText)
+      .then((data) => setState([data]))
+  }
+};
 
 const InputRender = (props) => {
   const { datatestid, value, label, setState } = props;
@@ -29,10 +49,9 @@ const InputText = (props) => (
     onChange={(e) => props.setState(e.target.value)}
   />
 );
-
 const SearchBar = () => {
   const {
-    typeRecipe, setFilterType, setSearchBarInput, filterType, setRecipesFiltered, searchBarInput,
+    setFilterType, filterType, searchBarInput, setRecipesFiltered, typeRecipe, setSearchBarInput
   } = useContext(RecipesContext);
   return (
     <section className="search-bar-container">
@@ -60,6 +79,15 @@ const SearchBar = () => {
       <button
         type="button"
         data-testid="exec-search-btn"
+        onClick={() => (
+          typeRecipe === 'comidas' ? setFilter(
+            URL_MEALS, filterType, getRecipesMeal, searchBarInput, setRecipesFiltered,
+          ) :
+            setFilter(
+              URL_COCKTAILS, filterType, getRecipesDrinks, searchBarInput, setRecipesFiltered,
+            )
+        )
+        }
       >
         Buscar
       </button>

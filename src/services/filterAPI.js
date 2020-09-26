@@ -1,43 +1,25 @@
-import { fetchRecipes } from './getRecipeDetails'
+export const INGREDIENT_URL_MEALS = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=';
+export const NAME_URL_MEALS = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+export const FIRST_LETTER_URL_MEALS = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
 
-// variável que recebe valor conforme muda estado do tipo de filtro
-export let typeSearch;
+export const INGREDIENT_URL_COCKTAILS = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?i=';
+export const FIRST_LETTER_URL_COCKTAILS = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=';
+export const NAME_URL_COCKTAILS = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 
-export const ingredientFilter = (typeRecipe, text) => {
-  typeRecipe === 'comidas' ?
-    `filter.php?i=${text}` :
-    `search.php?i=${text}`
-};
-
-export const nameFilter = (typeRecipe, text) => {
-  typeRecipe === 'comidas' ?
-    `search.php?s=${text}` :
-    `search.php?f=${text}`;
-};
-
-export const firstLetterFilter = (typeRecipe, text) => {
-  typeRecipe === 'comidas' ?
-    `search.php?f=${text}` :
-    `search.php?s=${text}`;
-};
-
-export function checkType(filterType, searchBarInput) {
-  switch (filterType) {
-    case filterType === 'ingredient':
-      typeSearch === ingredientFilter(searchBarInput);
-    case filterType === 'name':
-      typeSearch === nameFilter(searchBarInput);
-    case filterType === 'first-letter':
-      typeSearch === firstLetterFilter(searchBarInput);
-    default:
-      typeSearch;
-  }
+export async function getRecipesMeal(URL, ingredient) {
+  const response = await fetch(URL + ingredient);
+  return (
+    response
+      .json()
+      .then((json) => (response.ok ? Promise.resolve(json.meals) : Promise.reject(json)))
+  );
 }
 
-export const fetchByFilter = (setState, typeRecipe) => {
-  return typeRecipe === 'comida' ?
-    fetchRecipes('meal', typeSearch)
-      .then(({ meals }) => setState([meals])) :
-    fetchRecipes('cocktails', typeSearch)
-      .then(({ cocktails }) => setState([cocktails]));
+export async function getRecipesDrinks(URL, ingredient) {
+  const response = await fetch(URL + ingredient);
+  return (
+    response
+      .json()
+      .then((json) => (response.ok ? Promise.resolve(json.drinks) : Promise.reject(json)))
+  );
 }

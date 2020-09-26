@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../components/Card';
-import { ProfileIcon, Header, BtnCard } from '../components';
+import { ProfileIcon, Header, BtnCard, MenuBottom } from '../components';
+import '../layouts/Profile.css';
 
 const doneProps = {
   id: 'profile-done-btn',
@@ -26,17 +27,21 @@ const logoutProps = {
 const headerProfile = {
   left: <ProfileIcon />,
   center: 'Perfil',
+  right: false,
   id: 'page-title',
   action: false,
 };
 
 const Profile = () => (
   <Card>
+    {!localStorage.getItem('user') &&
+      localStorage.setItem('user', JSON.stringify({ email: 'teste@teste.com' }))}
     <Header {...headerProfile} />
     <p data-testid="profile-email">{JSON.parse(localStorage.getItem('user')).email}</p>
     <BtnCard {...doneProps} />
     <BtnCard {...favoriteProps} />
     <BtnCard {...logoutProps} />
+    <MenuBottom />
   </Card>
 );
 
