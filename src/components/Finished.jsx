@@ -1,14 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// import { RecipesContext } from '../context/RecipesContext';
 import { ShareIcon } from '../components';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
-const Finished = (keyStorage) =>
-  // const { keys } = useContext(RecipesContext);
-  JSON.parse(localStorage.getItem(keyStorage.keyStorage)).map((x, index) => (
-    <div>
+const Finished = (props) =>
+  props.listRecipes.map((x, index) => (
+    <div key={x.id}>
       <Link to={`/${x.type}s/${x.id}`}>
         <img
           data-testid={`${index}-horizontal-image`}

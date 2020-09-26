@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import { RecipesContext } from '../context/RecipesContext';
+import '../layouts/Tips.css';
 import {
   BtnStart,
   Card,
@@ -9,6 +10,7 @@ import {
   Ingredients,
   LogoRecipe,
   Instructions,
+  Tips,
 } from '../components';
 
 const keys1 = ['meal', 'meals', 'strMeal', 'strMealThumb', 'idMeal', 'comida'];
@@ -27,20 +29,6 @@ const YouTubeSample = (props) =>
       />
     </div>
   );
-
-const Suggestions = () => (
-  <figure>
-    <img
-      data-testid="0-recomendation-card"
-      src="https://www.themealdb.com/images/media/meals/58oia61564916529.jpg"
-      alt="recommendation"
-      style={{ maxHeight: '50px' }}
-    />
-    <figcaption>
-      <span data-testid="0-recomendation-title" />
-    </figcaption>
-  </figure>
-);
 
 const startRecipe = (typeMenu, idMenu, receipt, type) => {
   const progressProps = {
@@ -74,7 +62,7 @@ const RecipeDetails = () => {
     setTypeRecipe(urlType);
     setIdRecipe(urlId);
     fetchRecipeDetails(urlType === 'comidas' ? 'meal' : 'cocktail', urlId);
-  }, [typeRecipe]);
+  }, []);
 
   if (typeRecipe === 'comidas') setKeys(keys1);
   else setKeys(keys2);
@@ -89,7 +77,7 @@ const RecipeDetails = () => {
       <Ingredients {...{ recipe, keys, itemId }} />
       <Instructions {...{ recipe, keys }} />
       <YouTubeSample {...{ recipe, keys }} />
-      <Suggestions {...{ recipe, keys }} />
+      <Tips />
       <BtnStart {...startRecipe(typeRecipe, idRecipe, recipe, keys)} />
     </Card>
   );

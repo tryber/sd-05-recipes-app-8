@@ -25,6 +25,7 @@ const RecipesProvider = ({ children }) => {
   const [areas, setAreas] = useState([]);
   const [selectedArea, setSelectedArea] = useState('');
   const [ingredients, setIngredients] = useState([]);
+  const [loadingTips, setLoadingTips] = useState(true);
 
   const fetchRecipeDetails = (type, id) => {
     getRecipeDetails(type, id).then((receipt) => {
@@ -34,13 +35,12 @@ const RecipesProvider = ({ children }) => {
   };
 
   const getButcher = (listMenu) => {
-    setRecipesRoster(listMenu.slice(0, 12));
+    setRecipesRoster(listMenu.slice(0, 6));
+    setLoadingTips(false);
   };
 
-  const fetchMenu = (type, suffix) => {
-    const option = type === 'comidas' ? ['meal', 'meals'] : ['cocktail', 'drinks'];
+  const fetchMenu = (option, suffix) =>
     fetchRecipes(option[0], suffix).then((menu) => getButcher(menu[option[1]]));
-  };
 
   const fetchKyleMenu = (apiCall, type, category = '') => {
     const opt = type === 'comidas' ? 'meals' : 'drinks';
@@ -96,10 +96,11 @@ const RecipesProvider = ({ children }) => {
     ingredients,
     setIngredients,
     fillContext,
+    loadingTips,
   };
+
   return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;
 };
-
 export default RecipesProvider;
 
 RecipesProvider.propTypes = { children: PropTypes.node.isRequired };
