@@ -47,7 +47,7 @@ const MainRecipes = () => {
       <Header {...headerMainRecipes} />
       {showSearchBar && <SearchBar />}
       {!showSearchBar && <FilterList />}
-      {recipesFiltered.length === 0 ? <MainContent /> : <FilterCard />}
+      {recipesFiltered.length !== 0 && <FilterCard />}
       <MenuBottom />
     </Card>
   );
