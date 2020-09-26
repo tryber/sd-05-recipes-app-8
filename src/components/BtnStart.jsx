@@ -26,9 +26,7 @@ const labelButton = (typeRecipe, idRecipe, value) => {
   ) {
     return value[1];
   }
-  {
-    return value[0];
-  }
+  return value[0];
 };
 
 const setStorage = (attribute, idMenu, receipt) => {
