@@ -7,7 +7,7 @@ export default function Progress() {
         Evolução do Projeto
       </label>
       <meter id="progress" value="51" min="0" max="87">
-        51 out of 87 requirements done
+        58 out of 87 requirements done
       </meter>
     </div>
   );

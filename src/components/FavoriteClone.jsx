@@ -6,9 +6,11 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 const saveFavorite = (heartIcon, setFavIcon, favRecipe) => {
   const recipeChoose = [favRecipe][0].id;
   const recipeStored = Object.values(JSON.parse(localStorage.getItem('favoriteRecipes')));
+  const favRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  favRecipes.push(favRecipe);
   const setFavourite = () => {
     setFavIcon(blackHeartIcon);
-    localStorage.setItem('favoriteRecipes', JSON.stringify([favRecipe]));
+    localStorage.setItem('favoriteRecipes', JSON.stringify(favRecipes));
   };
   const unsetFavourite = () => {
     setFavIcon(whiteHeartIcon);
@@ -37,13 +39,12 @@ const FavoriteClone = (props) => {
     } else if (Object.values(JSON.parse(localStorage.getItem('favoriteRecipes'))).length === 0) {
       setFavIcon(whiteHeartIcon);
     } else if (
-      // [props.recipe][0].id ===
       receipt.id === Object.values(JSON.parse(localStorage.getItem('favoriteRecipes'))[0])[0]
     ) {
       setFavIcon(blackHeartIcon);
     } else setFavIcon(whiteHeartIcon);
-  }, [props.recipe]);
-  // console.log(favRecipe);
+  }, [receipt.id]);
+
   return (
     <figure>
       <button

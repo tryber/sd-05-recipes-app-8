@@ -15,7 +15,12 @@ const findIngredients = (receipt, types) => {
 };
 
 const labelButton = (typeRecipe, idRecipe, value) => {
-  if (!localStorage.getItem('inProgressRecipes')) return value[0];
+  if (
+    !localStorage.getItem('inProgressRecipes') ||
+    !JSON.parse(localStorage.getItem('inProgressRecipes'))[typeRecipe]
+  ) {
+    return value[0];
+  }
   if (
     Object.keys(JSON.parse(localStorage.getItem('inProgressRecipes'))[typeRecipe])[0] === idRecipe
   ) {
@@ -25,8 +30,23 @@ const labelButton = (typeRecipe, idRecipe, value) => {
 };
 
 const setStorage = (attribute, idMenu, receipt) => {
-  localStorage.setItem('inProgressRecipes', JSON.stringify({ [attribute]: { [idMenu]: receipt } }));
+  let auxProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  if (!auxProgress) {
+    localStorage.setItem(
+      'inProgressRecipes',
+      JSON.stringify({ [attribute]: { [idMenu]: receipt } }),
+    );
+  } else if (!auxProgress[attribute]) {
+    const auxDiff = { [attribute]: { [idMenu]: receipt } };
+    auxProgress = Object.assign(auxProgress, auxDiff);
+    localStorage.setItem('inProgressRecipes', JSON.stringify(auxProgress));
+  } else {
+    const auxReceipt = { [idMenu]: receipt };
+    auxProgress[attribute] = Object.assign(auxProgress[attribute], auxReceipt);
+    localStorage.setItem('inProgressRecipes', JSON.stringify(auxProgress));
+  }
 };
+
 const BtnStart = (props) => {
   const { typeRecipe, idRecipe, idTag, value, recipe, keyword } = props;
   const attribute = typeRecipe === 'comidas' ? 'meals' : 'cocktails';

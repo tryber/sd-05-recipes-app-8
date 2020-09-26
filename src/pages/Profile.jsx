@@ -37,10 +37,14 @@ const Profile = () => (
     {!localStorage.getItem('user') &&
       localStorage.setItem('user', JSON.stringify({ email: 'teste@teste.com' }))}
     <Header {...headerProfile} />
-    <p data-testid="profile-email">{JSON.parse(localStorage.getItem('user')).email}</p>
-    <BtnCard {...doneProps} />
-    <BtnCard {...favoriteProps} />
-    <BtnCard {...logoutProps} />
+    <p className="category-list" data-testid="profile-email">
+      {JSON.parse(localStorage.getItem('user')).email}
+    </p>
+    <div className="category-list">
+      <BtnCard {...doneProps} />
+      <BtnCard {...favoriteProps} />
+      <BtnCard {...logoutProps} />
+    </div>
     <MenuBottom />
   </Card>
 );
