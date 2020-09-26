@@ -21,7 +21,7 @@ const setFilter = (
       getRecipes(URL[2], inputText)
       .then((data) => setState([data]));
   }
-  return null
+  return null;
 };
 
 const InputRender = (props) => {

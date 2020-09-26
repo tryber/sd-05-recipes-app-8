@@ -18,8 +18,9 @@ import { fetchDrinks } from '../services/drinkAPI.js';
 const MainRecipes = () => {
   const {
     categorySelected, fetchKyleMenu, typeRecipe,
-    setTypeRecipe, showSearchBar, recipesRoster, recipesFiltered,
+    setTypeRecipe, showSearchBar, recipesRoster,
   } = useContext(RecipesContext);
+  const { recipesFiltered } = useContext(RecipesContext);
   const headerMainRecipes = {
     left: <ProfileIcon />,
     center: typeRecipe,
