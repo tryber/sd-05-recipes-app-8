@@ -5,10 +5,10 @@ import { URL_COCKTAILS, URL_MEALS } from './filter/';
 import { getRecipesDrinks, getRecipesMeal } from '../services/filterAPI';
 import '../layouts/SearchBar.css';
 
-const checkInput = (input) => {
- return input === 'xablau' &&
-    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-};
+const checkInput = (input) => (
+  input === 'xablau' &&
+  alert('Sinto muito, não encontramos nenhuma receita para esses filtros.')
+);
 
 const setFilter = (
   URL, Btn, getRecipes, inputText, setState,
