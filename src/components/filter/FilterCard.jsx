@@ -15,6 +15,7 @@ const RenderFilteresCard = (props) =>
 
 const FilterCard = () => {
   const { recipesFiltered, typeRecipe } = useContext(RecipesContext);
+  if (recipesFiltered[0] === null) return null;
   return (
     <section className="filter-recipes-container">
       {typeRecipe === 'comidas' ?
@@ -36,7 +37,6 @@ const FilterCard = () => {
         ))};
     </section>
   );
-  return null
 };
 
 RenderFilteresCard.propTypes = {
