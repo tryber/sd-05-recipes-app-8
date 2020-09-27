@@ -23,7 +23,7 @@ const saveFavorite = (heartIcon, setFavIcon, favRecipe) => {
   };
   if (recipeStored.length === 0) return setFavourite();
   return recipeChoose ===
-    recipesStored.find(({ id }) => id === recipeChoose)
+    recipeStored.find(({ id }) => id === recipeChoose)
     ? unsetFavourite()
     : setFavourite();
 };
