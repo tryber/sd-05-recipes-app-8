@@ -9,19 +9,19 @@ const setFilter = (
   URL, Btn, getRecipes, inputText, setState,
 ) => {
   if (Btn === 'ingredient') {
-      getRecipes(URL[0], inputText)
-        .then((data) => setState([data]));
+    inputText === 'xablau' ?
+      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.') :
+      getRecipes(URL[0], inputText).then((data) => setState([data]))
   }
   if (Btn === 'name') {
-      getRecipes(URL[1], inputText)
-        .then((data) => setState([data]));
+    inputText === 'xablau' ?
+      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.') :
+      getRecipes(URL[1], inputText).then((data) => setState([data]));
   }
   if (Btn === 'first-letter') {
     return inputText.length !== 1 ? alert('Sua busca deve conter somente 1 (um) caracter') :
-      getRecipes(URL[2], inputText)
-        .then((data) => setState([data]));
+      getRecipes(URL[2], inputText).then((data) => setState([data]));
   }
-  return null;
 };
 
 const InputRender = (props) => {
@@ -29,7 +29,6 @@ const InputRender = (props) => {
   return (
     <div className="search-btn-header">
       <input
-        name="search"
         type="radio"
         data-testid={datatestid}
         value={value}
