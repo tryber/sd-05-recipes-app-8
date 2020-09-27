@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../../context/RecipesContext';
+import { MainContent } from '../index';
 
 const RenderFilteresCard = (props) => (
   <section data-testid={`${props.index}-recipe-card`} key={props.id}>
@@ -48,22 +49,3 @@ RenderFilteresCard.propTypes = {
 };
 
 export default FilterCard;
-
-// return (
-// <section className="filter-recipes-container">
-// {
-//   console.log(recipesFiltered);
-// }
-// {
-//   if (typeRecipe === 'comidas' && recipesFiltered[0]) return;
-//   recipesFiltered[0].map(({ idMeal, strMeal, strMealThumb }, index) => (
-//     <RenderFilteresCard id={idMeal} index={index} name={strMeal} img={strMealThumb} />
-//   ));
-//   return typeRecipe === 'bebidas' && recipesFiltered[0];
-//   recipesFiltered[0].map(({ idDrink, strDrink, strDrinkThumb }, index) => (
-//     <RenderFilteresCard id={idDrink} index={index} name={strDrink} img={strDrinkThumb} />
-//   ));
-//   return <p>{'Sinto muito, não encontramos nenhuma receita para esses filtros.'}</p>;
-// }
-// </section>
-// );
