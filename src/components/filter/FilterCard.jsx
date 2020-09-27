@@ -4,7 +4,7 @@ import { RecipesContext } from '../../context/RecipesContext';
 
 const RenderFilteresCard = (props) =>
   (
-    <section key={props.id}>
+    <section data-testid={`${props.index}-recipe-card`} key={props.id}>
       <img className="filter-recipes-img" data-testid={`${props.index}-card-image`} src={props.img} alt={props.id} />
       <div className="card-name">
         <p data-testid={`${props.index}-card-name`}>{props.name}</p>
@@ -36,6 +36,7 @@ const FilterCard = () => {
         ))};
     </section>
   );
+  return null
 };
 
 RenderFilteresCard.propTypes = {
