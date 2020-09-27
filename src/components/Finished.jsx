@@ -40,7 +40,6 @@ const Finished = (props) => (
         )}
       </div>
     ))}
-    ;
   </div>
 );
 

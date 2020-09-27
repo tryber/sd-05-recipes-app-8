@@ -8,7 +8,7 @@ const LogoRecipe = (props) => (
       data-testid="recipe-photo"
       src={props.recipe[props.keys[1]][0][props.keys[3]]}
       alt="$menupic"
-      style={{ maxHeight: '170px' }}
+      style={{ maxHeight: '70px' }}
     />
     <figcaption>
       <p data-testid="recipe-title">{props.recipe[props.keys[1]][0][props.keys[2]]}</p>
