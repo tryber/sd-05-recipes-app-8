@@ -18,11 +18,11 @@ const ExploreRecipes = () => {
   const recipeType = pathname === '/explorar/comidas' ? 'comidas' : 'bebidas';
   const headerExplorer = {
     left: <ProfileIcon />,
-    center: `Explorar ${recipeType === 'comidas' ? 'Comidas' : 'Bebidas'}`,
+    center: `Explorar ${recipeType}`,
   };
   const surpriseMe = {
     testId: 'explore-surprise',
-    label: 'Me surpreenda',
+    label: 'Me Surpreenda',
     pathTo: `${recipeType}`,
   };
   const searchByIngredient = {
