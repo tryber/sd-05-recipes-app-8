@@ -17,7 +17,7 @@ const RenderFilteresCard = (props) =>
 const FilterCard = () => {
   const { recipesFiltered, typeRecipe } = useContext(RecipesContext);
   if (recipesFiltered[0] === null) {
-    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.')
+    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     return <MainContent />;
   }
   return (
