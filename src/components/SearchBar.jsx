@@ -6,9 +6,9 @@ import { getRecipesDrinks, getRecipesMeal } from '../services/filterAPI';
 import '../layouts/SearchBar.css';
 
 const checkInput = (input) => {
-  input === 'xablau' &&
+ return input === 'xablau' &&
     alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-}
+};
 
 const setFilter = (
   URL, Btn, getRecipes, inputText, setState,
@@ -26,6 +26,7 @@ const setFilter = (
     return inputText.length !== 1 ? alert('Sua busca deve conter somente 1 (um) caracter') :
       getRecipes(URL[2], inputText).then((data) => setState([data]));
   }
+  return null;
 };
 
 const InputRender = (props) => {
