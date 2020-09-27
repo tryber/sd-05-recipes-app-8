@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Header, ProfileIcon, Card, Finished, FilterButtons } from '../components';
+import { RecipesContext } from '../context/RecipesContext';
+import { favorite, getLocalStorage, saveLocalStorage } from '../helper/LocalStorageHandler';
 
 const headerFavoriteRecipes = {
   left: <ProfileIcon />,
@@ -10,16 +12,15 @@ const headerFavoriteRecipes = {
 };
 
 const FavoritesRecipes = () => {
-  const allRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  const [hasChosen, setHasChosen] = useState(JSON.parse(localStorage.getItem('favoriteRecipes')));
+  const allRecipes = getLocalStorage();
+  const [hasChosen, setHasChosen] = useState(getLocalStorage());
+  const {filterFavorites, setFilterFavorites} = useContext(RecipesContext);
 
   return (
     <Card>
-      {!hasChosen && localStorage.setItem('favoriteRecipes', JSON.stringify([]))}
+      {/* {!hasChosen && saveLocalStorage(favorite, [])} */}
       <Header {...headerFavoriteRecipes} />
-      {hasChosen && (
-        <FilterButtons allRecipes={allRecipes} hasChosen={hasChosen} setHasChosen={setHasChosen} />
-      )}
+      <FilterButtons allRecipes={allRecipes} hasChosen={hasChosen} setHasChosen={setHasChosen} />
       <Finished listRecipes={hasChosen} />
     </Card>
   );
