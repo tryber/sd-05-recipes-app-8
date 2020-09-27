@@ -46,7 +46,11 @@ const FavoriteClone = (props) => {
       >
         <img
           data-testid={props.favId}
-          src={receipt2.favorite ? blackHeartIcon : whiteHeartIcon}
+          src={
+            getLocalStorage(favorite).find(({ id }) => id === receipt2.id)
+              ? blackHeartIcon
+              : whiteHeartIcon
+          }
           alt="favoriteIcon"
         />
       </button>
