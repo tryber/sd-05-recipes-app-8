@@ -10,11 +10,12 @@ const saveFavorite = (heartIcon, setFavIcon, favRecipe) => {
   favRecipes.push(favRecipe);
   const setFavourite = () => {
     setFavIcon(blackHeartIcon);
-    localStorage.setItem('favoriteRecipes', JSON.stringify(favRecipes));
+    localStorage.setItem('favoriteRecipes', JSON.stringify([...favRecipes]));
   };
   const unsetFavourite = () => {
     setFavIcon(whiteHeartIcon);
-    localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+    const removeRecipe = [...favRecipes.filter(recipe => recipe.id !== favRecipe.id)];
+    localStorage.setItem('favoriteRecipes', JSON.stringify([...removeRecipe]));
   };
   if (recipeStored.length === 0) return setFavourite();
   return recipeChoose === Object.values(JSON.parse(localStorage.getItem('favoriteRecipes')))[0].id
