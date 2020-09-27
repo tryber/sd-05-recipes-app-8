@@ -8,16 +8,17 @@ import '../layouts/SearchBar.css';
 const setFilter = (
   URL, Btn, getRecipes, inputText, setState,
 ) => {
-  if (inputText === 'xablau') {
-    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.')
-  }
   if (Btn === 'ingredient') {
-    getRecipes(URL[0], inputText)
-      .then((data) => setState([data]));
+    inputText === 'xablau' ?
+      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.') :
+      getRecipes(URL[0], inputText)
+        .then((data) => setState([data]));
   }
   if (Btn === 'name') {
-    getRecipes(URL[1], inputText)
-      .then((data) => setState([data]));
+    inputText === 'xablau' ?
+      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.') :
+      getRecipes(URL[1], inputText)
+        .then((data) => setState([data]));
   }
   if (Btn === 'first-letter') {
     return inputText.length !== 1 ? alert('Sua busca deve conter somente 1 (um) caracter') :
