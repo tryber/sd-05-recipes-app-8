@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../../context/RecipesContext';
+import { MainContent } from '../index';
 
 const RenderFilteresCard = (props) =>
   (
-    <section key={props.id}>
+    <section data-testid={`${props.index}-recipe-card`} key={props.id}>
       <img className="filter-recipes-img" data-testid={`${props.index}-card-image`} src={props.img} alt={props.id} />
       <div className="card-name">
         <p data-testid={`${props.index}-card-name`}>{props.name}</p>
@@ -15,6 +16,10 @@ const RenderFilteresCard = (props) =>
 
 const FilterCard = () => {
   const { recipesFiltered, typeRecipe } = useContext(RecipesContext);
+  if (recipesFiltered[0] === null) {
+    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+    return <MainContent />;
+  }
   return (
     <section className="filter-recipes-container">
       {typeRecipe === 'comidas' ?
