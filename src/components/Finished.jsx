@@ -9,10 +9,32 @@ import {
   saveLocalStorage,
 } from '../helper/LocalStorageHandler';
 import { RecipesContext } from '../context/RecipesContext';
-import { drinkFilterFL } from '../services/getRecipeDetails';
+// import { drinkFilterFL } from '../services/getRecipeDetails';
 
-const Finished = (props) => {
-  console.log(props);
+const CardThumb = (props) => {
+  const { x, index } = props;
+  return (
+    <Link to={`/${x.type}s/${x.id}`}>
+      <img
+        data-testid={`${index}-horizontal-image`}
+        src={x.image}
+        style={{ width: '150px' }}
+        alt="horizontal-recipe"
+      />
+    </Link>
+  );
+};
+
+const TopText = (props) => {
+  const { x, index } = props;
+  return (
+    <Link to={`/${x.type}s/${x.id}`}>
+      <b data-testid={`${index}-horizontal-name`}>{x.name}</b>
+    </Link>
+  );
+};
+
+const Finished = () => {
   const allRecipes = getLocalStorage(favorite);
   const { filterFavorites } = useContext(RecipesContext);
   useEffect(() => {}, [filterFavorites]);
@@ -25,27 +47,17 @@ const Finished = (props) => {
     );
   }
 
-  // return (<div></div>);
   return (
     <div style={{ marginTop: '70px' }}>
       {filteredRecipes.map((x, index) => (
         <div key={x.id}>
-          <Link to={`/${x.type}s/${x.id}`}>
-            <img
-              data-testid={`${index}-horizontal-image`}
-              src={x.image}
-              style={{ width: '150px' }}
-              alt="horizontal-recipe"
-            />
-          </Link>
+          <CardThumb x={x} index={index} />
           <small data-testid={`${index}-horizontal-top-text`}>
             {x.type === 'comida'
               ? `${x.area} - ${x.category}`
               : x.alcoholicOrNot}
           </small>
-          <Link to={`/${x.type}s/${x.id}`}>
-            <b data-testid={`${index}-horizontal-name`}>{x.name}</b>
-          </Link>
+          <TopText x={x} index={index} />
           <time data-testid={`${index}-horizontal-done-date`}>
             {x.doneDate}
           </time>
@@ -54,17 +66,21 @@ const Finished = (props) => {
             type={`${x.type}s`}
             dataId={`${index}-horizontal-share-btn`}
           />
-          <button onClick={() => {
-            saveLocalStorage(favorite, allRecipes.filter((item) => item.id !== x.id));
-            window.location.reload();
-          }}>
+          <button
+            onClick={() => {
+              saveLocalStorage(
+                favorite,
+                allRecipes.filter((item) => item.id !== x.id),
+              );
+              window.location.reload();
+            }}
+          >
             <img
               data-testid={`${index}-horizontal-favorite-btn`}
               src={blackHeartIcon}
               alt="provisory"
             />
           </button>
-          {/* <FavoriteClone dataId={`${index}-horizontal-favorite-btn`} /> */}
           {Object.prototype.hasOwnProperty.call(x, 'tags') ? (
             <div>
               <mark data-testid={`${index}-${x.tags[0]}-horizontal-tag`}>
@@ -85,7 +101,20 @@ const Finished = (props) => {
 
 export default Finished;
 
-Finished.propTypes = {
-  // hasOwnProperty: PropTypes.func.isRequired,
-  listRecipes: PropTypes.arrayOf(PropTypes.object).isRequired,
+CardThumb.propTypes = {
+  x: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+};
+
+TopText.propTypes = {
+  x: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
 };

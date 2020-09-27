@@ -1,16 +1,8 @@
 import React, { useContext } from 'react';
-import { RecipesContext } from '../context/RecipesContext';
 import PropTypes from 'prop-types';
+import { RecipesContext } from '../context/RecipesContext';
 
-// const filterByType = (hasChosen, setHasChosen, allRecipes, typeMenu) => {
-//   setHasChosen(
-//     !typeMenu
-//       ? Object.values(allRecipes)
-//       : Object.values(allRecipes).filter((x) => x.type.includes(typeMenu)),
-//   );
-// };
-
-const FilterButtons = (props) => {
+const FilterButtons = () => {
   const { setFilterFavorites } = useContext(RecipesContext);
   return (
     <div className="category-list">
@@ -18,7 +10,6 @@ const FilterButtons = (props) => {
         data-testid="filter-by-all-btn"
         className={'button-category-filter'}
         onClick={() => {
-          // filterByType(props.hasChosen, props.setHasChosen, props.allRecipes);
           setFilterFavorites('');
         }}
       >
@@ -29,12 +20,6 @@ const FilterButtons = (props) => {
         className={'button-category-filter'}
         onClick={() => {
           setFilterFavorites('comida');
-          // filterByType(
-          //   props.hasChosen,
-          //   props.setHasChosen,
-          //   props.allRecipes,
-          //   'comida',
-          // );
         }}
       >
         Foods
@@ -44,12 +29,6 @@ const FilterButtons = (props) => {
         className={'button-category-filter'}
         onClick={() => {
           setFilterFavorites('bebida');
-          // filterByType(
-          //   props.hasChosen,
-          //   props.setHasChosen,
-          //   props.allRecipes,
-          //   'bebida',
-          // );
         }}
       >
         Drinks

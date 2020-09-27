@@ -9,27 +9,20 @@ import {
 } from '../helper/LocalStorageHandler';
 
 const saveFavorite = (favRecipe) => {
-  console.log('favRecipe', favRecipe);
-  const recipeChoose = favRecipe.id;
   let favRecipes = [];
   if (getLocalStorage(favorite)) {
     favRecipes = [...getLocalStorage(favorite)];
   }
 
-  if (favRecipe.favorite 
-    && !favRecipes.find(({ id }) => id === favRecipe.id)
-    ) {
-    console.log("pushandoo");
+  if (favRecipe.favorite && !favRecipes.find(({ id }) => id === favRecipe.id)) {
     favRecipes.push(favRecipe);
   } else if (favRecipes.find(({ id }) => id === favRecipe.id)) {
-    console.log("Removendoodododododod");
     favRecipes = favRecipes.filter(({ id }) => id !== favRecipe.id);
   }
-  saveLocalStorage(favorite, favRecipes)
+  saveLocalStorage(favorite, favRecipes);
 };
 
 const FavoriteClone = (props) => {
-  const [favIcon, setFavIcon] = useState(whiteHeartIcon);
   const [receipt2, setReceipt2] = useState({
     id: props.recipe[props.keys[1]][0][props.keys[4]],
     type: props.keys[5],
@@ -40,29 +33,15 @@ const FavoriteClone = (props) => {
     image: props.recipe[props.keys[1]][0][props.keys[3]],
     favorite: false,
   });
-  const receipt = {
-    id: props.recipe[props.keys[1]][0][props.keys[4]],
-    type: props.keys[5],
-    area: props.recipe[props.keys[1]][0].strArea || '',
-    category: props.recipe[props.keys[1]][0].strCategory || '',
-    alcoholicOrNot: props.recipe[props.keys[1]][0].strAlcoholic || '',
-    name: props.recipe[props.keys[1]][0][props.keys[2]],
-    image: props.recipe[props.keys[1]][0][props.keys[3]],
-  };
-  // console.log('antes', receipt2);
-  useEffect(() => {
+  useEffect(() => {}, [receipt2]);
 
-  }, [receipt2]);
-  
   return (
     <figure>
       <button
         onClick={() => {
-          const togRecipe = {...receipt2, favorite: !receipt2.favourite};
+          const togRecipe = { ...receipt2, favorite: !receipt2.favorite };
           setReceipt2(togRecipe);
-          // console.log('aqui', receipt2);
           saveFavorite(togRecipe);
-          // window.location.reload();
         }}
       >
         <img
