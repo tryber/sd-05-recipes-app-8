@@ -26,6 +26,7 @@ const RecipesProvider = ({ children }) => {
   const [selectedArea, setSelectedArea] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const [loadingTips, setLoadingTips] = useState(true);
+  const [filterFavorites, setFilterFavorites] = useState(undefined);
 
   const fetchRecipeDetails = (type, id) => {
     getRecipeDetails(type, id).then((receipt) => {
@@ -97,6 +98,8 @@ const RecipesProvider = ({ children }) => {
     setIngredients,
     fillContext,
     loadingTips,
+    filterFavorites,
+    setFilterFavorites,
   };
 
   return <RecipesContext.Provider value={context}>{children}</RecipesContext.Provider>;

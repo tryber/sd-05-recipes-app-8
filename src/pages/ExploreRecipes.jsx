@@ -22,7 +22,7 @@ const ExploreRecipes = () => {
   };
   const surpriseMe = {
     testId: 'explore-surprise',
-    label: 'Me surpreenda',
+    label: 'Me Surpreenda',
     pathTo: `${recipeType}`,
   };
   const searchByIngredient = {

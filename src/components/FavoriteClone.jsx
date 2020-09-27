@@ -2,29 +2,28 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
+import {
+  getLocalStorage,
+  saveLocalStorage,
+  favorite,
+} from '../helper/LocalStorageHandler';
 
-const saveFavorite = (heartIcon, setFavIcon, favRecipe) => {
-  const recipeChoose = [favRecipe][0].id;
-  const recipeStored = Object.values(JSON.parse(localStorage.getItem('favoriteRecipes')));
-  const favRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  favRecipes.push(favRecipe);
-  const setFavourite = () => {
-    setFavIcon(blackHeartIcon);
-    localStorage.setItem('favoriteRecipes', JSON.stringify(favRecipes));
-  };
-  const unsetFavourite = () => {
-    setFavIcon(whiteHeartIcon);
-    localStorage.setItem('favoriteRecipes', JSON.stringify([]));
-  };
-  if (recipeStored.length === 0) return setFavourite();
-  return recipeChoose === Object.values(JSON.parse(localStorage.getItem('favoriteRecipes')))[0].id
-    ? unsetFavourite()
-    : setFavourite();
+const saveFavorite = (favRecipe) => {
+  let favRecipes = [];
+  if (getLocalStorage(favorite)) {
+    favRecipes = [...getLocalStorage(favorite)];
+  }
+
+  if (favRecipe.favorite && !favRecipes.find(({ id }) => id === favRecipe.id)) {
+    favRecipes.push(favRecipe);
+  } else if (favRecipes.find(({ id }) => id === favRecipe.id)) {
+    favRecipes = favRecipes.filter(({ id }) => id !== favRecipe.id);
+  }
+  saveLocalStorage(favorite, favRecipes);
 };
 
 const FavoriteClone = (props) => {
-  const [favIcon, setFavIcon] = useState(whiteHeartIcon);
-  const receipt = {
+  const [receipt2, setReceipt2] = useState({
     id: props.recipe[props.keys[1]][0][props.keys[4]],
     type: props.keys[5],
     area: props.recipe[props.keys[1]][0].strArea || '',
@@ -32,28 +31,28 @@ const FavoriteClone = (props) => {
     alcoholicOrNot: props.recipe[props.keys[1]][0].strAlcoholic || '',
     name: props.recipe[props.keys[1]][0][props.keys[2]],
     image: props.recipe[props.keys[1]][0][props.keys[3]],
-  };
-  useEffect(() => {
-    if (!localStorage.getItem('favoriteRecipes')) {
-      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
-    } else if (Object.values(JSON.parse(localStorage.getItem('favoriteRecipes'))).length === 0) {
-      setFavIcon(whiteHeartIcon);
-    } else if (
-      receipt.id === Object.values(JSON.parse(localStorage.getItem('favoriteRecipes'))[0])[0]
-    ) {
-      setFavIcon(blackHeartIcon);
-    } else setFavIcon(whiteHeartIcon);
-  }, [receipt.id]);
+    favorite: false,
+  });
+  useEffect(() => {}, [receipt2]);
 
   return (
     <figure>
       <button
         onClick={() => {
-          saveFavorite(favIcon, setFavIcon, receipt);
-          // window.location.reload();
+          const togRecipe = { ...receipt2, favorite: !receipt2.favorite };
+          setReceipt2(togRecipe);
+          saveFavorite(togRecipe);
         }}
       >
-        <img data-testid={props.favId} src={favIcon} alt="favoriteIcon" />
+        <img
+          data-testid={props.favId}
+          src={
+            getLocalStorage(favorite).find(({ id }) => id === receipt2.id)
+              ? blackHeartIcon
+              : whiteHeartIcon
+          }
+          alt="favoriteIcon"
+        />
       </button>
     </figure>
   );
