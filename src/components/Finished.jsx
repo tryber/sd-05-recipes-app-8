@@ -34,11 +34,48 @@ const TopText = (props) => {
   );
 };
 
+const HeartButton = (props) => {
+  const { x, index } = props;
+  const allRecipes = getLocalStorage(favorite);
+  return (
+    <button
+      onClick={() => {
+        saveLocalStorage(
+          favorite,
+          allRecipes.filter((item) => item.id !== x.id),
+        );
+        window.location.reload();
+      }}
+    >
+      <img
+        data-testid={`${index}-horizontal-favorite-btn`}
+        src={blackHeartIcon}
+        alt="provisory"
+      />
+    </button>
+  );
+};
+
+const HorizontalTopText = (props) => {
+  const { x, index } = props;
+  return (
+    <small data-testid={`${index}-horizontal-top-text`}>
+      {x.type === 'comida' ? `${x.area} - ${x.category}` : x.alcoholicOrNot}
+    </small>
+  );
+};
+
+const DoneDate = (props) => {
+  const { x, index } = props;
+  return (
+    <time data-testid={`${index}-horizontal-done-date`}>{x.doneDate}</time>
+  );
+};
+
 const Finished = () => {
   const allRecipes = getLocalStorage(favorite);
   const { filterFavorites } = useContext(RecipesContext);
   useEffect(() => {}, [filterFavorites]);
-  console.log('all', allRecipes);
   let filteredRecipes = allRecipes;
 
   if (filterFavorites) {
@@ -52,35 +89,15 @@ const Finished = () => {
       {filteredRecipes.map((x, index) => (
         <div key={x.id}>
           <CardThumb x={x} index={index} />
-          <small data-testid={`${index}-horizontal-top-text`}>
-            {x.type === 'comida'
-              ? `${x.area} - ${x.category}`
-              : x.alcoholicOrNot}
-          </small>
+          <HorizontalTopText x={x} index={index} />
           <TopText x={x} index={index} />
-          <time data-testid={`${index}-horizontal-done-date`}>
-            {x.doneDate}
-          </time>
+          <DoneDate x={x} index={index} />
           <ShareIcon
             id={x.id}
             type={`${x.type}s`}
             dataId={`${index}-horizontal-share-btn`}
           />
-          <button
-            onClick={() => {
-              saveLocalStorage(
-                favorite,
-                allRecipes.filter((item) => item.id !== x.id),
-              );
-              window.location.reload();
-            }}
-          >
-            <img
-              data-testid={`${index}-horizontal-favorite-btn`}
-              src={blackHeartIcon}
-              alt="provisory"
-            />
-          </button>
+          <HeartButton x={x} index={index} />
           {Object.prototype.hasOwnProperty.call(x, 'tags') ? (
             <div>
               <mark data-testid={`${index}-${x.tags[0]}-horizontal-tag`}>
@@ -115,6 +132,23 @@ TopText.propTypes = {
     type: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+};
+
+HorizontalTopText.propTypes = {
+  x: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    area: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    alcoholicOrNot: PropTypes.string.isRequired,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+};
+
+DoneDate.propTypes = {
+  x: PropTypes.shape({
+    doneDate: PropTypes.string.isRequired,
   }).isRequired,
   index: PropTypes.number.isRequired,
 };
