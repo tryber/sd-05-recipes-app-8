@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../../context/RecipesContext';
+import { MainContent } from '../index';
 
 const RenderFilteresCard = (props) =>
   (
@@ -15,7 +16,10 @@ const RenderFilteresCard = (props) =>
 
 const FilterCard = () => {
   const { recipesFiltered, typeRecipe } = useContext(RecipesContext);
-  if (recipesFiltered[0] === null) return null;
+  if (recipesFiltered[0] === null) {
+    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.')
+    return <MainContent />;
+  }
   return (
     <section className="filter-recipes-container">
       {typeRecipe === 'comidas' ?
