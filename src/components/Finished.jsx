@@ -47,5 +47,6 @@ const Finished = (props) => (
 export default Finished;
 
 Finished.propTypes = {
-  hasOwnProperty: PropTypes.func.isRequired,
+  // hasOwnProperty: PropTypes.func.isRequired,
+  listRecipes: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

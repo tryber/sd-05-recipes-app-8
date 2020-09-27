@@ -5,9 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { RecipesContext } from '../context/RecipesContext';
 
 const Tips = () => {
-  const { fetchMenu, tipsList, recipesRoster, loadingTips, typeRecipe } = useContext(
-    RecipesContext,
-  );
+  const { fetchMenu, recipesRoster, loadingTips, typeRecipe } = useContext(RecipesContext);
 
   useEffect(() => {
     const url = window.location.href.split('/');
