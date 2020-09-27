@@ -5,7 +5,9 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 const saveFavorite = (heartIcon, setFavIcon, favRecipe) => {
   const recipeChoose = [favRecipe][0].id;
-  const recipeStored = Object.values(JSON.parse(localStorage.getItem('favoriteRecipes')));
+  const recipeStored = Object.values(
+    JSON.parse(localStorage.getItem('favoriteRecipes')),
+  );
   const favRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
   favRecipes.push(favRecipe);
   const setFavourite = () => {
@@ -14,11 +16,14 @@ const saveFavorite = (heartIcon, setFavIcon, favRecipe) => {
   };
   const unsetFavourite = () => {
     setFavIcon(whiteHeartIcon);
-    const removeRecipe = [...favRecipes.filter(recipe => recipe.id !== favRecipe.id)];
+    const removeRecipe = [
+      ...favRecipes.filter((recipe) => recipe.id !== favRecipe.id),
+    ];
     localStorage.setItem('favoriteRecipes', JSON.stringify([...removeRecipe]));
   };
   if (recipeStored.length === 0) return setFavourite();
-  return recipeChoose === Object.values(JSON.parse(localStorage.getItem('favoriteRecipes')))[0].id
+  return recipeChoose ===
+    Object.values(JSON.parse(localStorage.getItem('favoriteRecipes')))[0].id
     ? unsetFavourite()
     : setFavourite();
 };
@@ -37,10 +42,14 @@ const FavoriteClone = (props) => {
   useEffect(() => {
     if (!localStorage.getItem('favoriteRecipes')) {
       localStorage.setItem('favoriteRecipes', JSON.stringify([]));
-    } else if (Object.values(JSON.parse(localStorage.getItem('favoriteRecipes'))).length === 0) {
+    } else if (
+      Object.values(JSON.parse(localStorage.getItem('favoriteRecipes')))
+        .length === 0
+    ) {
       setFavIcon(whiteHeartIcon);
     } else if (
-      receipt.id === Object.values(JSON.parse(localStorage.getItem('favoriteRecipes'))[0])[0]
+      receipt.id ===
+      Object.values(JSON.parse(localStorage.getItem('favoriteRecipes'))[0])[0]
     ) {
       setFavIcon(blackHeartIcon);
     } else setFavIcon(whiteHeartIcon);
