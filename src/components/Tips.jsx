@@ -5,7 +5,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import { RecipesContext } from '../context/RecipesContext';
 
 const Tips = () => {
-  const { fetchMenu, recipesRoster, loadingTips, typeRecipe } = useContext(RecipesContext);
+  const { fetchMenu, tipsList, recipesRoster, loadingTips, typeRecipe } = useContext(
+    RecipesContext,
+  );
 
   useEffect(() => {
     const url = window.location.href.split('/');
@@ -22,7 +24,7 @@ const Tips = () => {
 
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 1,
@@ -36,8 +38,9 @@ const Tips = () => {
           <img
             data-testid={`${index}-recomendation-card`}
             src={tip[kind[1]]}
-            alt={`${index}-tip`}
-            style={{ maxHeight: '80px' }}
+            alt={tip[kind[0]]}
+            style={{ maxHeight: '180px' }}
+            key={tip}
           />
           <figcaption>
             <small>{tip[kind[2]]}</small>
