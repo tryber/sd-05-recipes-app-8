@@ -152,3 +152,10 @@ DoneDate.propTypes = {
   }).isRequired,
   index: PropTypes.number.isRequired,
 };
+
+HeartButton.propTypes = {
+  x: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+};
