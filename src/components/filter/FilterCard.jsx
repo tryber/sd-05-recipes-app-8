@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../../context/RecipesContext';
-//import { MainContent } from '../index';
+// import { MainContent } from '../index';
 
 const RenderFilteresCard = (props) => (
   <section data-testid={`${props.index}-recipe-card`} key={props.id}>
