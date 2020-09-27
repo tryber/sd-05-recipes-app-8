@@ -34,18 +34,18 @@ const RecipesProvider = ({ children }) => {
     });
   };
 
-  const getButcher = (listMenu) => {
-    setRecipesRoster(listMenu.slice(0, 6));
+  const getButcher = (listMenu, size) => {
+    setRecipesRoster(listMenu.slice(0, size));
     setLoadingTips(false);
   };
 
   const fetchMenu = (option, suffix) =>
-    fetchRecipes(option[0], suffix).then((menu) => getButcher(menu[option[1]]));
+    fetchRecipes(option[0], suffix).then((menu) => getButcher(menu[option[1]], 6));
 
   const fetchKyleMenu = (apiCall, type, category = '') => {
     const opt = type === 'comidas' ? 'meals' : 'drinks';
     apiCall(category).then((menu) => {
-      getButcher(menu[opt]);
+      getButcher(menu[opt], 12);
       setIsLoading(false);
     });
   };
