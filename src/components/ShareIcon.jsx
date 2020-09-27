@@ -8,12 +8,14 @@ const ShareIcon = ({ id, type, dataId }) => {
   return (
     <figure>
       <button
+        data-testid={dataId}
+        src={shareIcon}
         onClick={() => {
           copy(`${window.location.origin}/${type}/${id}`);
           setShare('Link copiado!');
         }}
       >
-        <img data-testid={dataId} src={shareIcon} alt="shareIcon" />
+        <img src={shareIcon} alt="shareIcon" />
       </button>
       {share}
     </figure>
