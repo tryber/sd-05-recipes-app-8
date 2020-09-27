@@ -9,14 +9,10 @@ const setFilter = (
   URL, Btn, getRecipes, inputText, setState,
 ) => {
   if (Btn === 'ingredient') {
-    inputText === 'xablau' ?
-      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.') :
       getRecipes(URL[0], inputText)
         .then((data) => setState([data]));
   }
   if (Btn === 'name') {
-    inputText === 'xablau' ?
-      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.') :
       getRecipes(URL[1], inputText)
         .then((data) => setState([data]));
   }
